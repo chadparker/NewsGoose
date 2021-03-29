@@ -15,6 +15,7 @@
 		63B9355326123F0C0097FD2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B9355126123F0C0097FD2C /* LaunchScreen.storyboard */; };
 		63B9355E26123F0D0097FD2C /* NewsGooseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9355D26123F0D0097FD2C /* NewsGooseTests.swift */; };
 		63B9356926123F0D0097FD2C /* NewsGooseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9356826123F0D0097FD2C /* NewsGooseUITests.swift */; };
+		63B9357B261249270097FD2C /* data in Resources */ = {isa = PBXBuildFile; fileRef = 63B9357A261249260097FD2C /* data */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		63B9356426123F0D0097FD2C /* NewsGooseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsGooseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B9356826123F0D0097FD2C /* NewsGooseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsGooseUITests.swift; sourceTree = "<group>"; };
 		63B9356A26123F0D0097FD2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63B9357A261249260097FD2C /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../../hn_python/data; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				63B9354626123F0C0097FD2C /* AppDelegate.swift */,
 				63B9354826123F0C0097FD2C /* SceneDelegate.swift */,
 				63B93576261244A90097FD2C /* View Controllers */,
+				63B9357A261249260097FD2C /* data */,
 				63B9354C26123F0C0097FD2C /* Main.storyboard */,
 				63B9354F26123F0C0097FD2C /* Assets.xcassets */,
 				63B9355126123F0C0097FD2C /* LaunchScreen.storyboard */,
@@ -241,6 +244,7 @@
 			files = (
 				63B9355326123F0C0097FD2C /* LaunchScreen.storyboard in Resources */,
 				63B9355026123F0C0097FD2C /* Assets.xcassets in Resources */,
+				63B9357B261249270097FD2C /* data in Resources */,
 				63B9354E26123F0C0097FD2C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
