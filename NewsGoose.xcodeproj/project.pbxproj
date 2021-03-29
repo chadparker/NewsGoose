@@ -20,6 +20,7 @@
 		63B9358026124D560097FD2C /* NewsGoose.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63B9357E26124D560097FD2C /* NewsGoose.xcdatamodeld */; };
 		63B93583261263520097FD2C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B93582261263520097FD2C /* CoreDataStack.swift */; };
 		63B93585261263700097FD2C /* Post+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B93584261263700097FD2C /* Post+Convenience.swift */; };
+		63B93587261269340097FD2C /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B93586261269340097FD2C /* PostController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		63B9357F26124D560097FD2C /* NewsGoose.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsGoose.xcdatamodel; sourceTree = "<group>"; };
 		63B93582261263520097FD2C /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		63B93584261263700097FD2C /* Post+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+Convenience.swift"; sourceTree = "<group>"; };
+		63B93586261269340097FD2C /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				63B9354626123F0C0097FD2C /* AppDelegate.swift */,
 				63B9354826123F0C0097FD2C /* SceneDelegate.swift */,
 				63B93579261244F40097FD2C /* Model */,
+				63B93581261263220097FD2C /* Model Controllers */,
 				63B93576261244A90097FD2C /* View Controllers */,
 				63B9357A261249260097FD2C /* data */,
 				63B9354C26123F0C0097FD2C /* Main.storyboard */,
@@ -157,6 +160,14 @@
 				63B93577261244F00097FD2C /* PostRepresentation.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		63B93581261263220097FD2C /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				63B93586261269340097FD2C /* PostController.swift */,
+			);
+			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,6 +306,7 @@
 				63B9354B26123F0C0097FD2C /* ViewController.swift in Sources */,
 				63B9354726123F0C0097FD2C /* AppDelegate.swift in Sources */,
 				63B9354926123F0C0097FD2C /* SceneDelegate.swift in Sources */,
+				63B93587261269340097FD2C /* PostController.swift in Sources */,
 				63B93578261244F00097FD2C /* PostRepresentation.swift in Sources */,
 				63B93585261263700097FD2C /* Post+Convenience.swift in Sources */,
 			);
