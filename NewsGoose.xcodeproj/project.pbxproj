@@ -19,6 +19,7 @@
 		63B9357B261249270097FD2C /* data in Resources */ = {isa = PBXBuildFile; fileRef = 63B9357A261249260097FD2C /* data */; };
 		63B9358026124D560097FD2C /* NewsGoose.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63B9357E26124D560097FD2C /* NewsGoose.xcdatamodeld */; };
 		63B93583261263520097FD2C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B93582261263520097FD2C /* CoreDataStack.swift */; };
+		63B93585261263700097FD2C /* Post+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B93584261263700097FD2C /* Post+Convenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		63B9357A261249260097FD2C /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../../hn_python/data; sourceTree = "<group>"; };
 		63B9357F26124D560097FD2C /* NewsGoose.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsGoose.xcdatamodel; sourceTree = "<group>"; };
 		63B93582261263520097FD2C /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		63B93584261263700097FD2C /* Post+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+Convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			children = (
 				63B9357E26124D560097FD2C /* NewsGoose.xcdatamodeld */,
 				63B93582261263520097FD2C /* CoreDataStack.swift */,
+				63B93584261263700097FD2C /* Post+Convenience.swift */,
 				63B93577261244F00097FD2C /* PostRepresentation.swift */,
 			);
 			path = Model;
@@ -293,6 +296,7 @@
 				63B9354726123F0C0097FD2C /* AppDelegate.swift in Sources */,
 				63B9354926123F0C0097FD2C /* SceneDelegate.swift in Sources */,
 				63B93578261244F00097FD2C /* PostRepresentation.swift in Sources */,
+				63B93585261263700097FD2C /* Post+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
