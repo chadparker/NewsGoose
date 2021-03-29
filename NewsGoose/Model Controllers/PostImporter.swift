@@ -22,7 +22,9 @@ class PostImporter {
             
             let url = URL(fileURLWithPath: filePath)
             let data = try! Data(contentsOf: url)
-            let postReps = try! JSONDecoder().decode([PostRepresentation].self, from: data)
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .secondsSince1970
+            let postReps = try! decoder.decode([PostRepresentation].self, from: data)
             
             // save posts to Core Data
             for postRep in postReps {
