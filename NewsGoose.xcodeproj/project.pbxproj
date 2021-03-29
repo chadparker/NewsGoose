@@ -101,7 +101,7 @@
 			children = (
 				63B9354626123F0C0097FD2C /* AppDelegate.swift */,
 				63B9354826123F0C0097FD2C /* SceneDelegate.swift */,
-				63B9354A26123F0C0097FD2C /* ViewController.swift */,
+				63B93576261244A90097FD2C /* View Controllers */,
 				63B9354C26123F0C0097FD2C /* Main.storyboard */,
 				63B9354F26123F0C0097FD2C /* Assets.xcassets */,
 				63B9355126123F0C0097FD2C /* LaunchScreen.storyboard */,
@@ -126,6 +126,14 @@
 				63B9356A26123F0D0097FD2C /* Info.plist */,
 			);
 			path = NewsGooseUITests;
+			sourceTree = "<group>";
+		};
+		63B93576261244A90097FD2C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				63B9354A26123F0C0097FD2C /* ViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
