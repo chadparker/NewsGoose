@@ -21,6 +21,7 @@
 		63B93583261263520097FD2C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B93582261263520097FD2C /* CoreDataStack.swift */; };
 		63B93585261263700097FD2C /* Post+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B93584261263700097FD2C /* Post+Convenience.swift */; };
 		63B93587261269340097FD2C /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B93586261269340097FD2C /* PostController.swift */; };
+		63B935892612808F0097FD2C /* PostImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B935882612808F0097FD2C /* PostImporter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		63B93582261263520097FD2C /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		63B93584261263700097FD2C /* Post+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+Convenience.swift"; sourceTree = "<group>"; };
 		63B93586261269340097FD2C /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
+		63B935882612808F0097FD2C /* PostImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImporter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 		63B93581261263220097FD2C /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				63B935882612808F0097FD2C /* PostImporter.swift */,
 				63B93586261269340097FD2C /* PostController.swift */,
 			);
 			path = "Model Controllers";
@@ -308,6 +311,7 @@
 				63B9354926123F0C0097FD2C /* SceneDelegate.swift in Sources */,
 				63B93587261269340097FD2C /* PostController.swift in Sources */,
 				63B93578261244F00097FD2C /* PostRepresentation.swift in Sources */,
+				63B935892612808F0097FD2C /* PostImporter.swift in Sources */,
 				63B93585261263700097FD2C /* Post+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
