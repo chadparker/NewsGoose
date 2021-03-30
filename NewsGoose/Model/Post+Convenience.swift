@@ -54,6 +54,7 @@ extension Post {
     
     @discardableResult convenience init?(
         movieRepresentation: PostRepresentation,
+        calendar: Calendar,
         context: NSManagedObjectContext = CoreDataStack.shared.mainContext
     ) {
     

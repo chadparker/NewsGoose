@@ -10,6 +10,12 @@ import CoreData
 
 class PostImporter {
     
+    lazy var calendar: Calendar = {
+        var cal = Calendar.current
+        cal.timeZone = TimeZone(secondsFromGMT: 0)!
+        return cal
+    }()
+    
     init() {
         if getCoreDataCount() == 0 {
             importJSToCoreData()
@@ -31,7 +37,7 @@ class PostImporter {
             // save posts to Core Data
             for postRep in postReps {
                 if !idsSeen.contains(postRep.id) {
-                    Post(movieRepresentation: postRep)
+                    Post(movieRepresentation: postRep, calendar: calendar)
                     idsSeen.insert(postRep.id)
                 }
             }
