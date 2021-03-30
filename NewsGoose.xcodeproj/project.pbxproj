@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		637DCF512613B59B00420C6B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637DCF502613B59B00420C6B /* Constants.swift */; };
 		63B9354726123F0C0097FD2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9354626123F0C0097FD2C /* AppDelegate.swift */; };
 		63B9354926123F0C0097FD2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9354826123F0C0097FD2C /* SceneDelegate.swift */; };
 		63B9354B26123F0C0097FD2C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9354A26123F0C0097FD2C /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		637DCF502613B59B00420C6B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		63B9354326123F0C0097FD2C /* NewsGoose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsGoose.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B9354626123F0C0097FD2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63B9354826123F0C0097FD2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				63B9354626123F0C0097FD2C /* AppDelegate.swift */,
 				63B9354826123F0C0097FD2C /* SceneDelegate.swift */,
+				637DCF502613B59B00420C6B /* Constants.swift */,
 				63B93579261244F40097FD2C /* Model */,
 				63B93581261263220097FD2C /* Model Controllers */,
 				63B93576261244A90097FD2C /* View Controllers */,
@@ -308,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63B93583261263520097FD2C /* CoreDataStack.swift in Sources */,
+				637DCF512613B59B00420C6B /* Constants.swift in Sources */,
 				63B9358026124D560097FD2C /* NewsGoose.xcdatamodeld in Sources */,
 				63B9354B26123F0C0097FD2C /* ViewController.swift in Sources */,
 				63B9354726123F0C0097FD2C /* AppDelegate.swift in Sources */,
