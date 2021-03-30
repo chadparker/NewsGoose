@@ -11,11 +11,13 @@ import CoreData
 class PostImporter {
     
     init() {
-        //saveToCoreData()
+        if getCoreDataCount() == 0 {
+            importJSToCoreData()
+        }
     }
     
-    func saveToCoreData() {
-        
+    func importJSToCoreData() {
+        print("Importing...")
         var idsSeen = Set<String>()
         
         for filePath in getDataFilePaths() {
@@ -39,21 +41,15 @@ class PostImporter {
         print("idsSeen count:")
         print(idsSeen.count)
         
-        printObjectCount()
+        print("In Core Data:")
+        print(getCoreDataCount())
     }
     
-    private func printObjectCount() {
-        NSLog("start")
+    private func getCoreDataCount() -> Int {
         let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         let context = CoreDataStack.shared.mainContext
-        
         let existingPosts = try! context.fetch(fetchRequest)
-        
-        print("In Core Data:")
-        print(existingPosts.count)
-        
-        NSLog("end")
+        return existingPosts.count
     }
     
     private func getDataFilePaths() -> [String] {
