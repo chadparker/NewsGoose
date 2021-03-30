@@ -78,6 +78,8 @@ extension Post {
                   date: movieRepresentation.date,
                   time: movieRepresentation.time,
                   
+                  day: calendar.startOfDay(for: movieRepresentation.date),
+                  
                   context: context)
     }
 }
