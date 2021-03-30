@@ -25,6 +25,8 @@ extension Post {
                                         
                                         date: Date,
                                         time: Date?,
+                                        
+                                        day: Date,
                                         context: NSManagedObjectContext) {
         
         self.init(context: context)
@@ -50,6 +52,8 @@ extension Post {
         if time != nil {
             self.time = time
         }
+        
+        self.day = day
     }
     
     @discardableResult convenience init?(
