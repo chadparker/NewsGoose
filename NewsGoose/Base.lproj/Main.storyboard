@@ -16,21 +16,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hnW-8c-rNS">
-                                <rect key="frame" x="0.0" y="113" width="414" height="749"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnW-8c-rNS">
+                                <rect key="frame" x="0.0" y="124" width="414" height="738"/>
                                 <connections>
                                     <segue destination="G2L-rj-dbf" kind="embed" id="B0z-SG-YFO"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chv-ck-ebZ" userLabel="Header">
+                                <rect key="frame" x="0.0" y="44" width="414" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEe-oa-OAi">
+                                        <rect key="frame" x="356" y="0.0" width="50" height="72"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="UWm-9a-qgw"/>
+                                        </constraints>
+                                        <state key="normal" image="magnifyingglass" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cSc-3v-Yni"/>
+                                        </connections>
+                                    </button>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="376-Xw-ryg">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                        <connections>
+                                            <segue destination="aUf-XF-ff6" kind="embed" id="oCb-Ps-v7t"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="BEe-oa-OAi" firstAttribute="top" secondItem="chv-ck-ebZ" secondAttribute="top" id="3XP-mY-STi"/>
+                                    <constraint firstAttribute="bottom" secondItem="BEe-oa-OAi" secondAttribute="bottom" constant="8" id="AEL-zf-K9C"/>
+                                    <constraint firstItem="376-Xw-ryg" firstAttribute="top" secondItem="chv-ck-ebZ" secondAttribute="top" id="POB-bf-1Bx"/>
+                                    <constraint firstAttribute="height" constant="80" id="Qtt-BJ-Bdn"/>
+                                    <constraint firstAttribute="trailing" secondItem="BEe-oa-OAi" secondAttribute="trailing" constant="8" id="SZi-A4-LhP"/>
+                                    <constraint firstAttribute="bottom" secondItem="376-Xw-ryg" secondAttribute="bottom" id="YoJ-ul-EwS"/>
+                                    <constraint firstItem="376-Xw-ryg" firstAttribute="leading" secondItem="chv-ck-ebZ" secondAttribute="leading" id="oYF-0N-X1C"/>
+                                    <constraint firstAttribute="trailing" secondItem="376-Xw-ryg" secondAttribute="trailing" id="yym-wn-zRv"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="chv-ck-ebZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="B2S-99-6WJ"/>
+                            <constraint firstItem="chv-ck-ebZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PHE-xF-ofl"/>
                             <constraint firstItem="hnW-8c-rNS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nHj-LG-OsF"/>
                             <constraint firstItem="hnW-8c-rNS" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="odk-Vt-MJp"/>
                             <constraint firstItem="hnW-8c-rNS" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rRr-ts-sdQ"/>
+                            <constraint firstItem="chv-ck-ebZ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tao-oz-hOz"/>
+                            <constraint firstItem="hnW-8c-rNS" firstAttribute="top" secondItem="chv-ck-ebZ" secondAttribute="bottom" id="xij-9f-Mcl"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchContainer" destination="376-Xw-ryg" id="XpU-rE-9a9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -41,7 +82,7 @@
             <objects>
                 <tableViewController id="G2L-rj-dbf" customClass="PostTableVC" customModule="NewsGoose" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zcy-OO-yAq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="749"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="738"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -64,8 +105,23 @@
             </objects>
             <point key="canvasLocation" x="1110" y="274"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="xaQ-sA-Quk">
+            <objects>
+                <viewController id="aUf-XF-ff6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fAa-S8-6nw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wiA-Bb-hie" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1009" y="-164"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
