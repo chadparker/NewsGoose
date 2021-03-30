@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		637DCF512613B59B00420C6B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637DCF502613B59B00420C6B /* Constants.swift */; };
+		637DCF532613D0CC00420C6B /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637DCF522613D0CC00420C6B /* SearchVC.swift */; };
 		63B9354726123F0C0097FD2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9354626123F0C0097FD2C /* AppDelegate.swift */; };
 		63B9354926123F0C0097FD2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9354826123F0C0097FD2C /* SceneDelegate.swift */; };
 		63B9354B26123F0C0097FD2C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9354A26123F0C0097FD2C /* MainVC.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		637DCF502613B59B00420C6B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		637DCF522613D0CC00420C6B /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		63B9354326123F0C0097FD2C /* NewsGoose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsGoose.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B9354626123F0C0097FD2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63B9354826123F0C0097FD2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				63B9354A26123F0C0097FD2C /* MainVC.swift */,
+				637DCF522613D0CC00420C6B /* SearchVC.swift */,
 				63B9358A261282330097FD2C /* PostTableVC.swift */,
 			);
 			path = "View Controllers";
@@ -310,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				637DCF532613D0CC00420C6B /* SearchVC.swift in Sources */,
 				63B93583261263520097FD2C /* CoreDataStack.swift in Sources */,
 				637DCF512613B59B00420C6B /* Constants.swift in Sources */,
 				63B9358026124D560097FD2C /* NewsGoose.xcdatamodeld in Sources */,
