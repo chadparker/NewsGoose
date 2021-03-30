@@ -15,7 +15,7 @@ class PostTableVC: UITableViewController {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         fetchRequest.fetchLimit = 10000
         let moc = CoreDataStack.shared.mainContext
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "date", cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "truncatedDateAsString", cacheName: nil)
         frc.delegate = self
         try! frc.performFetch()
         return frc
