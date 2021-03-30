@@ -105,15 +105,37 @@
             </objects>
             <point key="canvasLocation" x="1110" y="274"/>
         </scene>
-        <!--View Controller-->
+        <!--SearchVC-->
         <scene sceneID="xaQ-sA-Quk">
             <objects>
-                <viewController id="aUf-XF-ff6" sceneMemberID="viewController">
+                <viewController id="aUf-XF-ff6" customClass="SearchVC" customModule="NewsGoose" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fAa-S8-6nw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HiY-fg-PC6">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="aUf-XF-ff6" id="oTh-kq-VHg"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HiY-fg-PC6" firstAttribute="leading" secondItem="fAa-S8-6nw" secondAttribute="leading" id="Sw1-HA-09k"/>
+                            <constraint firstAttribute="trailing" secondItem="HiY-fg-PC6" secondAttribute="trailing" id="nbP-zR-mm0"/>
+                            <constraint firstItem="HiY-fg-PC6" firstAttribute="top" secondItem="fAa-S8-6nw" secondAttribute="top" id="o0Z-IP-Z81"/>
+                            <constraint firstAttribute="bottom" secondItem="HiY-fg-PC6" secondAttribute="bottom" id="qCX-iv-Dq5"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="HiY-fg-PC6" id="blV-DV-DHu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wiA-Bb-hie" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
