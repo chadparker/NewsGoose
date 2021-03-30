@@ -86,16 +86,7 @@ extension Post {
 
 extension Post {
     
-    @objc var truncatedDateAsString: String {
-        let timeZone = TimeZone(secondsFromGMT: 0)!
-        
-        var calendar = Calendar.current
-        calendar.timeZone = timeZone
-        let truncatedDate = calendar.startOfDay(for: self.date!)
-        
-        let formatter = DateFormatter()
-        formatter.timeZone = timeZone
-        formatter.dateStyle = .full
-        return formatter.string(from: truncatedDate)
+    @objc var dayFormatted: String {
+        Constants.dateFormatter.string(from: self.day!)
     }
 }
