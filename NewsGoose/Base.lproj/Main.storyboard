@@ -16,13 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngd-VH-qzC">
-                                <rect key="frame" x="187.5" y="64" width="39" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnW-8c-rNS">
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hnW-8c-rNS">
                                 <rect key="frame" x="0.0" y="113" width="414" height="749"/>
                                 <connections>
                                     <segue destination="G2L-rj-dbf" kind="embed" id="B0z-SG-YFO"/>
@@ -32,10 +26,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hnW-8c-rNS" firstAttribute="top" secondItem="ngd-VH-qzC" secondAttribute="bottom" constant="28" id="gql-9E-ZGa"/>
-                            <constraint firstItem="ngd-VH-qzC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="jhb-6z-Oby"/>
                             <constraint firstItem="hnW-8c-rNS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nHj-LG-OsF"/>
-                            <constraint firstItem="ngd-VH-qzC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o95-As-DUx"/>
                             <constraint firstItem="hnW-8c-rNS" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="odk-Vt-MJp"/>
                             <constraint firstItem="hnW-8c-rNS" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rRr-ts-sdQ"/>
                         </constraints>
@@ -71,7 +62,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZm-Md-FfQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1070" y="110"/>
+            <point key="canvasLocation" x="1110" y="274"/>
         </scene>
     </scenes>
     <resources>
