@@ -174,12 +174,22 @@
                                     <constraint firstItem="HiY-fg-PC6" firstAttribute="leading" secondItem="mQJ-Yc-FxM" secondAttribute="leading" id="qp0-oB-9Rb"/>
                                 </constraints>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZbL-gH-Qe0">
+                                <rect key="frame" x="0.0" y="124" width="414" height="694"/>
+                                <connections>
+                                    <segue destination="yoT-v4-iQQ" kind="embed" id="Ovl-rT-3A6"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jNF-se-aTt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mQJ-Yc-FxM" firstAttribute="leading" secondItem="jNF-se-aTt" secondAttribute="leading" id="Bfa-UZ-VFp"/>
+                            <constraint firstItem="ZbL-gH-Qe0" firstAttribute="trailing" secondItem="jNF-se-aTt" secondAttribute="trailing" id="DSy-Yb-pO1"/>
+                            <constraint firstItem="ZbL-gH-Qe0" firstAttribute="top" secondItem="mQJ-Yc-FxM" secondAttribute="bottom" id="Xeg-pG-e5l"/>
                             <constraint firstItem="jNF-se-aTt" firstAttribute="trailing" secondItem="mQJ-Yc-FxM" secondAttribute="trailing" id="azb-zP-fYs"/>
+                            <constraint firstItem="ZbL-gH-Qe0" firstAttribute="bottom" secondItem="jNF-se-aTt" secondAttribute="bottom" id="f8L-0t-PEe"/>
+                            <constraint firstItem="ZbL-gH-Qe0" firstAttribute="leading" secondItem="jNF-se-aTt" secondAttribute="leading" id="gRk-HG-JJY"/>
                             <constraint firstItem="mQJ-Yc-FxM" firstAttribute="top" secondItem="jNF-se-aTt" secondAttribute="top" id="sLh-0W-Zkm"/>
                         </constraints>
                     </view>
@@ -189,7 +199,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wiA-Bb-hie" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1036" y="-291"/>
+            <point key="canvasLocation" x="1034.7826086956522" y="-291.29464285714283"/>
+        </scene>
+        <!--Search TableVC-->
+        <scene sceneID="Rtg-xM-FK7">
+            <objects>
+                <tableViewController id="yoT-v4-iQQ" customClass="SearchTableVC" customModule="NewsGoose" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7Uu-3r-kbL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="694"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchCell" id="6Ig-JB-KY1">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Ig-JB-KY1" id="GTY-AW-vKO">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="yoT-v4-iQQ" id="w7x-fd-UvI"/>
+                            <outlet property="delegate" destination="yoT-v4-iQQ" id="Tmp-xo-ilb"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OCV-13-fmM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1838" y="-250"/>
         </scene>
     </scenes>
     <resources>

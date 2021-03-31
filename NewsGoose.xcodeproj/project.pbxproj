@@ -25,6 +25,7 @@
 		63B93587261269340097FD2C /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B93586261269340097FD2C /* PostController.swift */; };
 		63B935892612808F0097FD2C /* PostImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B935882612808F0097FD2C /* PostImporter.swift */; };
 		63B9358B261282330097FD2C /* PostTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9358A261282330097FD2C /* PostTableVC.swift */; };
+		63EA872C26152F4A005C643F /* SearchTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA872B26152F4A005C643F /* SearchTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		63B93586261269340097FD2C /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		63B935882612808F0097FD2C /* PostImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImporter.swift; sourceTree = "<group>"; };
 		63B9358A261282330097FD2C /* PostTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableVC.swift; sourceTree = "<group>"; };
+		63EA872B26152F4A005C643F /* SearchTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			children = (
 				63B9354A26123F0C0097FD2C /* MainVC.swift */,
 				637DCF522613D0CC00420C6B /* SearchVC.swift */,
+				63EA872B26152F4A005C643F /* SearchTableVC.swift */,
 				63B9358A261282330097FD2C /* PostTableVC.swift */,
 			);
 			path = "View Controllers";
@@ -315,6 +318,7 @@
 			files = (
 				637DCF532613D0CC00420C6B /* SearchVC.swift in Sources */,
 				63B93583261263520097FD2C /* CoreDataStack.swift in Sources */,
+				63EA872C26152F4A005C643F /* SearchTableVC.swift in Sources */,
 				637DCF512613B59B00420C6B /* Constants.swift in Sources */,
 				63B9358026124D560097FD2C /* NewsGoose.xcdatamodeld in Sources */,
 				63B9354B26123F0C0097FD2C /* MainVC.swift in Sources */,
