@@ -17,6 +17,12 @@ class SearchVC: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        searchBar.autocapitalizationType = .none
+    }
+    
     func activate() {
         searchBar.becomeFirstResponder()
     }
