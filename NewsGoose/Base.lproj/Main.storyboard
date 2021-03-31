@@ -37,6 +37,39 @@
                                             <action selector="showSearch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cSc-3v-Yni"/>
                                         </connections>
                                     </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="57" translatesAutoresizingMaskIntoConstraints="NO" id="UZ6-sp-MBa">
+                                        <rect key="frame" x="10" y="10" width="326" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ByN-5X-wzj">
+                                                <rect key="frame" x="0.0" y="0.0" width="46" height="60"/>
+                                                <state key="normal" title="All"/>
+                                                <connections>
+                                                    <action selector="filterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MwN-46-XSl"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIZ-LK-NfF">
+                                                <rect key="frame" x="103" y="0.0" width="35" height="60"/>
+                                                <state key="normal" title="100+"/>
+                                                <connections>
+                                                    <action selector="filterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b3u-xG-f7F"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byX-fe-R6j">
+                                                <rect key="frame" x="195" y="0.0" width="37" height="60"/>
+                                                <state key="normal" title="300+"/>
+                                                <connections>
+                                                    <action selector="filterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Okm-3V-fjB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7d-4K-KjK">
+                                                <rect key="frame" x="289" y="0.0" width="37" height="60"/>
+                                                <state key="normal" title="500+"/>
+                                                <connections>
+                                                    <action selector="filterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vVn-rh-mn6"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="376-Xw-ryg">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                         <connections>
@@ -47,12 +80,16 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="BEe-oa-OAi" firstAttribute="top" secondItem="chv-ck-ebZ" secondAttribute="top" id="3XP-mY-STi"/>
+                                    <constraint firstItem="UZ6-sp-MBa" firstAttribute="leading" secondItem="chv-ck-ebZ" secondAttribute="leading" constant="10" id="85B-3U-rV0"/>
                                     <constraint firstAttribute="bottom" secondItem="BEe-oa-OAi" secondAttribute="bottom" constant="8" id="AEL-zf-K9C"/>
+                                    <constraint firstItem="UZ6-sp-MBa" firstAttribute="top" secondItem="chv-ck-ebZ" secondAttribute="top" constant="10" id="DYL-ub-aCf"/>
                                     <constraint firstItem="376-Xw-ryg" firstAttribute="top" secondItem="chv-ck-ebZ" secondAttribute="top" id="POB-bf-1Bx"/>
                                     <constraint firstAttribute="height" constant="80" id="Qtt-BJ-Bdn"/>
                                     <constraint firstAttribute="trailing" secondItem="BEe-oa-OAi" secondAttribute="trailing" constant="8" id="SZi-A4-LhP"/>
                                     <constraint firstAttribute="bottom" secondItem="376-Xw-ryg" secondAttribute="bottom" id="YoJ-ul-EwS"/>
+                                    <constraint firstItem="BEe-oa-OAi" firstAttribute="leading" secondItem="UZ6-sp-MBa" secondAttribute="trailing" constant="20" id="bmr-tp-nly"/>
                                     <constraint firstItem="376-Xw-ryg" firstAttribute="leading" secondItem="chv-ck-ebZ" secondAttribute="leading" id="oYF-0N-X1C"/>
+                                    <constraint firstAttribute="bottom" secondItem="UZ6-sp-MBa" secondAttribute="bottom" constant="10" id="uYB-MU-GFz"/>
                                     <constraint firstAttribute="trailing" secondItem="376-Xw-ryg" secondAttribute="trailing" id="yym-wn-zRv"/>
                                 </constraints>
                             </view>
