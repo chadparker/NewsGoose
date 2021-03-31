@@ -37,13 +37,13 @@ class SearchVC: UIViewController {
 
 extension SearchVC: UISearchBarDelegate {
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
-            searchTableVC.search(query: nil)
-        } else {
-            searchTableVC.search(query: searchText)
-        }
-    }
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchText == "" {
+//            searchTableVC.search(query: nil)
+//        } else {
+//            searchTableVC.search(query: searchText)
+//        }
+//    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.searchTextField.text! == "" {
