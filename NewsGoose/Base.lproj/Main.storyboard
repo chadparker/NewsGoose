@@ -34,10 +34,10 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                         </state>
                                         <connections>
-                                            <action selector="searchButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cSc-3v-Yni"/>
+                                            <action selector="showSearch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cSc-3v-Yni"/>
                                         </connections>
                                     </button>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="376-Xw-ryg">
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="376-Xw-ryg">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                         <connections>
                                             <segue destination="aUf-XF-ff6" kind="embed" id="oCb-Ps-v7t"/>

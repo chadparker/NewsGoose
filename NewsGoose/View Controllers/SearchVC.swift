@@ -7,6 +7,26 @@
 
 import UIKit
 
-class SearchVC: UIViewController {
+protocol SearchVCDelegate {
+    func cancelButtonTapped()
+}
 
+class SearchVC: UIViewController {
+    
+    var delegate: SearchVCDelegate!
+
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    func activate() {
+        searchBar.becomeFirstResponder()
+    }
+}
+
+extension SearchVC: UISearchBarDelegate {
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        delegate.cancelButtonTapped()
+        searchBar.resignFirstResponder()
+        searchBar.text = nil
+    }
 }
