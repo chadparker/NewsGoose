@@ -37,6 +37,23 @@ class PostTableVC: UITableViewController {
         }
         return NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
     }
+    
+    func filter(points: Int) {
+        pointThreshold = points
+        performFetch()
+    }
+    
+    func search(query: String?) {
+        searchQuery = query
+        pointThreshold = 0
+        performFetch()
+    }
+    
+    private func performFetch() {
+        fetchedResultsController.fetchRequest.predicate = predicate
+        try! fetchedResultsController.performFetch()
+        tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
@@ -64,7 +81,7 @@ class PostTableVC: UITableViewController {
     }
 }
 
-// MARK: - Fetched Results C. Delegate
+// MARK: - FRC Delegate
 
 extension PostTableVC: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
