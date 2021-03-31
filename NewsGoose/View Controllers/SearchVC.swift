@@ -57,5 +57,6 @@ extension SearchVC: UISearchBarDelegate {
         delegate.cancelButtonTapped()
         searchBar.resignFirstResponder()
         searchBar.text = nil
+        searchTableVC.search(query: nil)
     }
 }

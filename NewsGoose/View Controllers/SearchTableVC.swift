@@ -40,9 +40,7 @@ class SearchTableVC: UITableViewController {
     
     func search(query: String?) {
         searchQuery = query
-        if query != nil {
-            performFetch()
-        }
+        performFetch()
     }
     
     private func performFetch() {
