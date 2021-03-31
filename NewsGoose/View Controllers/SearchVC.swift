@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SearchVCDelegate {
-    func search(query: String)
+    func search(query: String?)
     func cancelButtonTapped()
 }
 
@@ -32,11 +32,19 @@ class SearchVC: UIViewController {
 extension SearchVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        delegate.search(query: searchText)
+        if searchText == "" {
+            delegate.search(query: nil)
+        } else {
+            delegate.search(query: searchText)
+        }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        delegate.search(query: searchBar.searchTextField.text!)
+        if searchBar.searchTextField.text! == "" {
+            delegate.search(query: nil)
+        } else {
+            delegate.search(query: searchBar.searchTextField.text!)
+        }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
