@@ -39,6 +39,10 @@ class MainVC: UIViewController {
 
 extension MainVC: SearchVCDelegate {
     
+    func search(query: String) {
+        postTableVC.search(query: query)
+    }
+    
     func cancelButtonTapped() {
         searchContainer.isHidden = true
     }
