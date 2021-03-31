@@ -10,16 +10,33 @@ import CoreData
 
 class PostTableVC: UITableViewController {
     
-    lazy var fetchedResultsController: NSFetchedResultsController<Post> = {
-        let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-        fetchRequest.fetchLimit = 10000
+    private var pointThreshold: Int = 0
+    private var searchQuery: String?
+    
+    lazy private var fetchedResultsController: NSFetchedResultsController<Post> = {
         let moc = CoreDataStack.shared.mainContext
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "dayFormatted", cacheName: nil)
         frc.delegate = self
         try! frc.performFetch()
         return frc
     }()
+    
+    private var fetchRequest: NSFetchRequest<Post> {
+        let fetchRequest: NSFetchRequest<Post> = Post.fetchRequest()
+        fetchRequest.predicate = predicate
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        fetchRequest.fetchLimit = 3000
+        return fetchRequest
+    }
+    
+    private var predicate: NSPredicate {
+        var predicates: [NSPredicate] = []
+        predicates.append(NSPredicate(format: "points >= %i", pointThreshold))
+        if searchQuery != nil {
+            predicates.append(NSPredicate(format: "link_text CONTAINS[c] %@", searchQuery!))
+        }
+        return NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+    }
 
     // MARK: - Table view data source
 
