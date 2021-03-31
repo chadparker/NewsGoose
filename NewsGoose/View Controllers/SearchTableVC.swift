@@ -69,6 +69,12 @@ class SearchTableVC: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let sectionInfo = fetchedResultsController.sections?[section] else { return nil }
+        
+        return sectionInfo.name
+    }
 }
 
 // MARK: - FRC Delegate
