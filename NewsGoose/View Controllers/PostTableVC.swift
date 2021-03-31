@@ -11,7 +11,7 @@ import CoreData
 class PostTableVC: UITableViewController {
     
     private var pointThreshold: Int = 0
-    private var searchQuery: String?
+    //private var searchQuery: String?
     
     lazy private var fetchedResultsController: NSFetchedResultsController<Post> = {
         let moc = CoreDataStack.shared.mainContext
@@ -32,9 +32,9 @@ class PostTableVC: UITableViewController {
     private var predicate: NSPredicate {
         var predicates: [NSPredicate] = []
         predicates.append(NSPredicate(format: "points >= %i", pointThreshold))
-        if searchQuery != nil {
-            predicates.append(NSPredicate(format: "link_text CONTAINS[c] %@", searchQuery!))
-        }
+        //if searchQuery != nil {
+        //    predicates.append(NSPredicate(format: "link_text CONTAINS[c] %@", searchQuery!))
+        //}
         return NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
     }
     
@@ -43,11 +43,11 @@ class PostTableVC: UITableViewController {
         performFetch()
     }
     
-    func search(query: String?) {
-        searchQuery = query
-        pointThreshold = 0
-        performFetch()
-    }
+//    func search(query: String?) {
+//        searchQuery = query
+//        pointThreshold = 0
+//        performFetch()
+//    }
     
     private func performFetch() {
         fetchedResultsController.fetchRequest.predicate = predicate
