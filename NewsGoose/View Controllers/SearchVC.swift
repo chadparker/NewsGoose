@@ -8,13 +8,13 @@
 import UIKit
 
 protocol SearchVCDelegate {
-    //func search(query: String?)
     func cancelButtonTapped()
 }
 
 class SearchVC: UIViewController {
     
     var delegate: SearchVCDelegate!
+    var searchTableVC: SearchTableVC!
 
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -27,23 +27,29 @@ class SearchVC: UIViewController {
     func activate() {
         searchBar.becomeFirstResponder()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let searchTableVC = segue.destination as? SearchTableVC {
+            self.searchTableVC = searchTableVC
+        }
+    }
 }
 
 extension SearchVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
-            //delegate.search(query: nil)
+            searchTableVC.search(query: nil)
         } else {
-            //delegate.search(query: searchText)
+            searchTableVC.search(query: searchText)
         }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.searchTextField.text! == "" {
-            //delegate.search(query: nil)
+            searchTableVC.search(query: nil)
         } else {
-            //delegate.search(query: searchBar.searchTextField.text!)
+            searchTableVC.search(query: searchBar.searchTextField.text!)
         }
     }
     
