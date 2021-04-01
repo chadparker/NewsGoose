@@ -79,6 +79,12 @@ In order to group posts by date sections in a TableView, multiple posts must sha
 self.day = calendar.startOfDay(for: movieRepresentation.date)
 ```
 
+## Browsing
+
+Implementing browsing with Core Data worked fairly well. I used a `NSFetchedResultsController` (FRC), which makes dealing with sections and data changes very easy. Loading all posts at once was too slow, so I limit to the most recent 3000 posts, which is plenty fast while changing the post points threshold value. A future improvement would load more posts after scrolling to the bottom of the list.
+
+A segmented control lets the user select the points threshold of the posts that are visible. The default is 300+, but can be changed to All, 100+, 300+, or 500+. When the value is changed, we create a new NSPredicate, give it to the FRC, tell the FRC to `performFetch()`, and tell the TableView to `reloadData()`.
+
 ## ToDo
 
 - [ ] Load new posts from official HN api on app launch
