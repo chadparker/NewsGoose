@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import SafariServices
 
 class PostTableVC: UITableViewController {
     
@@ -41,6 +42,24 @@ class PostTableVC: UITableViewController {
         fetchedResultsController.fetchRequest.predicate = predicate
         try! fetchedResultsController.performFetch()
         tableView.reloadData()
+    }
+    
+    private func presentSafariVC(_ urlString: String) {
+        guard let url = URL(string: urlString) else {
+            fatalError("urlString is not a URL")
+        }
+        let vc = SFSafariViewController(url: url)
+        present(vc, animated: true)
+    }
+    
+    // MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = fetchedResultsController.object(at: indexPath)
+        guard let urlString = post.link else {
+            fatalError()
+        }
+        presentSafariVC(urlString)
     }
 
     // MARK: - Table view data source
