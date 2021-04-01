@@ -13,7 +13,7 @@
 
 Hckrnews.com stores its data at `/data/yyyymmdd.js`, one JSON file per day. The initial goal for this iOS app was to batch-import all the entries stored in these JSON files into a Core Data (or other format, read on for details) .sqlite file, and bundle it with the app. Newer posts would be fetched from the server to keep the database up-to-date. This would hopefully allow super-responsive browsing and searching (again, see below for details on search).
 
-The data, though, wasn't as consistent as I'd like. The "schema" has changed over the years, adding fields and changing fields' format slightly. I could have dealt with this with Codable, doing some manual decoding, but I was learning FastAPI, a python server-side framework, which uses Pydantic to validate data using python type annotations, so I used it to clean up the data. My downloader was written in python anyway, so I was already in the python mindset. Here's the Pydantic model:
+The data, though, wasn't as consistent as I'd like. The "schema" has changed over the years, adding fields and changing fields' format slightly. I could have dealt with this with Codable, doing some manual decoding, but I was learning FastAPI, a python server-side framework, which uses Pydantic to validate data using python type annotations, so I used Pydantic to clean up the data instead. My downloader was written in python anyway, so I was already in the python mindset. Here's the Pydantic model:
 
 ```python
 class Post(BaseModel):
@@ -72,6 +72,12 @@ func importJSToCoreData() {
 ```
 
 I was curious if there were any duplicate `id`s in the data, so I created an `idsSeen` set to make sure to not add any duplicates to Core Data. Since the DB is starting from empty, we can safely keep track in memory and not query the DB before inserting each post. The count (382,309 posts!) without checking the `id` turned out to be the same, but it was a good quick check.
+
+In order to group posts by date sections in a TableView, multiple posts must share the exact date with each other. The problem is that `post.date` stores time information as well as the date, so each post on the same day has a slightly different `date` value. The `Post` convenience initializer takes in a `Calendar` and uses it to calculate a new Date at time zero to save to an additional `day` field for comparison.
+
+```swift
+self.day = calendar.startOfDay(for: movieRepresentation.date)
+```
 
 ## ToDo
 
