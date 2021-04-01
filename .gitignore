@@ -1,4 +1,9 @@
 
+js/
+data/
+venv/
+
+
 # Created by https://www.toptal.com/developers/gitignore/api/linux,swift,xcode,macos,carthage,cocoapods,objective-c
 # Edit at https://www.toptal.com/developers/gitignore?templates=linux,swift,xcode,macos,carthage,cocoapods,objective-c
 
