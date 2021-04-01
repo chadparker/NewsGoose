@@ -13,7 +13,7 @@
 
 Hckrnews.com stores its data at `/data/yyyymmdd.js`, one JSON file per day. The initial goal for this iOS app was to batch-import all the entries stored in these JSON files into a Core Data (or other format, read on for details) .sqlite file, and bundle it with the app. Newer posts would be fetched from the server to keep the database up-to-date. This would hopefully allow super-responsive browsing and searching (again, see below for details on search).
 
-The data, though, wasn't as consistent as I'd like. The "schema" has changed over the years, adding fields and changing fields' format slightly. I could have dealt with this with Codable, doing some manual decoding, but I was learning FastAPI, a python server-side framework, which uses Pydantic to validate data using python type annotations, so I used Pydantic to clean up the data instead. My downloader was written in python anyway, so I was already in the python mindset. Here's the Pydantic model:
+Although the data wasn't as consistent as I'd like. The "schema" has changed over the years, adding fields and changing fields' format slightly. I could have dealt with this with Codable, doing some manual decoding, but I was learning FastAPI, a python server-side framework, which uses Pydantic to validate data using python type annotations, so I used Pydantic to clean up the data instead. My downloader was written in python anyway, so I was already in the python mindset. Here's the Pydantic model:
 
 ```python
 class Post(BaseModel):
@@ -41,7 +41,7 @@ class Post(BaseModel):
         return v
 ```
 
-I left `type`, `source`, and `time` optional for now; `points` and `comments` should be integers, but were sometimes stored as an empty string, so the `@validator` catches this and returns `None`/`nil` instead. These could easily be required fields, which would default to `0`. All the other fields are guaranteed by Pydantic to exist and not be null.
+I left `type`, `source`, and `time` optional for now; `points` and `comments` should be integers, but were sometimes stored as an empty string, so the `@validator` catches this and returns `None`/`nil` instead. These could easily be required fields, which would default to something like `0`. All the other fields are guaranteed by Pydantic to exist and not be null.
 
 See [downloader.py]() and [pydantic_cleaner.py]() for details.
 
