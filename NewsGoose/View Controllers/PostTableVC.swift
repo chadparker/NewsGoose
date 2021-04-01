@@ -33,6 +33,14 @@ class PostTableVC: UITableViewController {
         NSPredicate(format: "points >= %i", pointThreshold)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostTableCell")
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 50
+    }
+    
     func filter(points: Int) {
         pointThreshold = points
         performFetch()
@@ -73,10 +81,10 @@ class PostTableVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableCell", for: indexPath) as! PostCell
 
         let post = fetchedResultsController.object(at: indexPath)
-        cell.textLabel?.text = post.link_text
+        cell.post = post
 
         return cell
     }

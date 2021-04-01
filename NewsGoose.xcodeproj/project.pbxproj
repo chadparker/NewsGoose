@@ -26,7 +26,8 @@
 		63B935892612808F0097FD2C /* PostImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B935882612808F0097FD2C /* PostImporter.swift */; };
 		63B9358B261282330097FD2C /* PostTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9358A261282330097FD2C /* PostTableVC.swift */; };
 		63EA872C26152F4A005C643F /* SearchTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA872B26152F4A005C643F /* SearchTableVC.swift */; };
-		63EA873226154E96005C643F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA873126154E96005C643F /* PostCell.swift */; };
+		63EA8735261586AF005C643F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA8733261586AF005C643F /* PostCell.swift */; };
+		63EA8736261586AF005C643F /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EA8734261586AF005C643F /* PostCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +73,8 @@
 		63B935882612808F0097FD2C /* PostImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImporter.swift; sourceTree = "<group>"; };
 		63B9358A261282330097FD2C /* PostTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableVC.swift; sourceTree = "<group>"; };
 		63EA872B26152F4A005C643F /* SearchTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableVC.swift; sourceTree = "<group>"; };
-		63EA873126154E96005C643F /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		63EA8733261586AF005C643F /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		63EA8734261586AF005C643F /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +165,8 @@
 				637DCF522613D0CC00420C6B /* SearchVC.swift */,
 				63EA872B26152F4A005C643F /* SearchTableVC.swift */,
 				63B9358A261282330097FD2C /* PostTableVC.swift */,
-				63EA873126154E96005C643F /* PostCell.swift */,
+				63EA8733261586AF005C643F /* PostCell.swift */,
+				63EA8734261586AF005C643F /* PostCell.xib */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			files = (
 				63B9355326123F0C0097FD2C /* LaunchScreen.storyboard in Resources */,
 				63B9355026123F0C0097FD2C /* Assets.xcassets in Resources */,
+				63EA8736261586AF005C643F /* PostCell.xib in Resources */,
 				63B9357B261249270097FD2C /* data in Resources */,
 				63B9354E26123F0C0097FD2C /* Main.storyboard in Resources */,
 			);
@@ -326,7 +330,7 @@
 				63B9358026124D560097FD2C /* NewsGoose.xcdatamodeld in Sources */,
 				63B9354B26123F0C0097FD2C /* MainVC.swift in Sources */,
 				63B9354726123F0C0097FD2C /* AppDelegate.swift in Sources */,
-				63EA873226154E96005C643F /* PostCell.swift in Sources */,
+				63EA8735261586AF005C643F /* PostCell.swift in Sources */,
 				63B9354926123F0C0097FD2C /* SceneDelegate.swift in Sources */,
 				63B9358B261282330097FD2C /* PostTableVC.swift in Sources */,
 				63B93587261269340097FD2C /* PostController.swift in Sources */,
