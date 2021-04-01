@@ -10,7 +10,7 @@ import CoreData
 
 class PostTableVC: UITableViewController {
     
-    private var pointThreshold: Int = 0
+    var pointThreshold: Int = 0
     
     lazy private var fetchedResultsController: NSFetchedResultsController<Post> = {
         let moc = CoreDataStack.shared.mainContext

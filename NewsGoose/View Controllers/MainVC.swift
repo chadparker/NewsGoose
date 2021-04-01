@@ -28,6 +28,7 @@ class MainVC: UIViewController {
             searchVC.delegate = self
             self.searchVC = searchVC
         } else if let postTableVC = segue.destination as? PostTableVC {
+            postTableVC.pointThreshold = pointsSegmentValue
             self.postTableVC = postTableVC
         }
     }
