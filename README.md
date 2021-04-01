@@ -41,11 +41,40 @@ class Post(BaseModel):
         return v
 ```
 
-I left `type`, `source`, and `time` optional for now; `points` and `comments` should be integers, but were sometimes stored as an empty string, so the `@validator` catches this and returns `None`/`nil` instead. These could easily be required fields, which would default to `0`. All the other fields are guaranteed by Pydantic to exist.
+I left `type`, `source`, and `time` optional for now; `points` and `comments` should be integers, but were sometimes stored as an empty string, so the `@validator` catches this and returns `None`/`nil` instead. These could easily be required fields, which would default to `0`. All the other fields are guaranteed by Pydantic to exist and not be null.
 
 See [downloader.py]() and [pydantic_cleaner.py]() for details.
 
+## Importing
+
+After downloading and cleaning the `.js` files, I run `importJSToCoreData()` on my Mac to import all the posts into Core Data.
+
+```swift
+func importJSToCoreData() {
+        var idsSeen = Set<String>()
+        for filePath in getDataFilePaths() {
+            let url = URL(fileURLWithPath: filePath)
+            let data = try! Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .secondsSince1970
+            let postReps = try! decoder.decode([PostRepresentation].self, from: data)
+            
+            for postRep in postReps {
+                if !idsSeen.contains(postRep.id) {
+                    Post(movieRepresentation: postRep, calendar: calendar)
+                    idsSeen.insert(postRep.id)
+                }
+            }
+            try! CoreDataStack.shared.save()
+        }
+        print("id count: \(idsSeen.count)")
+    }
+```
+
+I was curious if there were any duplicate `id`s in the data, so I created an `idsSeen` set to make sure to not add any duplicates to Core Data. Since the DB is starting from empty, we can safely keep track in memory and not query the DB before inserting each post. The count (382,309 posts!) without checking the `id` turned out to be the same, but it was a good quick check.
+
 ## ToDo
 
-- [ ] Load new posts from official HN api
-- [ ] Add posts pre- 2010/6/9 from official HN api
+- [ ] Load new posts from official HN api on app launch
+- [ ] Batch-add posts pre- 2010/6/9 to the DB from official HN api
+
