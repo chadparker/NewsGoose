@@ -79,7 +79,7 @@ class SearchTableVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableCell", for: indexPath)
 
         let post = fetchedResultsController.object(at: indexPath)
         cell.textLabel?.text = post.link_text
