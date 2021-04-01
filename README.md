@@ -43,7 +43,7 @@ class Post(BaseModel):
 
 I left `type`, `source`, and `time` optional for now; `points` and `comments` should be integers, but were sometimes stored as an empty string, so the `@validator` catches this and returns `None`/`nil` instead. These could easily be required fields, which would default to `0`. All the other fields are guaranteed by Pydantic to exist and not be null.
 
-See [downloader.py]() and [pydantic_cleaner.py]() for details.
+See [downloader.py](downloader.py) and [pydantic_cleaner.py](pydantic_cleaner.py) for details.
 
 ## Importing
 
