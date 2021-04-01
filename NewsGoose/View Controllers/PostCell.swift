@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol PostCellDelegate {
+    func showComments(id: String)
+}
+
 class PostCell: UITableViewCell {
     
     var post: Post! {
@@ -14,6 +18,7 @@ class PostCell: UITableViewCell {
             updateViews()
         }
     }
+    var delegate: PostCellDelegate!
     
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var linkTextLabel: UILabel!
@@ -30,5 +35,12 @@ class PostCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
+    }
+    
+    @IBAction func viewComments(_ sender: UIButton) {
+        guard let id = post.id else {
+            fatalError("Post has no `id`")
+        }
+        delegate.showComments(id: id)
     }
 }

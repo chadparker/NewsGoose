@@ -91,6 +91,7 @@ class SearchTableVC: UITableViewController {
 
         let post = fetchedResultsController.object(at: indexPath)
         cell.post = post
+        cell.delegate = self
 
         return cell
     }
@@ -99,6 +100,12 @@ class SearchTableVC: UITableViewController {
         guard let sectionInfo = fetchedResultsController.sections?[section] else { return nil }
         
         return sectionInfo.name
+    }
+}
+
+extension SearchTableVC: PostCellDelegate {
+    func showComments(id: String) {
+        presentSafariVC("https://news.ycombinator.com/item?id=\(id)")
     }
 }
 
