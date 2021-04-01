@@ -9,9 +9,19 @@ import UIKit
 
 class MainVC: UIViewController {
 
+    @IBOutlet weak var pointsSegControl: UISegmentedControl!
     @IBOutlet weak var searchContainer: UIView!
     var searchVC: SearchVC!
     var postTableVC: PostTableVC!
+    
+    var pointsSegmentValue: Int {
+        let pointsText = pointsSegControl.titleForSegment(at: pointsSegControl.selectedSegmentIndex)!
+        let digitsString = pointsText.replacingOccurrences(of: "\\D",
+                                                           with: "",
+                                                           options: .regularExpression,
+                                                           range: pointsText.startIndex..<pointsText.endIndex)
+        return Int(digitsString) ?? 0
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let searchVC = segue.destination as? SearchVC {
@@ -22,13 +32,8 @@ class MainVC: UIViewController {
         }
     }
     
-    @IBAction func filterButtonPressed(_ sender: UIButton) {
-        let buttonText = sender.titleLabel!.text!
-        let digitsString = buttonText.replacingOccurrences(of: "\\D",
-                                                           with: "",
-                                                           options: .regularExpression,
-                                                           range: buttonText.startIndex..<buttonText.endIndex)
-        postTableVC.filter(points: Int(digitsString) ?? 0)
+    @IBAction func pointsSelectionChanged(_ sender: UISegmentedControl) {
+        postTableVC.filter(points: pointsSegmentValue)
     }
     
     @IBAction func showSearch(_ sender: UIButton) {

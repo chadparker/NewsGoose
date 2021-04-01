@@ -19,7 +19,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chv-ck-ebZ" userLabel="Header">
                                 <rect key="frame" x="0.0" y="44" width="414" height="80"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEe-oa-OAi">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEe-oa-OAi" userLabel="Search Button">
                                         <rect key="frame" x="356" y="0.0" width="50" height="72"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="UWm-9a-qgw"/>
@@ -34,34 +34,18 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="57" translatesAutoresizingMaskIntoConstraints="NO" id="UZ6-sp-MBa">
                                         <rect key="frame" x="10" y="10" width="326" height="60"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ByN-5X-wzj">
-                                                <rect key="frame" x="0.0" y="0.0" width="46" height="60"/>
-                                                <state key="normal" title="All"/>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="xPT-vk-Lz6">
+                                                <rect key="frame" x="0.0" y="0.0" width="326" height="61"/>
+                                                <segments>
+                                                    <segment title="All"/>
+                                                    <segment title="100+"/>
+                                                    <segment title="300+"/>
+                                                    <segment title="500+"/>
+                                                </segments>
                                                 <connections>
-                                                    <action selector="filterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MwN-46-XSl"/>
+                                                    <action selector="pointsSelectionChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="pqC-Um-niq"/>
                                                 </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIZ-LK-NfF">
-                                                <rect key="frame" x="103" y="0.0" width="35" height="60"/>
-                                                <state key="normal" title="100+"/>
-                                                <connections>
-                                                    <action selector="filterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b3u-xG-f7F"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byX-fe-R6j">
-                                                <rect key="frame" x="195" y="0.0" width="37" height="60"/>
-                                                <state key="normal" title="300+"/>
-                                                <connections>
-                                                    <action selector="filterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Okm-3V-fjB"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7d-4K-KjK">
-                                                <rect key="frame" x="289" y="0.0" width="37" height="60"/>
-                                                <state key="normal" title="500+"/>
-                                                <connections>
-                                                    <action selector="filterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vVn-rh-mn6"/>
-                                                </connections>
-                                            </button>
+                                            </segmentedControl>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -107,6 +91,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="pointsSegControl" destination="xPT-vk-Lz6" id="rE0-TG-BrG"/>
                         <outlet property="searchContainer" destination="376-Xw-ryg" id="XpU-rE-9a9"/>
                     </connections>
                 </viewController>
