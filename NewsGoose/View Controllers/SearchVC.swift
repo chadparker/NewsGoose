@@ -17,6 +17,8 @@ class SearchVC: UIViewController {
     var searchTableVC: SearchTableVC!
 
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
+    @IBOutlet weak var searchTableContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

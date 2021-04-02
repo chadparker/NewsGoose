@@ -165,21 +165,28 @@
                                     <segue destination="yoT-v4-iQQ" kind="embed" id="Ovl-rT-3A6"/>
                                 </connections>
                             </containerView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="bwf-50-x1y">
+                                <rect key="frame" x="197" y="154" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jNF-se-aTt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mQJ-Yc-FxM" firstAttribute="leading" secondItem="jNF-se-aTt" secondAttribute="leading" id="Bfa-UZ-VFp"/>
                             <constraint firstItem="ZbL-gH-Qe0" firstAttribute="trailing" secondItem="jNF-se-aTt" secondAttribute="trailing" id="DSy-Yb-pO1"/>
+                            <constraint firstItem="bwf-50-x1y" firstAttribute="centerX" secondItem="fAa-S8-6nw" secondAttribute="centerX" id="Ebx-UA-XUr"/>
                             <constraint firstItem="ZbL-gH-Qe0" firstAttribute="top" secondItem="mQJ-Yc-FxM" secondAttribute="bottom" id="Xeg-pG-e5l"/>
                             <constraint firstItem="jNF-se-aTt" firstAttribute="trailing" secondItem="mQJ-Yc-FxM" secondAttribute="trailing" id="azb-zP-fYs"/>
+                            <constraint firstItem="bwf-50-x1y" firstAttribute="top" secondItem="mQJ-Yc-FxM" secondAttribute="bottom" constant="30" id="dwq-Ws-9re"/>
                             <constraint firstItem="ZbL-gH-Qe0" firstAttribute="bottom" secondItem="jNF-se-aTt" secondAttribute="bottom" id="f8L-0t-PEe"/>
                             <constraint firstItem="ZbL-gH-Qe0" firstAttribute="leading" secondItem="jNF-se-aTt" secondAttribute="leading" id="gRk-HG-JJY"/>
                             <constraint firstItem="mQJ-Yc-FxM" firstAttribute="top" secondItem="jNF-se-aTt" secondAttribute="top" id="sLh-0W-Zkm"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activitySpinner" destination="bwf-50-x1y" id="sYZ-SR-lOg"/>
                         <outlet property="searchBar" destination="HiY-fg-PC6" id="blV-DV-DHu"/>
+                        <outlet property="searchTableContainer" destination="ZbL-gH-Qe0" id="Dhd-fN-dsH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wiA-Bb-hie" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
