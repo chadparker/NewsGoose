@@ -1,6 +1,6 @@
 # NewsGoose
 
-* Browse Hacker News by day, similar to [hckrnews.com](https://hckrnews.com/)
+* Browse **Hacker News** sorted and grouped by day, similar to [hckrnews.com](https://hckrnews.com/)
 * Set a points threshold
 * Quickly search previous posts
 
@@ -90,6 +90,10 @@ Implementing browsing with Core Data worked fairly well. I used a `NSFetchedResu
 A segmented control lets the user select the points threshold of the posts that are visible. The default is 300+, but can be changed to All, 100+, 300+, or 500+. When the value is changed, we create a new NSPredicate, give it to the FRC, tell the FRC to `performFetch()`, and tell the TableView to `reloadData()`.
 
 ## Search
+
+<p align="center">
+[search gif here]
+</p>
 
 Since the entire database of posts is small enough, (under 100mb) and can be bundled with the iOS app, I wanted to have a real-time search if possible. The user could start typing, and with each character typed they could get instant matching results. There is a problem, though. I learned that the local storage system I'm using, Core Data, does not have a full-text search capability, so while it's possible to search post titles, it has to loop through the whole data set to find them, which is not very fast. SQLite, which is used by Core Data under-the-hood, *does* have full-text search, but Core Data is not designed to take advantage of it.
 
