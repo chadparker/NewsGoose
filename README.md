@@ -81,6 +81,10 @@ self.day = calendar.startOfDay(for: movieRepresentation.date)
 
 ## Browsing
 
+<p align="center">
+    <img width="400" alt="Browsing screenshot" src="https://user-images.githubusercontent.com/438307/113367805-e32c7200-9311-11eb-9374-8b186cf6544b.gif">
+</p>
+
 Implementing browsing with Core Data worked fairly well. I used a `NSFetchedResultsController` (FRC), which makes dealing with sections and data changes very easy. Loading all posts at once was too slow, so I limit to the most recent 3000 posts, which is plenty fast while changing the post points threshold value. A future improvement would load more posts after scrolling to the bottom of the list.
 
 A segmented control lets the user select the points threshold of the posts that are visible. The default is 300+, but can be changed to All, 100+, 300+, or 500+. When the value is changed, we create a new NSPredicate, give it to the FRC, tell the FRC to `performFetch()`, and tell the TableView to `reloadData()`.
