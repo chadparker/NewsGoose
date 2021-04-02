@@ -4,6 +4,11 @@
 * Set a points threshold
 * Quickly search previous posts
 
+<p align="center">
+    <img width="300" alt="Browse screenshot" src="https://user-images.githubusercontent.com/438307/113368558-f04a6080-9313-11eb-8d95-856b0099e71e.png">
+    <img width="300" alt="Search screenshot" src="https://user-images.githubusercontent.com/438307/113368686-4e774380-9314-11eb-9daa-68185ccc4957.png">
+</p>
+
 ## Purpose
 
 * Help me check in on Hacker News when I have the time, without feeling like I need to visit the site every day.
