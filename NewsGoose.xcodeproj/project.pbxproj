@@ -65,7 +65,7 @@
 		63B9356826123F0D0097FD2C /* NewsGooseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsGooseUITests.swift; sourceTree = "<group>"; };
 		63B9356A26123F0D0097FD2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63B93577261244F00097FD2C /* PostRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepresentation.swift; sourceTree = "<group>"; };
-		63B9357A261249260097FD2C /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../../hn_python/data; sourceTree = "<group>"; };
+		63B9357A261249260097FD2C /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../data; sourceTree = "<group>"; };
 		63B9357F26124D560097FD2C /* NewsGoose.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsGoose.xcdatamodel; sourceTree = "<group>"; };
 		63B93582261263520097FD2C /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		63B93584261263700097FD2C /* Post+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+Convenience.swift"; sourceTree = "<group>"; };
