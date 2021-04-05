@@ -100,9 +100,11 @@ A segmented control lets the user select the points threshold of the posts that 
 [search gif here]
 </p>
 
-Since the entire database of posts is small enough, (under 100mb) and can be bundled with the iOS app, I wanted to have a real-time search if possible. The user could start typing, and with each character typed they could get instant matching results. There is a problem, though. I learned that the local storage system I'm using, Core Data, does not have a full-text search capability, so while it's possible to search post titles, it has to loop through the whole data set to find them, which is not very fast. SQLite, which is used by Core Data under-the-hood, *does* have full-text search, but Core Data is not designed to take advantage of it.
+Since the entire database of posts is small enough (under 100mb) and can be bundled with the iOS app, I wanted to have a real-time search if possible. The user could start typing, and with each character typed they could get instant matching results. There is a problem, though. I learned that the local storage system I'm using, Core Data, does not have a full-text search capability, so while it's possible to search post titles, it has to loop through the whole data set to find them, which is not very fast. SQLite, which is used by Core Data under-the-hood, *does* have full-text search, but Core Data is not designed to take advantage of it.
 
 For now the search is carried out when the user presses the Search button on the keyboard. Searching with Core Data is fast enough to give sub-second results, just not fast enough to search as the user types. The goal is to move to using SQLite directly, probably using [SQLite.swift](https://github.com/stephencelis/SQLite.swift) or [GRDB](https://github.com/groue/GRDB.swift).
+
+To keep track of state, I used an enum
 
 ## ToDo
 
