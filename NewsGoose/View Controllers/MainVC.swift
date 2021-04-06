@@ -45,7 +45,7 @@ class MainVC: UIViewController {
 
 extension MainVC: SearchVCDelegate {
 
-    func cancelButtonTapped() {
+    func hideSearch() {
         searchContainer.isHidden = true
     }
 }

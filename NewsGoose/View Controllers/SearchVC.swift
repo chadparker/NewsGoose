@@ -8,10 +8,17 @@
 import UIKit
 
 protocol SearchVCDelegate {
-    func cancelButtonTapped()
+    func hideSearch()
 }
 
 class SearchVC: UIViewController {
+    
+    enum SearchState {
+        case hidden
+        case emptyView
+        case startSearch(String?)
+        case showingResults
+    }
     
     var delegate: SearchVCDelegate!
     var searchTableVC: SearchTableVC!
@@ -27,7 +34,41 @@ class SearchVC: UIViewController {
     }
     
     func activate() {
-        searchBar.becomeFirstResponder()
+        state = .emptyView
+    }
+    
+    private var state: SearchState = .emptyView {
+        didSet {
+            switch state {
+            case .hidden:
+                activitySpinner.stopAnimating()
+                searchTableContainer.isHidden = true
+                                
+                searchBar.text = nil
+                searchBar.resignFirstResponder()
+                searchTableVC.search(query: nil)
+
+                delegate.hideSearch()
+                
+            case .emptyView:
+                activitySpinner.stopAnimating()
+                searchTableContainer.isHidden = true
+                
+                searchBar.text = nil
+                searchBar.becomeFirstResponder()
+                searchTableVC.search(query: nil)
+                
+            case .startSearch(let query):
+                //activitySpinner.startAnimating()
+                searchTableContainer.isHidden = false
+                
+                searchTableVC.search(query: query)
+                
+            case .showingResults:
+                activitySpinner.stopAnimating()
+                searchTableContainer.isHidden = false
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -39,26 +80,22 @@ class SearchVC: UIViewController {
 
 extension SearchVC: UISearchBarDelegate {
     
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchText == "" {
-//            searchTableVC.search(query: nil)
-//        } else {
-//            searchTableVC.search(query: searchText)
-//        }
-//    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if searchBar.searchTextField.text! == "" {
-            searchTableVC.search(query: nil)
-        } else {
-            searchTableVC.search(query: searchBar.searchTextField.text!)
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            state = .emptyView
         }
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        state = .startSearch(searchBar.searchTextField.text)
+//        if searchBar.searchTextField.text! == "" {
+//            state = .startSearch(nil)
+//        } else {
+//            state = .startSearch(searchBar.searchTextField.text!)
+//        }
+    }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        delegate.cancelButtonTapped()
-        searchBar.resignFirstResponder()
-        searchBar.text = nil
-        searchTableVC.search(query: nil)
+        state = .hidden
     }
 }
