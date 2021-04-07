@@ -4,7 +4,7 @@ from datetime import timedelta
 import json
 import requests
 
-ignore_existing_files = True
+only_download_new_files = False
 js_dir = 'js'
 
 os.makedirs(js_dir, exist_ok=True)
@@ -25,7 +25,7 @@ while currentDay >= oldestDay:
     filepath_temp = f'{js_dir}/{dateStr}.temp'
     filepath =      f'{js_dir}/{dateStr}.js'
 
-    if ignore_existing_files:
+    if only_download_new_files:
         if not os.path.exists(filepath):
             response = requests.get(url)
             if response.status_code == 200:
