@@ -16,7 +16,7 @@
 
 ## Data
 
-Hckrnews.com stores its data at `/data/yyyymmdd.js`, one JSON file per day. The initial goal for this iOS app was to batch-import all the entries stored in these JSON files into a Core Data (or other format, read on for details) .sqlite file, and bundle it with the app. Newer posts would be fetched from the server to keep the database up-to-date. This would hopefully allow super-responsive browsing and searching (again, see below for details on search).
+Hckrnews.com stores its data at `/data/yyyymmdd.js`, one JSON file per day. The goal for this iOS app was to batch-import all the entries stored in these JSON files into a Core Data (or other format, read on for details) .sqlite file, and bundle it with the app. Newer posts would be fetched from the server to keep the database up-to-date. This would hopefully allow super-responsive browsing and searching (again, see below for details on search).
 
 Although the data wasn't as consistent as I'd like. The "schema" has changed over the years, adding fields and changing fields' format slightly. I could have dealt with this with Codable, doing some manual decoding, but I was learning FastAPI, a python server-side framework, which uses Pydantic to validate data using python type annotations, so I used Pydantic to clean up the data instead. My downloader was written in python anyway, so I was already in the python mindset. Here's the Pydantic model:
 
@@ -104,7 +104,7 @@ Since the entire database of posts is small enough (under 100mb) and can be bund
 
 For now the search is carried out when the user presses the Search button on the keyboard. Searching with Core Data is fast enough to give sub-second results, just not fast enough to search as the user types. The goal is to move to using SQLite directly, probably using [SQLite.swift](https://github.com/stephencelis/SQLite.swift) or [GRDB](https://github.com/groue/GRDB.swift).
 
-To keep track of state, I used an enum
+<!-- To keep track of state, I used an enum -->
 
 ## ToDo
 
