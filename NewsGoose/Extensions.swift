@@ -16,20 +16,15 @@ enum LaunchPostLinkType {
 extension UIViewController {
     
     func presentSafariVC(for post: Post, showing: LaunchPostLinkType) {
-        guard let link = post.link,
-              let id = post.id else {
-            fatalError("link or id is nil")
-        }
-        
         switch showing {
         case .post:
-            if let linkURL = URL(string: link) {
+            if let linkURL = URL(string: post.link) {
                 presentURL(linkURL)
             } else {
-                presentHNPost(id: id)
+                presentHNPost(id: post.id)
             }
         case .comments:
-            presentHNPost(id: id)
+            presentHNPost(id: post.id)
         }
         
     }

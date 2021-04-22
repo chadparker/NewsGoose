@@ -28,7 +28,7 @@ class PostCell: UITableViewCell {
     }
     
     func updateViews() {
-        pointsLabel.text = "\(post.points)"
+        pointsLabel.text = "\(post.points ?? 0)"
         linkTextLabel.text = post.link_text
     }
 

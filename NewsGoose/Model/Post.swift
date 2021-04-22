@@ -1,13 +1,14 @@
 //
-//  PostRepresentation.swift
+//  Post.swift
 //  NewsGoose
 //
-//  Created by Chad Parker on 3/29/21.
+//  Created by Chad Parker on 4/22/21.
 //
 
 import Foundation
+import GRDB
 
-struct PostRepresentation: Decodable {
+struct Post {
 
     let id: String
 
@@ -24,4 +25,8 @@ struct PostRepresentation: Decodable {
 
     let date: Date
     let time: Date?
+}
+
+extension Post: Codable, FetchableRecord, MutablePersistableRecord {
+    
 }
