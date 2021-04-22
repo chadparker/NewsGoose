@@ -2,6 +2,7 @@
 js/
 data/
 venv/
+db.sqlite
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/linux,swift,xcode,macos,carthage,cocoapods,objective-c

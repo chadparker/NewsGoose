@@ -13,10 +13,8 @@ var dbQueue: DatabaseQueue!
 class DatabaseManager {
     
     static func setup() throws {
-        let databaseURL = try FileManager.default
-            .url(for: .applicationDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            .appendingPathComponent("db.sqlite")
-        dbQueue = try DatabaseQueue(path: databaseURL.path)
+        let path = "\(Bundle.main.resourcePath!)/db.sqlite"
+        dbQueue = try DatabaseQueue(path: path)
         try migrator.migrate(dbQueue)
     }
     

@@ -10,6 +10,7 @@
 		6352D6552632302200D8789F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352D6542632302200D8789F /* Post.swift */; };
 		6352D6582632304600D8789F /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 6352D6572632304600D8789F /* GRDB */; };
 		6352D65A2632307400D8789F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352D6592632307400D8789F /* DatabaseManager.swift */; };
+		6352D65D26323A9A00D8789F /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6352D65C26323A8B00D8789F /* db.sqlite */; };
 		637DCF512613B59B00420C6B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637DCF502613B59B00420C6B /* Constants.swift */; };
 		637DCF532613D0CC00420C6B /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637DCF522613D0CC00420C6B /* SearchVC.swift */; };
 		63A30DA7261BD77300E24CBE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DA6261BD77300E24CBE /* Extensions.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		6352D6542632302200D8789F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		6352D6592632307400D8789F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		6352D65C26323A8B00D8789F /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
 		637DCF502613B59B00420C6B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		637DCF522613D0CC00420C6B /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		63A30DA6261BD77300E24CBE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				63B9354826123F0C0097FD2C /* SceneDelegate.swift */,
 				637DCF502613B59B00420C6B /* Constants.swift */,
 				63A30DA6261BD77300E24CBE /* Extensions.swift */,
+				6352D65C26323A8B00D8789F /* db.sqlite */,
 				63B93579261244F40097FD2C /* Model */,
 				63B93581261263220097FD2C /* Model Controllers */,
 				63B93576261244A90097FD2C /* View Controllers */,
@@ -293,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6352D65D26323A9A00D8789F /* db.sqlite in Resources */,
 				63B9355326123F0C0097FD2C /* LaunchScreen.storyboard in Resources */,
 				63B9355026123F0C0097FD2C /* Assets.xcassets in Resources */,
 				63EA8736261586AF005C643F /* PostCell.xib in Resources */,
