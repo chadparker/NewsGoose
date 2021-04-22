@@ -100,6 +100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6352D65E26323B6600D8789F /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				6352D6592632307400D8789F /* DatabaseManager.swift */,
+				6352D65C26323A8B00D8789F /* db.sqlite */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		63B9353A26123F0C0097FD2C = {
 			isa = PBXGroup;
 			children = (
@@ -127,7 +136,7 @@
 				63B9354826123F0C0097FD2C /* SceneDelegate.swift */,
 				637DCF502613B59B00420C6B /* Constants.swift */,
 				63A30DA6261BD77300E24CBE /* Extensions.swift */,
-				6352D65C26323A8B00D8789F /* db.sqlite */,
+				6352D65E26323B6600D8789F /* Database */,
 				63B93579261244F40097FD2C /* Model */,
 				63B93581261263220097FD2C /* Model Controllers */,
 				63B93576261244A90097FD2C /* View Controllers */,
@@ -174,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				6352D6542632302200D8789F /* Post.swift */,
-				6352D6592632307400D8789F /* DatabaseManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
