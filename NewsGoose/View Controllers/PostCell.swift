@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PostCellDelegate {
-    func showComments(id: String)
+    func showComments(for post: Post)
 }
 
 class PostCell: UITableViewCell {
@@ -38,9 +38,6 @@ class PostCell: UITableViewCell {
     }
     
     @IBAction func viewComments(_ sender: UIButton) {
-        guard let id = post.id else {
-            fatalError("Post has no `id`")
-        }
-        delegate.showComments(id: id)
+        delegate.showComments(for: post)
     }
 }

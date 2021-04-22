@@ -52,22 +52,11 @@ class PostTableVC: UITableViewController {
         tableView.reloadData()
     }
     
-    private func presentSafariVC(_ urlString: String) {
-        guard let url = URL(string: urlString) else {
-            fatalError("urlString is not a URL")
-        }
-        let vc = SFSafariViewController(url: url)
-        present(vc, animated: true)
-    }
-    
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = fetchedResultsController.object(at: indexPath)
-        guard let urlString = post.link else {
-            fatalError()
-        }
-        presentSafariVC(urlString)
+        presentSafariVC(for: post, showing: .post)
     }
 
     // MARK: - Table view data source
@@ -98,8 +87,8 @@ class PostTableVC: UITableViewController {
 }
 
 extension PostTableVC: PostCellDelegate {
-    func showComments(id: String) {
-        presentSafariVC("https://news.ycombinator.com/item?id=\(id)")
+    func showComments(for post: Post) {
+        presentSafariVC(for: post, showing: .comments)
     }
 }
 

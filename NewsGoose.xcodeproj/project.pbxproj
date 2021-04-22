@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		637DCF512613B59B00420C6B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637DCF502613B59B00420C6B /* Constants.swift */; };
 		637DCF532613D0CC00420C6B /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637DCF522613D0CC00420C6B /* SearchVC.swift */; };
+		63A30DA7261BD77300E24CBE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DA6261BD77300E24CBE /* Extensions.swift */; };
 		63B9354726123F0C0097FD2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9354626123F0C0097FD2C /* AppDelegate.swift */; };
 		63B9354926123F0C0097FD2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9354826123F0C0097FD2C /* SceneDelegate.swift */; };
 		63B9354B26123F0C0097FD2C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9354A26123F0C0097FD2C /* MainVC.swift */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		637DCF502613B59B00420C6B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		637DCF522613D0CC00420C6B /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		63A30DA6261BD77300E24CBE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		63B9354326123F0C0097FD2C /* NewsGoose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsGoose.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B9354626123F0C0097FD2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63B9354826123F0C0097FD2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				63B9354626123F0C0097FD2C /* AppDelegate.swift */,
 				63B9354826123F0C0097FD2C /* SceneDelegate.swift */,
 				637DCF502613B59B00420C6B /* Constants.swift */,
+				63A30DA6261BD77300E24CBE /* Extensions.swift */,
 				63B93579261244F40097FD2C /* Model */,
 				63B93581261263220097FD2C /* Model Controllers */,
 				63B93576261244A90097FD2C /* View Controllers */,
@@ -333,6 +336,7 @@
 				63EA8735261586AF005C643F /* PostCell.swift in Sources */,
 				63B9354926123F0C0097FD2C /* SceneDelegate.swift in Sources */,
 				63B9358B261282330097FD2C /* PostTableVC.swift in Sources */,
+				63A30DA7261BD77300E24CBE /* Extensions.swift in Sources */,
 				63B93587261269340097FD2C /* PostController.swift in Sources */,
 				63B93578261244F00097FD2C /* PostRepresentation.swift in Sources */,
 				63B935892612808F0097FD2C /* PostImporter.swift in Sources */,
