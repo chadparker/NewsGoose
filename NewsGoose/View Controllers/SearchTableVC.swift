@@ -11,7 +11,14 @@ import SafariServices
 
 class SearchTableVC: UITableViewController {
 
+    var postController: PostController!
+    
     private var searchQuery: String?
+    private var posts: [Post] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
 //    lazy private var fetchedResultsController: NSFetchedResultsController<Post> = {
 //        let moc = CoreDataStack.shared.mainContext
@@ -38,56 +45,54 @@ class SearchTableVC: UITableViewController {
 //        }
 //        return NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
 //    }
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        tableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "SearchTableCell")
-//        tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = 50
-//    }
     
-    func search(query: String?) {
-        searchQuery = query
-//        performFetch()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "SearchTableCell")
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 50
     }
     
-//    private func performFetch() {
-//        fetchedResultsController.fetchRequest.predicate = predicate
-//        try! fetchedResultsController.performFetch()
-//        tableView.reloadData()
-//    }
-//    
-//    // MARK: - Table view delegate
-//    
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let post = fetchedResultsController.object(at: indexPath)
-//        presentSafariVC(for: post, showing: .post)
-//    }
-//
-//    // MARK: - Table view data source
-//
+    func search(query: String?) {
+        searchQuery = query // needed?
+        if let query = query {
+            postController.fetchPostsMatching(query: query) { posts in
+                self.posts = posts
+            }
+        }
+    }
+    
+    // MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = posts[indexPath.row]
+        presentSafariVC(for: post, showing: .post)
+    }
+
+    // MARK: - Table view data source
+
 //    override func numberOfSections(in tableView: UITableView) -> Int {
 //        return fetchedResultsController.sections?.count ?? 1
 //    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableCell", for: indexPath) as! PostCell
-//
-//        let post = fetchedResultsController.object(at: indexPath)
-//        cell.post = post
-//        cell.delegate = self
-//
-//        return cell
-//    }
-//    
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableCell", for: indexPath) as! PostCell
+
+        let post = posts[indexPath.row]
+        cell.post = post
+        cell.delegate = self
+
+        return cell
+    }
+    
 //    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        guard let sectionInfo = fetchedResultsController.sections?[section] else { return nil }
-//        
+//
 //        return sectionInfo.name
 //    }
 }

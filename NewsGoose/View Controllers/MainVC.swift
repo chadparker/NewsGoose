@@ -31,6 +31,7 @@ class MainVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let searchVC = segue.destination as? SearchVC {
             searchVC.delegate = self
+            searchVC.postController = postController
             self.searchVC = searchVC
         } else if let postTableVC = segue.destination as? PostTableVC {
             postTableVC.postController = postController

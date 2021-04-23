@@ -22,6 +22,7 @@ class SearchVC: UIViewController {
     
     var delegate: SearchVCDelegate!
     var searchTableVC: SearchTableVC!
+    var postController: PostController!
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
@@ -73,6 +74,7 @@ class SearchVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let searchTableVC = segue.destination as? SearchTableVC {
+            searchTableVC.postController = postController
             self.searchTableVC = searchTableVC
         }
     }
@@ -83,6 +85,8 @@ extension SearchVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             state = .emptyView
+        } else {
+            state = .startSearch(searchBar.searchTextField.text)
         }
     }
     
