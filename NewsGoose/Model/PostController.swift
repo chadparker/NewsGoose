@@ -34,4 +34,23 @@ class PostController {
             }
         }
     }
+    
+    func fetchPostsMatching(query: String, completion: @escaping ([Post]) -> Void) {
+        backgroundQueue.async {
+            do {
+                try dbQueue.read { db in
+                    let posts = try Post
+                        .filter(Column("link_text").like("%\(query)%"))
+                        .order(Column("date").desc)
+                        .limit(3000)
+                        .fetchAll(db)
+                    DispatchQueue.main.async {
+                        completion(posts)
+                    }
+                }
+            } catch {
+                fatalError("read error")
+            }
+        }
+    }
 }
