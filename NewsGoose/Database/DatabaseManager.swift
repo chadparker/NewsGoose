@@ -27,7 +27,7 @@ class DatabaseManager {
         
         migrator.registerMigration("createProject") { db in
             try db.create(table: "post") { t in
-                t.column("id", .text).primaryKey()
+                t.column("id", .text).primaryKey().indexed()
                 
                 t.column("link_text", .text).notNull()
                 t.column("link", .text).notNull()
@@ -37,10 +37,10 @@ class DatabaseManager {
                 t.column("source", .text)
                 t.column("dead", .boolean).notNull()
                 
-                t.column("points", .integer)
+                t.column("points", .integer).indexed()
                 t.column("comments", .integer)
                 
-                t.column("date", .datetime).notNull()
+                t.column("date", .datetime).notNull().indexed()
                 t.column("time", .datetime)
             }
         }
