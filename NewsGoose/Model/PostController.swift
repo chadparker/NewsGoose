@@ -16,7 +16,7 @@ class PostController {
         
     }
     
-    func fetchRecentPosts(pointsThreshold: Int, completion: @escaping ([Post]) -> Void) {
+    func fetchRecentPosts(pointsThreshold: Int, completion: @escaping ([DayOfPosts]) -> Void) {
         backgroundQueue.async {
             do {
                 try dbQueue.read { db in
@@ -25,8 +25,13 @@ class PostController {
                         .filter(Column("points") >= pointsThreshold)
                         .limit(3000)
                         .fetchAll(db)
+
+                    let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
+                        .map(DayOfPosts.init(day:posts:))
+                        .sorted { $0.day > $1.day }
+
                     DispatchQueue.main.async {
-                        completion(posts)
+                        completion(postsGroupedByDay)
                     }
                 }
             } catch {
