@@ -74,7 +74,7 @@ class PostTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let section = postsGroupedByDay[section]
         let date = section.day
-        return Constants.dateFormatter.string(from: date)
+        return DateFormatter.fullDate.string(from: date)
     }
 }
 

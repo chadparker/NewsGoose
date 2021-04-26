@@ -39,3 +39,13 @@ extension UIViewController {
         presentURL(url)
     }
 }
+
+extension DateFormatter {
+
+    static let fullDate: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)!
+        formatter.dateStyle = .full
+        return formatter
+    }()
+}
