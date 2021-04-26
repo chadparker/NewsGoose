@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 import SafariServices
 
+/// Displays a list of Posts sorted and grouped by date.
 class PostTableVC: UITableViewController {
     
     var postController: PostController!
@@ -17,8 +18,8 @@ class PostTableVC: UITableViewController {
             performFetch()
         }
     }
-    
-    private var posts: [Post] = [] {
+
+    private var postsGroupedByDay: [DayOfPosts] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -35,43 +36,46 @@ class PostTableVC: UITableViewController {
     }
     
     private func performFetch() {
-        postController.fetchRecentPosts(pointsThreshold: pointThreshold) { posts in
-            self.posts = posts
+        postController.fetchRecentPosts(pointsThreshold: pointThreshold) { postsGroupedByDay in
+            self.postsGroupedByDay = postsGroupedByDay
         }
     }
     
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let post = posts[indexPath.row]
+        let section = postsGroupedByDay[indexPath.section]
+        let post = section.posts[indexPath.row]
         presentSafariVC(for: post, showing: .post)
     }
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return fetchedResultsController.sections?.count ?? 1
-//    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return postsGroupedByDay.count
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        let section = postsGroupedByDay[section]
+        return section.posts.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableCell", for: indexPath) as! PostCell
 
-        let post = posts[indexPath.row]
+        let section = postsGroupedByDay[indexPath.section]
+        let post = section.posts[indexPath.row]
         cell.post = post
         cell.delegate = self
 
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        guard let sectionInfo = fetchedResultsController.sections?[section] else { return nil }
-//        
-//        return sectionInfo.name
-//    }
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let section = postsGroupedByDay[section]
+        let date = section.day
+        return Constants.dateFormatter.string(from: date)
+    }
 }
 
 extension PostTableVC: PostCellDelegate {
