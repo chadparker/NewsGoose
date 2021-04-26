@@ -19,7 +19,7 @@ class PostTableVC: UITableViewController {
         }
     }
 
-    private var postsGroupedByDay: [DayOfPosts] = [] {
+    private var postsGroupedByDay: [(day: Date, posts: [Post])] = [] {
         didSet {
             tableView.reloadData()
         }

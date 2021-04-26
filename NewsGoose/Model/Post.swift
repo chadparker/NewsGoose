@@ -8,12 +8,6 @@
 import Foundation
 import GRDB
 
-struct DayOfPosts {
-
-    let day: Date
-    var posts: [Post] = []
-}
-
 struct Post {
 
     let id: String
