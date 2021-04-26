@@ -25,6 +25,7 @@ struct Post {
 
     let date: Date
     let time: Date?
+    var day: Date?
 }
 
 extension Post: Codable, FetchableRecord, MutablePersistableRecord {
