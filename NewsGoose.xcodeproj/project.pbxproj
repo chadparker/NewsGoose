@@ -27,6 +27,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		6359F192263B6B5D0022CB5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6359F18E263B6B5C0022CB5E /* NewsGoose Importer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6359F178263B6B5B0022CB5E;
+			remoteInfo = "NewsGoose Importer";
+		};
 		63B9355A26123F0D0097FD2C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 63B9353B26123F0C0097FD2C /* Project object */;
@@ -46,6 +53,7 @@
 /* Begin PBXFileReference section */
 		63182F06263B398600F0B93B /* HNKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HNKit; sourceTree = "<group>"; };
 		6352D65C26323A8B00D8789F /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
+		6359F18E263B6B5C0022CB5E /* NewsGoose Importer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "NewsGoose Importer.xcodeproj"; path = "NewsGoose Importer/NewsGoose Importer.xcodeproj"; sourceTree = "<group>"; };
 		637DCF522613D0CC00420C6B /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		63A30DA6261BD77300E24CBE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		63B9354326123F0C0097FD2C /* NewsGoose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsGoose.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6359F18F263B6B5C0022CB5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6359F193263B6B5D0022CB5E /* NewsGoose Importer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		6364A383263B450F006BA5A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +121,7 @@
 		63B9353A26123F0C0097FD2C = {
 			isa = PBXGroup;
 			children = (
+				6359F18E263B6B5C0022CB5E /* NewsGoose Importer.xcodeproj */,
 				63182F06263B398600F0B93B /* HNKit */,
 				63B9354526123F0C0097FD2C /* NewsGoose */,
 				63B9355C26123F0D0097FD2C /* NewsGooseTests */,
@@ -267,6 +284,12 @@
 			);
 			productRefGroup = 63B9354426123F0C0097FD2C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6359F18F263B6B5C0022CB5E /* Products */;
+					ProjectRef = 6359F18E263B6B5C0022CB5E /* NewsGoose Importer.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				63B9354226123F0C0097FD2C /* NewsGoose */,
@@ -275,6 +298,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		6359F193263B6B5D0022CB5E /* NewsGoose Importer.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "NewsGoose Importer.app";
+			remoteRef = 6359F192263B6B5D0022CB5E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		63B9354126123F0C0097FD2C /* Resources */ = {
