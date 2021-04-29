@@ -12,7 +12,7 @@
 		6359F180263B6B5C0022CB5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6359F17F263B6B5C0022CB5E /* Assets.xcassets */; };
 		6359F183263B6B5C0022CB5E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6359F182263B6B5C0022CB5E /* Preview Assets.xcassets */; };
 		6359F186263B6B5C0022CB5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6359F184263B6B5C0022CB5E /* Main.storyboard */; };
-		6359F196263B6F760022CB5E /* HNKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6359F195263B6F760022CB5E /* HNKit */; };
+		6359F19F263B759F0022CB5E /* NGCore in Frameworks */ = {isa = PBXBuildFile; productRef = 6359F19E263B759F0022CB5E /* NGCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6359F196263B6F760022CB5E /* HNKit in Frameworks */,
+				6359F19F263B759F0022CB5E /* NGCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +101,7 @@
 			);
 			name = "NewsGoose Importer";
 			packageProductDependencies = (
-				6359F195263B6F760022CB5E /* HNKit */,
+				6359F19E263B759F0022CB5E /* NGCore */,
 			);
 			productName = "NewsGoose Importer";
 			productReference = 6359F178263B6B5B0022CB5E /* NewsGoose Importer.app */;
@@ -363,9 +363,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6359F195263B6F760022CB5E /* HNKit */ = {
+		6359F19E263B759F0022CB5E /* NGCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = HNKit;
+			productName = NGCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

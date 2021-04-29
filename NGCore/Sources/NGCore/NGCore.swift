@@ -1,6 +1,3 @@
-
-import GRDB
-
-struct HNKit {
+struct NGCore {
     var text = "Hello, World!"
 }

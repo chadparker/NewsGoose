@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import HNKit
+import NGCore
 
 protocol SearchVCDelegate {
     func hideSearch()

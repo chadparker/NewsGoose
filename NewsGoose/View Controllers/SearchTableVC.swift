@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 import SafariServices
-import HNKit
+import NGCore
 
 class SearchTableVC: UITableViewController {
 

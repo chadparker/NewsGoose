@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6352D6582632304600D8789F /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 6352D6572632304600D8789F /* GRDB */; };
 		6352D65D26323A9A00D8789F /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6352D65C26323A8B00D8789F /* db.sqlite */; };
-		6364A385263B450F006BA5A4 /* HNKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6364A384263B450F006BA5A4 /* HNKit */; };
+		6359F19D263B74000022CB5E /* NGCore in Frameworks */ = {isa = PBXBuildFile; productRef = 6359F19C263B74000022CB5E /* NGCore */; };
 		637DCF532613D0CC00420C6B /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637DCF522613D0CC00420C6B /* SearchVC.swift */; };
 		63A30DA7261BD77300E24CBE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DA6261BD77300E24CBE /* Extensions.swift */; };
 		63B9354726123F0C0097FD2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9354626123F0C0097FD2C /* AppDelegate.swift */; };
@@ -51,9 +51,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		63182F06263B398600F0B93B /* HNKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HNKit; sourceTree = "<group>"; };
 		6352D65C26323A8B00D8789F /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
 		6359F18E263B6B5C0022CB5E /* NewsGoose Importer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "NewsGoose Importer.xcodeproj"; path = "NewsGoose Importer/NewsGoose Importer.xcodeproj"; sourceTree = "<group>"; };
+		6359F19A263B731A0022CB5E /* NGCore */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NGCore; sourceTree = "<group>"; };
 		637DCF522613D0CC00420C6B /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		63A30DA6261BD77300E24CBE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		63B9354326123F0C0097FD2C /* NewsGoose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsGoose.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,8 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6359F19D263B74000022CB5E /* NGCore in Frameworks */,
 				6352D6582632304600D8789F /* GRDB in Frameworks */,
-				6364A385263B450F006BA5A4 /* HNKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				6359F18E263B6B5C0022CB5E /* NewsGoose Importer.xcodeproj */,
-				63182F06263B398600F0B93B /* HNKit */,
+				6359F19A263B731A0022CB5E /* NGCore */,
 				63B9354526123F0C0097FD2C /* NewsGoose */,
 				63B9355C26123F0D0097FD2C /* NewsGooseTests */,
 				63B9356726123F0D0097FD2C /* NewsGooseUITests */,
@@ -206,7 +206,7 @@
 			name = NewsGoose;
 			packageProductDependencies = (
 				6352D6572632304600D8789F /* GRDB */,
-				6364A384263B450F006BA5A4 /* HNKit */,
+				6359F19C263B74000022CB5E /* NGCore */,
 			);
 			productName = NewsGoose;
 			productReference = 63B9354326123F0C0097FD2C /* NewsGoose.app */;
@@ -703,9 +703,9 @@
 			package = 6352D6562632304600D8789F /* XCRemoteSwiftPackageReference "GRDB.swift" */;
 			productName = GRDB;
 		};
-		6364A384263B450F006BA5A4 /* HNKit */ = {
+		6359F19C263B74000022CB5E /* NGCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = HNKit;
+			productName = NGCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

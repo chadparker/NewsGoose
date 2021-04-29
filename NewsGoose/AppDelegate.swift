@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import HNKit
+import NGCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
