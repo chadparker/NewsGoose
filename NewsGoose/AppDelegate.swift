@@ -13,16 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         try! DatabaseManager.setup()
-
-        let netClient = NetworkClient()
-        netClient.fetchLatest { result in
-            switch result {
-            case .success(let posts):
-                dump(posts)
-            case .failure(let networkError):
-                print(networkError.localizedDescription)
-            }
-        }
         
         return true
     }
