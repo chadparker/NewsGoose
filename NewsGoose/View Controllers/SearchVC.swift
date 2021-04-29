@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import HNKit
 
 protocol SearchVCDelegate {
     func hideSearch()

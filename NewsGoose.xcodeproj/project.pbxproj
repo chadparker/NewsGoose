@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6352D6582632304600D8789F /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 6352D6572632304600D8789F /* GRDB */; };
-		6352D65A2632307400D8789F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352D6592632307400D8789F /* DatabaseManager.swift */; };
 		6352D65D26323A9A00D8789F /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6352D65C26323A8B00D8789F /* db.sqlite */; };
 		6364A385263B450F006BA5A4 /* HNKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6364A384263B450F006BA5A4 /* HNKit */; };
 		637DCF532613D0CC00420C6B /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637DCF522613D0CC00420C6B /* SearchVC.swift */; };
@@ -21,7 +20,6 @@
 		63B9355326123F0C0097FD2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B9355126123F0C0097FD2C /* LaunchScreen.storyboard */; };
 		63B9355E26123F0D0097FD2C /* NewsGooseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9355D26123F0D0097FD2C /* NewsGooseTests.swift */; };
 		63B9356926123F0D0097FD2C /* NewsGooseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9356826123F0D0097FD2C /* NewsGooseUITests.swift */; };
-		63B93587261269340097FD2C /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B93586261269340097FD2C /* PostController.swift */; };
 		63B9358B261282330097FD2C /* PostTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9358A261282330097FD2C /* PostTableVC.swift */; };
 		63EA872C26152F4A005C643F /* SearchTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA872B26152F4A005C643F /* SearchTableVC.swift */; };
 		63EA8735261586AF005C643F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA8733261586AF005C643F /* PostCell.swift */; };
@@ -47,7 +45,6 @@
 
 /* Begin PBXFileReference section */
 		63182F06263B398600F0B93B /* HNKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HNKit; sourceTree = "<group>"; };
-		6352D6592632307400D8789F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		6352D65C26323A8B00D8789F /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
 		637DCF522613D0CC00420C6B /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		63A30DA6261BD77300E24CBE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -65,7 +62,6 @@
 		63B9356426123F0D0097FD2C /* NewsGooseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsGooseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B9356826123F0D0097FD2C /* NewsGooseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsGooseUITests.swift; sourceTree = "<group>"; };
 		63B9356A26123F0D0097FD2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63B93586261269340097FD2C /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		63B9358A261282330097FD2C /* PostTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableVC.swift; sourceTree = "<group>"; };
 		63EA872B26152F4A005C643F /* SearchTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableVC.swift; sourceTree = "<group>"; };
 		63EA8733261586AF005C643F /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
@@ -102,7 +98,6 @@
 		6352D65E26323B6600D8789F /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				6352D6592632307400D8789F /* DatabaseManager.swift */,
 				6352D65C26323A8B00D8789F /* db.sqlite */,
 			);
 			path = Database;
@@ -144,7 +139,6 @@
 				63B9354826123F0C0097FD2C /* SceneDelegate.swift */,
 				63A30DA6261BD77300E24CBE /* Extensions.swift */,
 				6352D65E26323B6600D8789F /* Database */,
-				63B93579261244F40097FD2C /* Model */,
 				63B93576261244A90097FD2C /* View Controllers */,
 				63B9354C26123F0C0097FD2C /* Main.storyboard */,
 				63B9354F26123F0C0097FD2C /* Assets.xcassets */,
@@ -183,14 +177,6 @@
 				63EA8734261586AF005C643F /* PostCell.xib */,
 			);
 			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		63B93579261244F40097FD2C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				63B93586261269340097FD2C /* PostController.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,10 +324,8 @@
 				63B9354726123F0C0097FD2C /* AppDelegate.swift in Sources */,
 				63EA8735261586AF005C643F /* PostCell.swift in Sources */,
 				63B9354926123F0C0097FD2C /* SceneDelegate.swift in Sources */,
-				6352D65A2632307400D8789F /* DatabaseManager.swift in Sources */,
 				63B9358B261282330097FD2C /* PostTableVC.swift in Sources */,
 				63A30DA7261BD77300E24CBE /* Extensions.swift in Sources */,
-				63B93587261269340097FD2C /* PostController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

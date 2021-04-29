@@ -7,17 +7,16 @@
 
 import Foundation
 import GRDB
-import HNKit
 
-class PostController {
+public class PostController {
     
     let backgroundQueue = DispatchQueue(label: "DatabaseBackgroundQueue", qos: .userInitiated)
     
-    init() {
+    public init() {
         
     }
     
-    func fetchRecentPosts(pointsThreshold: Int, completion: @escaping ([(day: Date, posts: [Post])]) -> Void) {
+    public func fetchRecentPosts(pointsThreshold: Int, completion: @escaping ([(day: Date, posts: [Post])]) -> Void) {
         backgroundQueue.async {
             do {
                 try dbQueue.read { db in
@@ -41,7 +40,7 @@ class PostController {
         }
     }
     
-    func fetchPostsMatching(query: String, completion: @escaping ([(day: Date, posts: [Post])]) -> Void) {
+    public func fetchPostsMatching(query: String, completion: @escaping ([(day: Date, posts: [Post])]) -> Void) {
         backgroundQueue.async {
             do {
                 try dbQueue.read { db in

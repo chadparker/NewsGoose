@@ -10,9 +10,9 @@ import GRDB
 
 var dbQueue: DatabaseQueue!
 
-class DatabaseManager {
+public class DatabaseManager {
     
-    static func setup() throws {
+    public static func setup() throws {
         let path = "\(Bundle.main.resourcePath!)/db.sqlite"
         dbQueue = try DatabaseQueue(path: path)
         try migrator.migrate(dbQueue)
