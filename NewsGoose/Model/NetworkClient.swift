@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HNKit
 
 enum NetworkError : Error {
     case dataTask(Error)

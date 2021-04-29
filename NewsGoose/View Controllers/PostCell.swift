@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import HNKit
 
 protocol PostCellDelegate {
     func showComments(for post: Post)

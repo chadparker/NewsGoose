@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+import HNKit
 
 enum LaunchPostLinkType {
     case post

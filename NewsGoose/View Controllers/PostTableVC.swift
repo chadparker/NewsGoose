@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import SafariServices
+import HNKit
 
 /// Displays a list of Posts sorted and grouped by date.
 class PostTableVC: UITableViewController {
