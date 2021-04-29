@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let importer = PostImporter()
         importer.importFromJS()
 
-        let contentView = ContentView().environmentObject(importer)
+        let contentView = MainView().environmentObject(importer)
 
         window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
