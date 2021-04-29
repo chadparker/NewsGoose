@@ -95,14 +95,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6352D65E26323B6600D8789F /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				6352D65C26323A8B00D8789F /* db.sqlite */,
-			);
-			path = Database;
-			sourceTree = "<group>";
-		};
 		6364A383263B450F006BA5A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,8 +129,8 @@
 			children = (
 				63B9354626123F0C0097FD2C /* AppDelegate.swift */,
 				63B9354826123F0C0097FD2C /* SceneDelegate.swift */,
+				6352D65C26323A8B00D8789F /* db.sqlite */,
 				63A30DA6261BD77300E24CBE /* Extensions.swift */,
-				6352D65E26323B6600D8789F /* Database */,
 				63B93576261244A90097FD2C /* View Controllers */,
 				63B9354C26123F0C0097FD2C /* Main.storyboard */,
 				63B9354F26123F0C0097FD2C /* Assets.xcassets */,
