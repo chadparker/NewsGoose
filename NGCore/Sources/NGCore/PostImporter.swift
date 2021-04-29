@@ -10,9 +10,9 @@ import Combine
 
 public class PostImporter: ObservableObject {
 
-    @Published var fileCountProgress = 0
-    @Published var fileCountTotal: Int = 0
-    @Published var postsImportedCount = 0
+    @Published public var fileCountProgress = 0
+    @Published public var fileCountTotal: Int = 0
+    @Published public var postsImportedCount = 0
 
     private var fileCounter = PassthroughSubject<Int, Never>()
     private var postCounter = PassthroughSubject<Int, Never>()
