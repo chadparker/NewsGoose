@@ -23,7 +23,7 @@ class SearchVC: UIViewController {
     
     var delegate: SearchVCDelegate!
     var searchTableVC: SearchTableVC!
-    var postController: PostController!
+    var postDBController: PostDBController!
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
@@ -75,7 +75,7 @@ class SearchVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let searchTableVC = segue.destination as? SearchTableVC {
-            searchTableVC.postController = postController
+            searchTableVC.postDBController = postDBController
             self.searchTableVC = searchTableVC
         }
     }

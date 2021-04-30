@@ -1,5 +1,5 @@
 //
-//  PostController.swift
+//  PostDBController.swift
 //  NewsGoose
 //
 //  Created by Chad Parker on 3/29/21.
@@ -8,7 +8,7 @@
 import Foundation
 import GRDB
 
-public class PostController {
+public class PostDBController {
     
     let backgroundQueue = DispatchQueue(label: "DatabaseBackgroundQueue", qos: .userInitiated)
     

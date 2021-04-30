@@ -13,7 +13,7 @@ import NGCore
 /// Displays a list of Posts sorted and grouped by date.
 class PostTableVC: UITableViewController {
     
-    var postController: PostController!
+    var postDBController: PostDBController!
     var pointThreshold: Int = 0 {
         didSet {
             performFetch()
@@ -37,7 +37,7 @@ class PostTableVC: UITableViewController {
     }
     
     private func performFetch() {
-        postController.fetchRecentPosts(pointsThreshold: pointThreshold) { postsGroupedByDay in
+        postDBController.fetchRecentPosts(pointsThreshold: pointThreshold) { postsGroupedByDay in
             self.postsGroupedByDay = postsGroupedByDay
         }
     }

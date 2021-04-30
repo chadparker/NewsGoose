@@ -13,7 +13,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var pointsSegControl: UISegmentedControl!
     @IBOutlet weak var searchContainer: UIView!
     
-    let postController = PostController()
+    let postDBController = PostDBController()
     
     var searchVC: SearchVC!
     var postTableVC: PostTableVC!
@@ -32,10 +32,10 @@ class MainVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let searchVC = segue.destination as? SearchVC {
             searchVC.delegate = self
-            searchVC.postController = postController
+            searchVC.postDBController = postDBController
             self.searchVC = searchVC
         } else if let postTableVC = segue.destination as? PostTableVC {
-            postTableVC.postController = postController
+            postTableVC.postDBController = postDBController
             postTableVC.pointThreshold = pointsSegmentValue
             self.postTableVC = postTableVC
         }
