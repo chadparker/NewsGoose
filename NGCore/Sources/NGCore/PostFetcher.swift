@@ -1,5 +1,5 @@
 //
-//  NetworkClient.swift
+//  PostFetcher.swift
 //  NewsGoose
 //
 //  Created by Chad Parker on 4/27/21.
@@ -13,7 +13,7 @@ enum NetworkError : Error {
     case parseError(Error)
 }
 
-public class NetworkClient {
+public class PostFetcher {
 
     let baseURL = URL(string: "https://hckrnews.com/data/")!
 
@@ -31,7 +31,7 @@ public class NetworkClient {
             }
 
             do {
-                let posts = try JSONDecoder().decode([Post].self, from: data.dropFirst(14))
+                let posts = try JSONDecoder().decode([Post].self, from: data.dropFirst(14)) // remove leading `var entries = `
                 DispatchQueue.main.async { completion(.success(posts)) }
             } catch {
                 print(error)
