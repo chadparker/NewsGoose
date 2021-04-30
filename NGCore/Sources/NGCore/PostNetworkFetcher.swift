@@ -1,5 +1,5 @@
 //
-//  PostFetcher.swift
+//  PostNetworkFetcher.swift
 //  NewsGoose
 //
 //  Created by Chad Parker on 4/27/21.
@@ -13,7 +13,7 @@ enum NetworkError : Error {
     case parseError(Error)
 }
 
-public class PostFetcher {
+public class PostNetworkFetcher {
 
     let baseURL = URL(string: "https://hckrnews.com/data/")!
 

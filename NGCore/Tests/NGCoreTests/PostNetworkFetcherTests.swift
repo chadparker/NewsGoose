@@ -1,5 +1,5 @@
 //
-//  PostFetcherTests.swift
+//  PostNetworkFetcherTests.swift
 //  
 //
 //  Created by Chad Parker on 4/30/21.
@@ -8,12 +8,12 @@
 import XCTest
 @testable import NGCore
 
-final class PostFetcherTests: XCTestCase {
+final class PostNetworkFetcherTests: XCTestCase {
 
-    var sut: PostFetcher!
+    var sut: PostNetworkFetcher!
 
     override func setUp() {
-        sut = PostFetcher()
+        sut = PostNetworkFetcher()
     }
 
     override func tearDown() {
