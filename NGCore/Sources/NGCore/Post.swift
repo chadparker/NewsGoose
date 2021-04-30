@@ -24,10 +24,13 @@ public struct Post {
     public let comments: Int?
 
     public let date: Date
-    public let time: Date?
     public var day: Date?
 }
 
-extension Post: Codable, FetchableRecord, MutablePersistableRecord {
+extension Post: Codable {
     
+}
+
+extension Post: FetchableRecord, MutablePersistableRecord {
+
 }
