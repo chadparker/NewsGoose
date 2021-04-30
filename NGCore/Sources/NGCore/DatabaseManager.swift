@@ -40,7 +40,6 @@ public class DatabaseManager {
                 t.column("comments", .integer)
                 
                 t.column("date", .datetime).notNull().indexed()
-                t.column("time", .datetime)
                 t.column("day", .datetime).notNull().indexed()
             }
         }
