@@ -12,7 +12,7 @@ import NGCore
 
 class SearchTableVC: UITableViewController {
 
-    var postDBController: PostDBController!
+    var postManager: PostManager!
     private var searchQuery: String?
 
     private var postsGroupedByDay: [(day: Date, posts: [Post])] = [] {
@@ -32,7 +32,7 @@ class SearchTableVC: UITableViewController {
     func search(query: String?) {
         searchQuery = query // needed?
         if let query = query {
-            postDBController.fetchPostsMatching(query: query) { postsGroupedByDay in
+            postManager.postsMatching(query: query) { postsGroupedByDay in
                 self.postsGroupedByDay = postsGroupedByDay
             }
         }

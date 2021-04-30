@@ -16,7 +16,7 @@ public class PostDBController {
         
     }
     
-    public func fetchRecentPosts(pointsThreshold: Int, completion: @escaping ([(day: Date, posts: [Post])]) -> Void) {
+    func fetchRecentPosts(pointsThreshold: Int, completion: @escaping ([Post]) -> Void) {
         backgroundQueue.async {
             do {
                 try dbQueue.read { db in
@@ -25,13 +25,8 @@ public class PostDBController {
                         .filter(Column("points") >= pointsThreshold)
                         .limit(3000)
                         .fetchAll(db)
-
-                    let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
-                        .map { (day: $0.key, posts: $0.value) }
-                        .sorted { $0.day > $1.day }
-
                     DispatchQueue.main.async {
-                        completion(postsGroupedByDay)
+                        completion(posts)
                     }
                 }
             } catch {
@@ -40,7 +35,7 @@ public class PostDBController {
         }
     }
     
-    public func fetchPostsMatching(query: String, completion: @escaping ([(day: Date, posts: [Post])]) -> Void) {
+    func fetchPostsMatching(query: String, completion: @escaping ([Post]) -> Void) {
         backgroundQueue.async {
             do {
                 try dbQueue.read { db in
@@ -49,13 +44,8 @@ public class PostDBController {
                         .order(Column("date").desc)
                         .limit(3000)
                         .fetchAll(db)
-
-                    let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
-                        .map { (day: $0.key, posts: $0.value) }
-                        .sorted { $0.day > $1.day }
-
                     DispatchQueue.main.async {
-                        completion(postsGroupedByDay)
+                        completion(posts)
                     }
                 }
             } catch {
