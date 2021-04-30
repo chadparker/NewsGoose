@@ -12,8 +12,9 @@ import NGCore
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        try! DatabaseManager.setup()
+
+        let path = "\(Bundle.main.resourcePath!)/db.sqlite"
+        try! DatabaseManager.setup(at: path)
         
         return true
     }

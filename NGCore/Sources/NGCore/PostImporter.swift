@@ -23,13 +23,15 @@ public class PostImporter: ObservableObject {
     private let fileCountQueue = DispatchQueue(label: "FileCountQueue", qos: .background)
     private let postCountQueue = DispatchQueue(label: "PostCountQueue", qos: .background)
 
+    let dataPath: String
     lazy var calendar: Calendar = {
         var cal = Calendar.current
         cal.timeZone = TimeZone(secondsFromGMT: 0)!
         return cal
     }()
 
-    public init() {
+    public init(dataPath: String) {
+        self.dataPath = dataPath
         fileCounterSubscriber = fileCounter
             .throttle(for: 0.1, scheduler: fileCountQueue, latest: true)
             .receive(on: DispatchQueue.main)
@@ -91,10 +93,9 @@ public class PostImporter: ObservableObject {
     }
 
     func getDataFilePaths() -> [String] {
-        let path = "\(Bundle.main.resourcePath!)/data/"
         do {
-            let filenames = try FileManager.default.contentsOfDirectory(atPath: path)
-            return filenames.map { path + $0 }
+            let filenames = try FileManager.default.contentsOfDirectory(atPath: dataPath)
+            return filenames.map { dataPath + $0 }
         } catch {
             fatalError()
         }

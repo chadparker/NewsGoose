@@ -16,9 +16,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 
-        try! DatabaseManager.setup()
+        let databaseURL = try! FileManager.default
+            .url(for: .applicationDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            .appendingPathComponent("db.sqlite")
+        try! DatabaseManager.setup(at: databaseURL.path)
 
-        let importer = PostImporter()
+        let dataPath = "\(Bundle.main.resourcePath!)/data/"
+        let importer = PostImporter(dataPath: dataPath)
         importer.importFromJS()
 
         let contentView = MainView().environmentObject(importer)
