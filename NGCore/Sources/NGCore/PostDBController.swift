@@ -8,13 +8,9 @@
 import Foundation
 import GRDB
 
-public class PostDBController {
+class PostDBController {
     
     let backgroundQueue = DispatchQueue(label: "DatabaseBackgroundQueue", qos: .userInitiated)
-    
-    public init() {
-        
-    }
     
     func fetchRecentPosts(pointsThreshold: Int, completion: @escaping ([Post]) -> Void) {
         backgroundQueue.async {
