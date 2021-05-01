@@ -16,7 +16,7 @@ class PostTableVC: UITableViewController {
     var postManager: PostManager!
     var pointThreshold: Int = 0 {
         didSet {
-            performFetch()
+            performDBFetch()
         }
     }
 
@@ -33,10 +33,10 @@ class PostTableVC: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
         
-        performFetch()
+        //performDBFetch()
     }
     
-    private func performFetch() {
+    private func performDBFetch() {
         postManager.recentPostsGroupedByDay(pointsThreshold: pointThreshold) { postsGroupedByDay in
             self.postsGroupedByDay = postsGroupedByDay
         }
