@@ -10,8 +10,23 @@ import Foundation
 public class PostManager {
 
     let postDBController = PostDBController()
+    let postNetworkFetcher = PostNetworkFetcher()
 
     public init() {}
+
+    public func loadLatestPosts(completion: @escaping (Result<Int, PostNetworkError>) -> Void) {
+        postNetworkFetcher.fetchLatest { result in
+            assert(Thread.isMainThread)
+            switch result {
+            case .success(let posts):
+                self.postDBController.saveNewPosts(posts) {
+                    completion(.success(posts.count))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 
     public func recentPostsGroupedByDay(pointsThreshold: Int, completion: @escaping ([(day: Date, posts: [Post])]) -> Void) {
 

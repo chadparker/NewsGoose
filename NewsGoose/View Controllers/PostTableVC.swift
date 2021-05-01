@@ -34,6 +34,14 @@ class PostTableVC: UITableViewController {
         tableView.estimatedRowHeight = 50
         
         //performDBFetch()
+        postManager.loadLatestPosts { result in
+            switch result {
+            case .success(_):
+                self.performDBFetch()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     private func performDBFetch() {

@@ -10,10 +10,10 @@ import GRDB
 
 class PostDBController {
     
-    let backgroundQueue = DispatchQueue(label: "DatabaseBackgroundQueue", qos: .userInitiated)
+    //let backgroundQueue = DispatchQueue(label: "DatabaseBackgroundQueue", qos: .userInitiated)
     
     func fetchRecentPosts(pointsThreshold: Int, completion: @escaping ([Post]) -> Void) {
-        backgroundQueue.async {
+//        backgroundQueue.async {
             do {
                 try dbQueue.read { db in
                     let posts = try Post
@@ -28,11 +28,11 @@ class PostDBController {
             } catch {
                 fatalError("read error")
             }
-        }
+//        }
     }
     
     func fetchPostsMatching(query: String, completion: @escaping ([Post]) -> Void) {
-        backgroundQueue.async {
+//        backgroundQueue.async {
             do {
                 try dbQueue.read { db in
                     let posts = try Post
@@ -47,6 +47,23 @@ class PostDBController {
             } catch {
                 fatalError("read error")
             }
-        }
+//        }
+    }
+
+    func saveNewPosts(_ posts: [Post], completion: @escaping () -> Void) {
+//        backgroundQueue.async {
+            do {
+                try dbQueue.write { db in
+                    for var post in posts {
+                        post.day = post.startOfDay()
+                        try! post.insert(db)
+                    }
+                }
+                completion()
+            } catch {
+                completion()
+                fatalError("write error")
+            }
+//        }
     }
 }
