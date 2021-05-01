@@ -20,9 +20,9 @@ public class DatabaseManager {
     static var migrator: DatabaseMigrator {
         var migrator = DatabaseMigrator()
         
-        #if DEBUG
-        migrator.eraseDatabaseOnSchemaChange = true
-        #endif
+//        #if DEBUG
+//        migrator.eraseDatabaseOnSchemaChange = true
+//        #endif
         
         migrator.registerMigration("createProject") { db in
             try db.create(table: "post") { t in
