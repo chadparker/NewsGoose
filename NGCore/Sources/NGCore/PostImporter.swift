@@ -24,11 +24,6 @@ public class PostImporter: ObservableObject {
     private let postCountQueue = DispatchQueue(label: "PostCountQueue", qos: .background)
 
     let dataPath: String
-    lazy var calendar: Calendar = {
-        var cal = Calendar.current
-        cal.timeZone = TimeZone(secondsFromGMT: 0)!
-        return cal
-    }()
 
     public init(dataPath: String) {
         self.dataPath = dataPath
@@ -77,7 +72,7 @@ public class PostImporter: ObservableObject {
                         for var post in posts {
 
                             if !idsSeen.contains(post.id) {
-                                post.day = calendar.startOfDay(for: post.date)
+                                post.day = post.startOfDay()
                                 try! post.insert(db)
                                 idsSeen.insert(post.id)
                             }

@@ -34,3 +34,16 @@ extension Post: Codable {
 extension Post: FetchableRecord, MutablePersistableRecord {
 
 }
+
+extension Post {
+
+    func startOfDay() -> Date {
+        Post.calendar.startOfDay(for: date)
+    }
+
+    private static var calendar: Calendar = {
+        var cal = Calendar.current
+        cal.timeZone = TimeZone(secondsFromGMT: 0)!
+        return cal
+    }()
+}
