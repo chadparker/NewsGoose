@@ -25,20 +25,20 @@ public final class PostManager {
         }
     }
 
-    public func recentPostsGroupedByDay(pointsThreshold: Int, completion: @escaping ([(day: Date, posts: [Post])]) -> Void) {
+    public func recentPostsGroupedByDay(pointsThreshold: Int) -> [(day: Date, posts: [Post])] {
         let posts = try! Database.shared.recentPosts(pointsThreshold: pointsThreshold)
         let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
             .map { (day: $0.key, posts: $0.value) }
             .sorted { $0.day > $1.day }
-        completion(postsGroupedByDay)
+        return postsGroupedByDay
 
     }
 
-    public func postsGroupedByDayMatching(query: String, completion: @escaping ([(day: Date, posts: [Post])]) -> Void) {
+    public func postsGroupedByDayMatching(query: String) -> [(day: Date, posts: [Post])] {
         let posts = try! Database.shared.postsMatching(query: query)
         let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
             .map { (day: $0.key, posts: $0.value) }
             .sorted { $0.day > $1.day }
-        completion(postsGroupedByDay)
+        return postsGroupedByDay
     }
 }

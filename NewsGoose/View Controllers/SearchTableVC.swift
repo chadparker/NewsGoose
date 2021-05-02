@@ -30,9 +30,7 @@ class SearchTableVC: UITableViewController {
     
     func search(query: String?) {
         if let query = query {
-            postManager.postsGroupedByDayMatching(query: query) { postsGroupedByDay in
-                self.postsGroupedByDay = postsGroupedByDay
-            }
+            postsGroupedByDay = postManager.postsGroupedByDayMatching(query: query)
         }
     }
     

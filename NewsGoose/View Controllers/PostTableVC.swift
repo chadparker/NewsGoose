@@ -33,7 +33,6 @@ class PostTableVC: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
         
-        //performDBFetch()
         postManager.loadLatestPosts { result in
             switch result {
             case .success(_):
@@ -45,9 +44,7 @@ class PostTableVC: UITableViewController {
     }
     
     private func performDBFetch() {
-        postManager.recentPostsGroupedByDay(pointsThreshold: pointThreshold) { postsGroupedByDay in
-            self.postsGroupedByDay = postsGroupedByDay
-        }
+        postsGroupedByDay = postManager.recentPostsGroupedByDay(pointsThreshold: pointThreshold)
     }
     
     // MARK: - Table view delegate
