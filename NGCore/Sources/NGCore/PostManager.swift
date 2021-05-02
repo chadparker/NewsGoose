@@ -9,42 +9,37 @@ import Foundation
 
 public class PostManager {
 
-    let postDBController = PostDBController()
     let postNetworkFetcher = PostNetworkFetcher()
 
     public init() {}
 
     public func loadLatestPosts(completion: @escaping (Result<Int, PostNetworkError>) -> Void) {
         postNetworkFetcher.fetchLatest { result in
-            assert(Thread.isMainThread)
             switch result {
             case .success(let posts):
-                self.postDBController.saveNewPosts(posts) {
-                    completion(.success(posts.count))
-                }
+                try! Database.shared.savePosts(posts)
+                completion(.success(posts.count))
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
 
+    #warning("This formatting should be done in a ViewModel")
     public func recentPostsGroupedByDay(pointsThreshold: Int, completion: @escaping ([(day: Date, posts: [Post])]) -> Void) {
+        let posts = try! Database.shared.recentPosts(pointsThreshold: pointsThreshold)
+        let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
+            .map { (day: $0.key, posts: $0.value) }
+            .sorted { $0.day > $1.day }
+        completion(postsGroupedByDay)
 
-        postDBController.fetchRecentPosts(pointsThreshold: pointsThreshold) { posts in
-            let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
-                .map { (day: $0.key, posts: $0.value) }
-                .sorted { $0.day > $1.day }
-            completion(postsGroupedByDay)
-        }
     }
 
     public func postsMatching(query: String, completion: @escaping ([(day: Date, posts: [Post])]) -> Void) {
-
-        postDBController.fetchPostsMatching(query: query) { posts in
-            let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
-                .map { (day: $0.key, posts: $0.value) }
-                .sorted { $0.day > $1.day }
-            completion(postsGroupedByDay)
-        }
+        let posts = try! Database.shared.postsMatching(query: query)
+        let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
+            .map { (day: $0.key, posts: $0.value) }
+            .sorted { $0.day > $1.day }
+        completion(postsGroupedByDay)
     }
 }

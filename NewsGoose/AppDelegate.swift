@@ -13,9 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        let path = "\(Bundle.main.resourcePath!)/db.sqlite"
-        try! DatabaseManager.setup(at: path)
-        
+        Database.directory = try! FileManager.default
+            .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            .appendingPathComponent("database", isDirectory: true)
+        Database.copyDBFromBundle()
+
         return true
     }
 

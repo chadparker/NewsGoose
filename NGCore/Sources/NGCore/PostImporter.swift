@@ -45,15 +45,9 @@ public class PostImporter: ObservableObject {
         importQueue.async { [self] in
 
             // temporary deleteAll for now. more checking & UI later.
-            do {
-                try dbQueue.write { db in
-                    _ = try Post.deleteAll(db)
-                }
-            } catch {
-                fatalError("read error")
-            }
+            try! Database.shared.deleteAllPosts()
 
-            var idsSeen = Set<String>()
+            var postCount = 0
 
             let filePaths = getDataFilePaths()
             DispatchQueue.main.async {
@@ -66,23 +60,12 @@ public class PostImporter: ObservableObject {
                 decoder.dateDecodingStrategy = .secondsSince1970
                 let posts = try! decoder.decode([Post].self, from: data)
 
-                do {
-                    try dbQueue.write { db in
+                try! Database.shared.savePosts(posts)
 
-                        for var post in posts {
+                postCount += posts.count
 
-                            if !idsSeen.contains(post.id) {
-                                post.day = post.startOfDay()
-                                try! post.insert(db)
-                                idsSeen.insert(post.id)
-                            }
-                        }
-                    }
-                } catch {
-                    print("\(error)")
-                }
                 fileCounter.send(index + 1)
-                postCounter.send(idsSeen.count)
+                postCounter.send(postCount)
             }
         }
     }
