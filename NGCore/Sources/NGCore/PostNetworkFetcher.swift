@@ -13,7 +13,7 @@ public enum PostNetworkError : Error {
     case parseError(Error)
 }
 
-public class PostNetworkFetcher {
+final class PostNetworkFetcher {
 
     let baseURL = URL(string: "https://hckrnews.com/data/")!
 

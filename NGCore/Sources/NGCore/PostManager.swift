@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class PostManager {
+public final class PostManager {
 
     let postNetworkFetcher = PostNetworkFetcher()
 
@@ -25,7 +25,6 @@ public class PostManager {
         }
     }
 
-    #warning("This formatting should be done in a ViewModel")
     public func recentPostsGroupedByDay(pointsThreshold: Int, completion: @escaping ([(day: Date, posts: [Post])]) -> Void) {
         let posts = try! Database.shared.recentPosts(pointsThreshold: pointsThreshold)
         let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }

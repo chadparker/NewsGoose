@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-public class PostImporter: ObservableObject {
+public final class PostImporter: ObservableObject {
 
     @Published public var fileCountProgress = 0
     @Published public var fileCountTotal: Int = 0

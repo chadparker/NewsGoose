@@ -13,7 +13,7 @@ public final class Database {
 
     // MARK: - Static
 
-    public static let shared = makeShared()
+    static let shared = makeShared()
 
     public static var directory: URL! {
         didSet {
