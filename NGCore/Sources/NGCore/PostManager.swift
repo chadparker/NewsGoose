@@ -34,7 +34,7 @@ public final class PostManager {
 
     }
 
-    public func postsMatching(query: String, completion: @escaping ([(day: Date, posts: [Post])]) -> Void) {
+    public func postsGroupedByDayMatching(query: String, completion: @escaping ([(day: Date, posts: [Post])]) -> Void) {
         let posts = try! Database.shared.postsMatching(query: query)
         let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
             .map { (day: $0.key, posts: $0.value) }
