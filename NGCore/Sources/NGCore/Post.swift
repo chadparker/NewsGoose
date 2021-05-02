@@ -8,7 +8,7 @@
 import Foundation
 import GRDB
 
-public struct Post {
+public struct Post: Identifiable, Hashable {
 
     public let id: String
 
@@ -27,13 +27,7 @@ public struct Post {
     public var day: Date?
 }
 
-extension Post: Codable {
-    
-}
-
-extension Post: FetchableRecord, MutablePersistableRecord {
-
-}
+// MARK: - Calendar Helper
 
 extension Post {
 
@@ -46,4 +40,14 @@ extension Post {
         cal.timeZone = TimeZone(secondsFromGMT: 0)!
         return cal
     }()
+}
+
+// MARK: - Persistence
+
+extension Post: Codable, FetchableRecord, MutablePersistableRecord {
+
+    enum Columns {
+        static let date = Column(CodingKeys.date)
+        static let points = Column(CodingKeys.points)
+    }
 }
