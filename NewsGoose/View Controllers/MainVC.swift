@@ -20,13 +20,7 @@ class MainVC: UIViewController {
     
     var pointsSegmentValue: Int {
         let pointsText = pointsSegControl.titleForSegment(at: pointsSegControl.selectedSegmentIndex)!
-        let digitsString = pointsText.replacingOccurrences(
-            of: "\\D",
-            with: "",
-            options: .regularExpression,
-            range: pointsText.startIndex..<pointsText.endIndex
-        )
-        return Int(digitsString) ?? 0
+        return pointsText.digitsOnlyIntValue
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

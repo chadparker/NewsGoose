@@ -26,7 +26,7 @@ public struct Post: Identifiable, Hashable {
     public let date: Date
     public var day: Date?
 
-    public var jsFilename: String?
+    public var jsFilenameInt: Int?
 }
 
 // MARK: - Calendar Helper

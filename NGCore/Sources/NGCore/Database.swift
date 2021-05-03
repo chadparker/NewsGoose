@@ -63,7 +63,7 @@ public final class Database {
 
         migrator.registerMigration("createProject") { db in
             try db.create(table: "post") { t in
-                t.column("id", .text).primaryKey().indexed()
+                t.column("id", .text).primaryKey()
 
                 t.column("link_text", .text).notNull()
                 t.column("link", .text).notNull()
@@ -76,10 +76,10 @@ public final class Database {
                 t.column("points", .integer).indexed()
                 t.column("comments", .integer)
 
-                t.column("date", .datetime).notNull().indexed()
-                t.column("day", .datetime).notNull().indexed()
+                t.column("date", .datetime).notNull()
+                t.column("day", .datetime).notNull()
 
-                t.column("jsFilename", .text).notNull()
+                t.column("jsFilenameInt", .integer).notNull()
             }
         }
 

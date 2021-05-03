@@ -37,7 +37,7 @@ final class PostNetworkFetcher {
 
                 let postsWithFilenames = posts.map { post -> Post in
                     var newPost = post
-                    newPost.jsFilename = "latest.js"
+                    newPost.jsFilenameInt = 0
                     return newPost
                 }
 
