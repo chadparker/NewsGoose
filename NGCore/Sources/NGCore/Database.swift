@@ -77,6 +77,8 @@ public final class Database {
 
                 t.column("date", .datetime).notNull().indexed()
                 t.column("day", .datetime).notNull().indexed()
+
+                t.column("jsFilename", .text).notNull()
             }
         }
 

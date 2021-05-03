@@ -38,14 +38,20 @@ public final class PostImporter: ObservableObject {
             DispatchQueue.main.async {
                 progressReader?.fileCountTotal = filePaths.count
             }
-            for (index, filePath) in filePaths.enumerated() {
+            for (index, (filePath, filename)) in filePaths.enumerated() {
                 let url = URL(fileURLWithPath: filePath)
                 let data = try! Data(contentsOf: url)
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .secondsSince1970
                 let posts = try! decoder.decode([Post].self, from: data)
 
-                try! Database.shared.savePosts(posts)
+                let postsWithFilenames = posts.map { post -> Post in
+                    var newPost = post
+                    newPost.jsFilename = filename
+                    return newPost
+                }
+
+                try! Database.shared.savePosts(postsWithFilenames)
 
                 postCount += posts.count
 
@@ -55,10 +61,10 @@ public final class PostImporter: ObservableObject {
         }
     }
 
-    func getDataFilePaths() -> [String] {
+    func getDataFilePaths() -> [(filePath: String, filename: String)] {
         do {
             let filenames = try FileManager.default.contentsOfDirectory(atPath: dataPath)
-            return filenames.map { dataPath + $0 }
+            return filenames.map { (dataPath + $0, $0) }
         } catch {
             fatalError()
         }
