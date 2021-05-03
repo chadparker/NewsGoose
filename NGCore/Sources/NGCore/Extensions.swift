@@ -19,3 +19,19 @@ public extension String {
         return Int(digitsString) ?? 0
     }
 }
+
+extension DateFormatter {
+
+    static var jsIntFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd"
+        return formatter
+    }()
+}
+
+extension Date {
+
+    var jsInt: Int {
+        return Int(DateFormatter.jsIntFormatter.string(from: self))!
+    }
+}
