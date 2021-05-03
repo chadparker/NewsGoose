@@ -76,7 +76,7 @@ public final class Database {
                 t.column("points", .integer).indexed()
                 t.column("comments", .integer)
 
-                t.column("date", .datetime).notNull()
+                t.column("date", .datetime).notNull().indexed()
                 t.column("day", .datetime).notNull()
 
                 t.column("js_id", .integer).notNull()
