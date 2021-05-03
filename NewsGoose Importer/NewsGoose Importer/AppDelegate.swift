@@ -21,10 +21,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             .appendingPathComponent("database", isDirectory: true)
 
         let dataPath = "\(Bundle.main.resourcePath!)/data/"
-        let importer = PostImporter(dataPath: dataPath)
+        let mainViewModel = MainViewModel()
+        let importer = PostImporter(dataPath: dataPath, progressReader: mainViewModel)
         importer.importFromJS()
 
-        let contentView = MainView().environmentObject(importer)
+        let contentView = MainView().environmentObject(mainViewModel)
 
         window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),

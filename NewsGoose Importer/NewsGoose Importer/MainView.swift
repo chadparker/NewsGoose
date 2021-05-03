@@ -10,7 +10,7 @@ import NGCore
 
 struct MainView: View {
 
-    @EnvironmentObject var importer: PostImporter
+    @EnvironmentObject var viewModel: MainViewModel
 
     var body: some View {
         VStack {
@@ -18,11 +18,11 @@ struct MainView: View {
                 .font(.title)
                 .padding()
             VStack {
-                ProgressView("Importing posts…", value: Float(importer.fileCountProgress), total: Float(importer.fileCountTotal))
+                ProgressView("Importing posts…", value: Float(viewModel.fileCountProgress), total: Float(viewModel.fileCountTotal))
                 HStack {
-                    Text("\(importer.postsImportedCount) posts imported")
+                    Text("\(viewModel.postsImportedCount) posts imported")
                     Spacer()
-                    Text("file \(importer.fileCountProgress) of \(importer.fileCountTotal)")
+                    Text("file \(viewModel.fileCountProgress) of \(viewModel.fileCountTotal)")
                 }
                 .font(.callout.monospacedDigit())
                 .foregroundColor(.gray)
@@ -37,6 +37,6 @@ struct MainView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView().environmentObject(PostImporter(dataPath: ""))
+        MainView().environmentObject(MainViewModel())
     }
 }

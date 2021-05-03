@@ -8,37 +8,22 @@
 import Foundation
 import Combine
 
+public protocol ImporterProgress: AnyObject {
+    var fileCountTotal: Int { get set }
+    var fileCounter: PassthroughSubject<Int, Never> { get set }
+    var postCounter: PassthroughSubject<Int, Never> { get set }
+}
+
 public final class PostImporter: ObservableObject {
 
-    @Published public var fileCountProgress = 0
-    @Published public var fileCountTotal: Int = 0
-    @Published public var postsImportedCount = 0
-
-    private var fileCounter = PassthroughSubject<Int, Never>()
-    private var postCounter = PassthroughSubject<Int, Never>()
-    private var fileCounterSubscriber: AnyCancellable?
-    private var postCounterSubscriber: AnyCancellable?
-
     private let importQueue = DispatchQueue(label: "PostImporterQueue", qos: .userInitiated)
-    private let fileCountQueue = DispatchQueue(label: "FileCountQueue", qos: .background)
-    private let postCountQueue = DispatchQueue(label: "PostCountQueue", qos: .background)
 
     let dataPath: String
+    weak var progressReader: ImporterProgress?
 
-    public init(dataPath: String) {
+    public init(dataPath: String, progressReader: ImporterProgress) {
         self.dataPath = dataPath
-        fileCounterSubscriber = fileCounter
-            .throttle(for: 0.1, scheduler: fileCountQueue, latest: true)
-            .receive(on: DispatchQueue.main)
-            .sink { value in
-                self.fileCountProgress = value
-            }
-        postCounterSubscriber = postCounter
-            .throttle(for: 0.1, scheduler: postCountQueue, latest: true)
-            .receive(on: DispatchQueue.main)
-            .sink { value in
-                self.postsImportedCount = value
-            }
+        self.progressReader = progressReader
     }
 
     public func importFromJS() {
@@ -51,7 +36,7 @@ public final class PostImporter: ObservableObject {
 
             let filePaths = getDataFilePaths()
             DispatchQueue.main.async {
-                fileCountTotal = filePaths.count
+                progressReader?.fileCountTotal = filePaths.count
             }
             for (index, filePath) in filePaths.enumerated() {
                 let url = URL(fileURLWithPath: filePath)
@@ -64,8 +49,8 @@ public final class PostImporter: ObservableObject {
 
                 postCount += posts.count
 
-                fileCounter.send(index + 1)
-                postCounter.send(postCount)
+                progressReader?.fileCounter.send(index + 1)
+                progressReader?.postCounter.send(postCount)
             }
         }
     }
