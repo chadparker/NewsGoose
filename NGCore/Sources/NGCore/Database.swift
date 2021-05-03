@@ -79,7 +79,7 @@ public final class Database {
                 t.column("date", .datetime).notNull()
                 t.column("day", .datetime).notNull()
 
-                t.column("jsFilenameInt", .integer).notNull()
+                t.column("js_id", .integer).notNull()
             }
         }
 

@@ -46,7 +46,7 @@ public final class PostImporter: ObservableObject {
 
                 let postsWithFilenames = posts.map { post -> Post in
                     var newPost = post
-                    newPost.jsFilenameInt = filename.digitsOnlyIntValue
+                    newPost.js_id = filename.digitsOnlyIntValue
                     return newPost
                 }
 

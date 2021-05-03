@@ -26,7 +26,7 @@ public struct Post: Identifiable, Hashable {
     public let date: Date
     public var day: Date?
 
-    public var jsFilenameInt: Int?
+    public var js_id: Int?
 }
 
 // MARK: - Persistence
