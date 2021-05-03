@@ -88,7 +88,7 @@ public final class Database {
 }
 
 
-// MARK: - Database: Write
+// MARK: - Database: Writes
 
 extension Database {
 
@@ -115,15 +115,15 @@ extension Database {
 }
 
 
-// MARK: - Database: Read
+// MARK: - Database: Reads
 
 extension Database {
 
     func mostRecentJSID() throws -> Int {
         try dbWriter.read { db in
             return try Post
-                .order(Column("date").desc)
-                .filter(Column("js_id") > 0)
+                .order(Post.Columns.date.desc)
+                .filter(Post.Columns.js_id > 0)
                 .fetchOne(db)!
                 .js_id!
         }
@@ -132,8 +132,8 @@ extension Database {
     func recentPosts(pointsThreshold: Int) throws -> [Post] {
         try dbWriter.read { db in
             return try Post
-                .order(Column("date").desc)
-                .filter(Column("points") >= pointsThreshold)
+                .order(Post.Columns.date.desc)
+                .filter(Post.Columns.points >= pointsThreshold)
                 .limit(3000)
                 .fetchAll(db)
         }
@@ -142,8 +142,8 @@ extension Database {
     func postsMatching(query: String) throws -> [Post] {
         try dbWriter.read { db in
             return try Post
-                .filter(Column("link_text").like("%\(query)%"))
-                .order(Column("date").desc)
+                .filter(Post.Columns.link_text.like("%\(query)%"))
+                .order(Post.Columns.date.desc)
                 .limit(3000)
                 .fetchAll(db)
         }

@@ -34,8 +34,21 @@ public struct Post: Identifiable, Hashable {
 extension Post: Codable, FetchableRecord, MutablePersistableRecord {
 
     enum Columns {
-        static let date = Column(CodingKeys.date)
+        static let link_text = Column(CodingKeys.link_text)
+        static let link = Column(CodingKeys.link)
+        static let submitter = Column(CodingKeys.submitter)
+
+        static let type = Column(CodingKeys.type)
+        static let source = Column(CodingKeys.source)
+        static let dead = Column(CodingKeys.dead)
+
         static let points = Column(CodingKeys.points)
+        static let comments = Column(CodingKeys.comments)
+
+        static let date = Column(CodingKeys.date)
+        static let day = Column(CodingKeys.day)
+
+        static let js_id = Column(CodingKeys.js_id)
     }
 
     static var decoder: JSONDecoder {
