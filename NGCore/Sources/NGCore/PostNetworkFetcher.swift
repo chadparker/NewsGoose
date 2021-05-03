@@ -11,6 +11,7 @@ public enum PostNetworkError : Error {
     case dataTask(Error)
     case noData
     case parseError(Error)
+    case notFound
 }
 
 final class PostNetworkFetcher {
@@ -49,12 +50,17 @@ final class PostNetworkFetcher {
         }.resume()
     }
 
-    func fetchDay(_ day: String, completion: @escaping (Result<[Post], PostNetworkError>) -> Void) {
-        let url = baseURL.appendingPathComponent("\(day).js")
+    func fetchDay(_ jsID: Int, completion: @escaping (Result<[Post], PostNetworkError>) -> Void) {
+        let url = baseURL.appendingPathComponent("\(jsID).js")
 
-        URLSession.shared.dataTask(with: url) { data, _, error in
+        URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil else {
                 DispatchQueue.main.async { completion(.failure(.dataTask(error!))) }
+                return
+            }
+            guard let response = response as? HTTPURLResponse,
+                  (200..<300).contains(response.statusCode) else {
+                DispatchQueue.main.async { completion(.failure(.notFound)) }
                 return
             }
             guard let data = data else {
@@ -64,7 +70,14 @@ final class PostNetworkFetcher {
 
             do {
                 let posts = try Post.decoder.decode([Post].self, from: data)
-                DispatchQueue.main.async { completion(.success(posts)) }
+
+                let postsWithFilenames = posts.map { post -> Post in
+                    var newPost = post
+                    newPost.js_id = jsID
+                    return newPost
+                }
+
+                DispatchQueue.main.async { completion(.success(postsWithFilenames)) }
             } catch {
                 print(error)
                 DispatchQueue.main.async { completion(.failure(.parseError(error))) }

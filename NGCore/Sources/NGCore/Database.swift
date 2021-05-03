@@ -119,6 +119,16 @@ extension Database {
 
 extension Database {
 
+    func mostRecentJSID() throws -> Int {
+        try dbWriter.read { db in
+            return try Post
+                .order(Column("date").desc)
+                .filter(Column("js_id") > 0)
+                .fetchOne(db)!
+                .js_id!
+        }
+    }
+
     func recentPosts(pointsThreshold: Int) throws -> [Post] {
         try dbWriter.read { db in
             return try Post

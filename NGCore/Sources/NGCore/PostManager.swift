@@ -23,6 +23,36 @@ public final class PostManager {
                 completion(.failure(error))
             }
         }
+
+        let newestJSID = try! Database.shared.mostRecentJSID()
+        let todayJSID = Date().jsInt
+        let jsIDsToFetch = ((newestJSID - 3)...todayJSID).reversed()
+
+
+        DispatchQueue.global().async {
+
+            let dispatchGroup = DispatchGroup()
+
+            for jsID in jsIDsToFetch {
+                dispatchGroup.enter()
+                print("fetching \(jsID)")
+                self.postNetworkFetcher.fetchDay(jsID) { result in
+                    switch result {
+                    case .success(let posts):
+                        try! Database.shared.savePosts(posts)
+                        dispatchGroup.leave()
+                    case .failure(let error):
+                        switch error {
+                        case .notFound:
+                            dispatchGroup.leave()
+                        default:
+                            fatalError()
+                        }
+                    }
+                }
+                dispatchGroup.wait()
+            }
+        }
     }
 
     public func recentPostsGroupedByDay(pointsThreshold: Int) -> [(day: Date, posts: [Post])] {
