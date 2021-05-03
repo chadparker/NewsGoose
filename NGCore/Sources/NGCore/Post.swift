@@ -29,7 +29,23 @@ public struct Post: Identifiable, Hashable {
     public var jsFilenameInt: Int?
 }
 
-// MARK: - Calendar Helper
+// MARK: - Persistence
+
+extension Post: Codable, FetchableRecord, MutablePersistableRecord {
+
+    enum Columns {
+        static let date = Column(CodingKeys.date)
+        static let points = Column(CodingKeys.points)
+    }
+
+    static var decoder: JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .secondsSince1970
+        return decoder
+    }
+}
+
+// MARK: - Date Helpers
 
 extension Post {
 
@@ -42,14 +58,4 @@ extension Post {
         cal.timeZone = TimeZone(secondsFromGMT: 0)!
         return cal
     }()
-}
-
-// MARK: - Persistence
-
-extension Post: Codable, FetchableRecord, MutablePersistableRecord {
-
-    enum Columns {
-        static let date = Column(CodingKeys.date)
-        static let points = Column(CodingKeys.points)
-    }
 }

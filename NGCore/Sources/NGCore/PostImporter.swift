@@ -41,9 +41,8 @@ public final class PostImporter: ObservableObject {
             for (index, (filePath, filename)) in filePaths.enumerated() {
                 let url = URL(fileURLWithPath: filePath)
                 let data = try! Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .secondsSince1970
-                let posts = try! decoder.decode([Post].self, from: data)
+                
+                let posts = try! Post.decoder.decode([Post].self, from: data)
 
                 let postsWithFilenames = posts.map { post -> Post in
                     var newPost = post
