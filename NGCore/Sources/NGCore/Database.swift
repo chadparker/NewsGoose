@@ -24,6 +24,7 @@ public final class Database {
     public static func copyDBFromBundle() {
         let bundledDB = Bundle.main.resourceURL!.appendingPathComponent("db.sqlite")
         let workingDB = directory.appendingPathComponent("db.sqlite")
+        #warning("need to hash the DB files to compare if app update has a new version?")
         if !FileManager.default.fileExists(atPath: workingDB.path) {
             try! FileManager.default.copyItem(at: bundledDB, to: workingDB)
         }

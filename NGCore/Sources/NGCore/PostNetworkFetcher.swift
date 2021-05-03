@@ -34,7 +34,14 @@ final class PostNetworkFetcher {
                 // The `latest.js` file starts with `var entries = `. remove for valid JSON:
                 let trimmedData = data.dropFirst(14)
                 let posts = try JSONDecoder().decode([Post].self, from: trimmedData)
-                DispatchQueue.main.async { completion(.success(posts)) }
+
+                let postsWithFilenames = posts.map { post -> Post in
+                    var newPost = post
+                    newPost.jsFilename = "latest.js"
+                    return newPost
+                }
+
+                DispatchQueue.main.async { completion(.success(postsWithFilenames)) }
             } catch {
                 print(error)
                 DispatchQueue.main.async { completion(.failure(.parseError(error))) }
