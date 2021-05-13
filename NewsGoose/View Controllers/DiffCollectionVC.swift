@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import NGCore
+import GRDB
 
 class DiffCollectionVC: UICollectionViewController {
 
-    var dataSource: UICollectionViewDiffableDataSource<Int, Int>! = nil
+    var postManager = PostManager()
+
+    var dataSource: UICollectionViewDiffableDataSource<Int, Post>! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +40,10 @@ class DiffCollectionVC: UICollectionViewController {
     }
 
     func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Int, Int>(collectionView: collectionView) {
-            (collectionView: UICollectionView, indexPath: IndexPath, item: Int) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Int, Post>(collectionView: collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, item: Post) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiffCell.reuseIdentifier, for: indexPath) as! DiffCell
-            cell.text = "\(item)"
+            cell.text = "\(item.link_text)"
             return cell
         }
 
@@ -47,12 +51,16 @@ class DiffCollectionVC: UICollectionViewController {
         dataSource.apply(dataSnapshot(), animatingDifferences: false)
     }
 
-    func dataSnapshot() -> NSDiffableDataSourceSnapshot<Int, Int> {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, Int>()
+    func dataSnapshot() -> NSDiffableDataSourceSnapshot<Int, Post> {
+
+        let postsByDay = postManager.recentPostsGroupedByDay(pointsThreshold: 50)
+        let posts = postsByDay[2].posts
+
+        var snapshot = NSDiffableDataSourceSnapshot<Int, Post>()
         snapshot.appendSections([0])
-        snapshot.appendItems([0, 1, 2, 3], toSection: 0)
+        snapshot.appendItems([posts[0], posts[1], posts[2], posts[3]], toSection: 0)
         snapshot.appendSections([1])
-        snapshot.appendItems([4, 5], toSection: 1)
+        snapshot.appendItems([posts[4], posts[5]], toSection: 1)
         return snapshot
     }
 }
