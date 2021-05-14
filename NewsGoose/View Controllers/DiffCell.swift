@@ -23,7 +23,7 @@ class DiffCell: UICollectionViewCell {
     var delegate: PostCellDelegate!
 
     private let pointsLabel = UILabel()
-    private let postLabel = UILabel()
+    private let linkTextLabel = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,11 +58,11 @@ class DiffCell: UICollectionViewCell {
             make.edges.equalTo(pointsMaxWidthLabel)
         }
 
-        postLabel.font = .preferredFont(forTextStyle: .body)
-        postLabel.adjustsFontForContentSizeCategory = true
-        postLabel.numberOfLines = 0
-        addSubview(postLabel)
-        postLabel.snp.makeConstraints { make in
+        linkTextLabel.font = .preferredFont(forTextStyle: .body)
+        linkTextLabel.adjustsFontForContentSizeCategory = true
+        linkTextLabel.numberOfLines = 0
+        addSubview(linkTextLabel)
+        linkTextLabel.snp.makeConstraints { make in
             make.leading.equalTo(pointsLabel.snp.trailing).offset(10)
             make.height.greaterThanOrEqualTo(44)
             make.top.bottom.equalToSuperview().inset(10)
@@ -73,7 +73,7 @@ class DiffCell: UICollectionViewCell {
         commentsButton.addTarget(self, action: #selector(showComments(_:)), for: .touchUpInside)
         addSubview(commentsButton)
         commentsButton.snp.makeConstraints { make in
-            make.leading.equalTo(postLabel.snp.trailing).offset(2)
+            make.leading.equalTo(linkTextLabel.snp.trailing).offset(2)
             make.top.bottom.equalToSuperview().inset(10)
             make.trailing.equalToSuperview().inset(4)
             make.width.equalTo(44)
@@ -82,7 +82,7 @@ class DiffCell: UICollectionViewCell {
 
     private func updateViews() {
         pointsLabel.text = "\(post.points ?? 0)"
-        postLabel.text = post.link_text
+        linkTextLabel.text = post.link_text
     }
 
     @objc func showComments(_ sender: UIButton) {
