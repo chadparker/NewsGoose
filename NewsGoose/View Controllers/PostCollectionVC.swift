@@ -1,5 +1,5 @@
 //
-//  DiffCollectionVC.swift
+//  PostCollectionVC.swift
 //  NewsGoose
 //
 //  Created by Chad Parker on 5/10/21.
@@ -9,7 +9,7 @@ import UIKit
 import NGCore
 import GRDB
 
-class DiffCollectionVC: UICollectionViewController {
+class PostCollectionVC: UICollectionViewController {
 
     private static let sectionHeaderElementKind = "section-header-element-kind"
 
@@ -38,7 +38,7 @@ class DiffCollectionVC: UICollectionViewController {
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                heightDimension: .estimated(44)),
-            elementKind: DiffCollectionVC.sectionHeaderElementKind,
+            elementKind: PostCollectionVC.sectionHeaderElementKind,
             alignment: .top
         )
         sectionHeader.pinToVisibleBounds = true // this is slow with a long list,
@@ -61,7 +61,7 @@ class DiffCollectionVC: UICollectionViewController {
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: post)
         }
 
-        let headerRegistration = UICollectionView.SupplementaryRegistration<DateHeaderReusableView>(elementKind: DiffCollectionVC.sectionHeaderElementKind) { headerView, string, indexPath in
+        let headerRegistration = UICollectionView.SupplementaryRegistration<DateHeaderReusableView>(elementKind: PostCollectionVC.sectionHeaderElementKind) { headerView, string, indexPath in
             guard let post = self.dataSource.itemIdentifier(for: indexPath) else { return }
             headerView.date = post.date
         }

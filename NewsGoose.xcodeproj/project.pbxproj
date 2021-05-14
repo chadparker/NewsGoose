@@ -24,7 +24,7 @@
 		63B9355E26123F0D0097FD2C /* NewsGooseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9355D26123F0D0097FD2C /* NewsGooseTests.swift */; };
 		63B9356926123F0D0097FD2C /* NewsGooseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9356826123F0D0097FD2C /* NewsGooseUITests.swift */; };
 		63B9358B261282330097FD2C /* PostTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9358A261282330097FD2C /* PostTableVC.swift */; };
-		63BD622F2649C2BE009A2514 /* DiffCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BD622E2649C2BE009A2514 /* DiffCollectionVC.swift */; };
+		63BD622F2649C2BE009A2514 /* PostCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BD622E2649C2BE009A2514 /* PostCollectionVC.swift */; };
 		63EA872C26152F4A005C643F /* SearchTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA872B26152F4A005C643F /* SearchTableVC.swift */; };
 		63EA8735261586AF005C643F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA8733261586AF005C643F /* PostCell.swift */; };
 		63EA8736261586AF005C643F /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EA8734261586AF005C643F /* PostCell.xib */; };
@@ -77,7 +77,7 @@
 		63B9356826123F0D0097FD2C /* NewsGooseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsGooseUITests.swift; sourceTree = "<group>"; };
 		63B9356A26123F0D0097FD2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63B9358A261282330097FD2C /* PostTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableVC.swift; sourceTree = "<group>"; };
-		63BD622E2649C2BE009A2514 /* DiffCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffCollectionVC.swift; sourceTree = "<group>"; };
+		63BD622E2649C2BE009A2514 /* PostCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionVC.swift; sourceTree = "<group>"; };
 		63EA872B26152F4A005C643F /* SearchTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableVC.swift; sourceTree = "<group>"; };
 		63EA8733261586AF005C643F /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		63EA8734261586AF005C643F /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 				637DCF522613D0CC00420C6B /* SearchVC.swift */,
 				63EA872B26152F4A005C643F /* SearchTableVC.swift */,
 				63B9358A261282330097FD2C /* PostTableVC.swift */,
-				63BD622E2649C2BE009A2514 /* DiffCollectionVC.swift */,
+				63BD622E2649C2BE009A2514 /* PostCollectionVC.swift */,
 				63A3D058264A2CDB00C44A63 /* DiffCell.swift */,
 				63951B9E264DCAA6008C961B /* DateHeaderReusableView.swift */,
 				63EA8733261586AF005C643F /* PostCell.swift */,
@@ -358,7 +358,7 @@
 			files = (
 				637DCF532613D0CC00420C6B /* SearchVC.swift in Sources */,
 				63EA872C26152F4A005C643F /* SearchTableVC.swift in Sources */,
-				63BD622F2649C2BE009A2514 /* DiffCollectionVC.swift in Sources */,
+				63BD622F2649C2BE009A2514 /* PostCollectionVC.swift in Sources */,
 				63B9354B26123F0C0097FD2C /* MainVC.swift in Sources */,
 				63B9354726123F0C0097FD2C /* AppDelegate.swift in Sources */,
 				63EA8735261586AF005C643F /* PostCell.swift in Sources */,
