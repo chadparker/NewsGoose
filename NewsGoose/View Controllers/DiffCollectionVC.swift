@@ -11,47 +11,71 @@ import GRDB
 
 class DiffCollectionVC: UICollectionViewController {
 
-    var postManager = PostManager()
+    private static let sectionHeaderElementKind = "section-header-element-kind"
 
-    var dataSource: UICollectionViewDiffableDataSource<Int, Post>! = nil
+    private var postManager = PostManager()
+
+    private var dataSource: UICollectionViewDiffableDataSource<Int, Post>! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.clearsSelectionOnViewWillAppear = false
         collectionView.collectionViewLayout = createLayout()
-        collectionView.register(UINib(nibName: "DiffCell", bundle: nil), forCellWithReuseIdentifier: DiffCell.reuseIdentifier)
         configureDataSource()
     }
 
     private func createLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .estimated(50))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
         let section = NSCollectionLayoutSection(group: group)
 
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .estimated(44)),
+            elementKind: DiffCollectionVC.sectionHeaderElementKind,
+            alignment: .top
+        )
+        sectionHeader.pinToVisibleBounds = true
+        section.boundarySupplementaryItems = [sectionHeader]
+
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.interSectionSpacing = 30
+
         let layout = UICollectionViewCompositionalLayout(section: section, configuration: config)
 
         return layout
     }
 
-    func configureDataSource() {
+    private func configureDataSource() {
+
+        let cellRegistration = UICollectionView.CellRegistration<DiffCell, Post> { cell, indexPath, post in
+            cell.post = post
+        }
+
         dataSource = UICollectionViewDiffableDataSource<Int, Post>(collectionView: collectionView) {
-            (collectionView: UICollectionView, indexPath: IndexPath, item: Post) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiffCell.reuseIdentifier, for: indexPath) as! DiffCell
-            cell.text = "\(item.link_text)"
-            return cell
+            (collectionView: UICollectionView, indexPath: IndexPath, post: Post) -> UICollectionViewCell? in
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: post)
+        }
+
+        let headerRegistration = UICollectionView.SupplementaryRegistration<DateHeaderReusableView>(elementKind: DiffCollectionVC.sectionHeaderElementKind) { headerView, string, indexPath in
+            headerView.date = Date()
+        }
+
+        dataSource.supplementaryViewProvider = { view, kind, indexPath in
+            return self.collectionView.dequeueConfiguredReusableSupplementary(
+                using: headerRegistration, for: indexPath)
         }
 
         // initial data
         dataSource.apply(dataSnapshot(), animatingDifferences: false)
     }
 
-    func dataSnapshot() -> NSDiffableDataSourceSnapshot<Int, Post> {
+    private func dataSnapshot() -> NSDiffableDataSourceSnapshot<Int, Post> {
 
         let postsByDay = postManager.recentPostsGroupedByDay(pointsThreshold: 50)
         let posts = postsByDay[2].posts

@@ -6,21 +6,42 @@
 //
 
 import UIKit
+import NGCore
 
 class DiffCell: UICollectionViewCell {
 
-    static let reuseIdentifier = "DiffCell"
-
-    @IBOutlet weak var label: UILabel!
-
-    var text: String! {
+    var post: Post! {
         didSet {
-            label.text = text
+            updateViews()
         }
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        backgroundColor = .init(white: 0.95, alpha: 1.0)
+    private let postLabel = UILabel()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUpViews()
+    }
+
+    required init?(coder: NSCoder) { fatalError() }
+
+    private func setUpViews() {
+        backgroundColor = .systemGray6
+        addSubview(postLabel)
+        postLabel.translatesAutoresizingMaskIntoConstraints = false
+        let inset: CGFloat = 10
+        NSLayoutConstraint.activate([
+            postLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
+            postLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
+            postLabel.topAnchor.constraint(equalTo: topAnchor, constant: inset),
+            postLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset),
+        ])
+        postLabel.font = .preferredFont(forTextStyle: .body)
+        postLabel.adjustsFontForContentSizeCategory = true
+        postLabel.numberOfLines = 0
+    }
+
+    private func updateViews() {
+        postLabel.text = post.link_text
     }
 }

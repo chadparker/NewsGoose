@@ -11,6 +11,7 @@
 		6352D65D26323A9A00D8789F /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6352D65C26323A8B00D8789F /* db.sqlite */; };
 		6359F19D263B74000022CB5E /* NGCore in Frameworks */ = {isa = PBXBuildFile; productRef = 6359F19C263B74000022CB5E /* NGCore */; };
 		637DCF532613D0CC00420C6B /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637DCF522613D0CC00420C6B /* SearchVC.swift */; };
+		63951B9F264DCAA6008C961B /* DateHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63951B9E264DCAA6008C961B /* DateHeaderReusableView.swift */; };
 		63A30DA7261BD77300E24CBE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A30DA6261BD77300E24CBE /* Extensions.swift */; };
 		63A3D05A264A2CDB00C44A63 /* DiffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A3D058264A2CDB00C44A63 /* DiffCell.swift */; };
 		63A3D05B264A2CDB00C44A63 /* DiffCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63A3D059264A2CDB00C44A63 /* DiffCell.xib */; };
@@ -58,6 +59,7 @@
 		6359F18E263B6B5C0022CB5E /* NewsGoose Importer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "NewsGoose Importer.xcodeproj"; path = "NewsGoose Importer/NewsGoose Importer.xcodeproj"; sourceTree = "<group>"; };
 		6359F19A263B731A0022CB5E /* NGCore */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NGCore; sourceTree = "<group>"; };
 		637DCF522613D0CC00420C6B /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		63951B9E264DCAA6008C961B /* DateHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeaderReusableView.swift; sourceTree = "<group>"; };
 		63A30DA6261BD77300E24CBE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		63A3D058264A2CDB00C44A63 /* DiffCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffCell.swift; sourceTree = "<group>"; };
 		63A3D059264A2CDB00C44A63 /* DiffCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiffCell.xib; sourceTree = "<group>"; };
@@ -190,7 +192,7 @@
 				63B9358A261282330097FD2C /* PostTableVC.swift */,
 				63BD622E2649C2BE009A2514 /* DiffCollectionVC.swift */,
 				63A3D058264A2CDB00C44A63 /* DiffCell.swift */,
-				63A3D059264A2CDB00C44A63 /* DiffCell.xib */,
+				63951B9E264DCAA6008C961B /* DateHeaderReusableView.swift */,
 				63EA8733261586AF005C643F /* PostCell.swift */,
 				63EA8734261586AF005C643F /* PostCell.xib */,
 			);
@@ -323,7 +325,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63A3D05B264A2CDB00C44A63 /* DiffCell.xib in Resources */,
 				6352D65D26323A9A00D8789F /* db.sqlite in Resources */,
 				63B9355326123F0C0097FD2C /* LaunchScreen.storyboard in Resources */,
 				63B9355026123F0C0097FD2C /* Assets.xcassets in Resources */,
@@ -360,6 +361,7 @@
 				63B9354726123F0C0097FD2C /* AppDelegate.swift in Sources */,
 				63EA8735261586AF005C643F /* PostCell.swift in Sources */,
 				63B9354926123F0C0097FD2C /* SceneDelegate.swift in Sources */,
+				63951B9F264DCAA6008C961B /* DateHeaderReusableView.swift in Sources */,
 				63B9358B261282330097FD2C /* PostTableVC.swift in Sources */,
 				63A3D05A264A2CDB00C44A63 /* DiffCell.swift in Sources */,
 				63A30DA7261BD77300E24CBE /* Extensions.swift in Sources */,
