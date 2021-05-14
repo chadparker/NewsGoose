@@ -27,7 +27,7 @@ class PostCollectionVC: UICollectionViewController {
 
     private func createLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: .estimated(50))
+                                              heightDimension: .estimated(70))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
@@ -54,6 +54,7 @@ class PostCollectionVC: UICollectionViewController {
 
         let cellRegistration = UICollectionView.CellRegistration<DiffCell, Post> { cell, indexPath, post in
             cell.post = post
+            cell.delegate = self
         }
 
         dataSource = UICollectionViewDiffableDataSource<Date, Post>(collectionView: collectionView) {
@@ -100,5 +101,12 @@ class PostCollectionVC: UICollectionViewController {
     private func updateDataSource(with posts: [Post]) {
         let snapshot = dataSnapshot(for: posts)
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+    }
+}
+
+extension PostCollectionVC: PostCellDelegate {
+
+    func showComments(for post: Post) {
+        presentSafariVC(for: post, showing: .comments)
     }
 }
