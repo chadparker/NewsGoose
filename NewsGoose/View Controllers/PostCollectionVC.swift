@@ -45,9 +45,7 @@ class PostCollectionVC: UICollectionViewController {
                                                 // and my design has visual flaws when scrolling quickly. rework later.
         section.boundarySupplementaryItems = [sectionHeader]
 
-        let layout = UICollectionViewCompositionalLayout(section: section)
-
-        return layout
+        return UICollectionViewCompositionalLayout(section: section)
     }
 
     private func configureDataSource() {
@@ -93,14 +91,11 @@ class PostCollectionVC: UICollectionViewController {
         postsCancellable = Database.shared.observePostsOrderedByDate(limit: 300,
             onError: { error in fatalError("Unexpected error: \(error)") },
             onChange: { [weak self] posts in
-                self?.updateDataSource(with: posts)
+                guard let self = self else { return }
+                let snapshot = self.dataSnapshot(for: posts)
+                self.dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
             }
         )
-    }
-
-    private func updateDataSource(with posts: [Post]) {
-        let snapshot = dataSnapshot(for: posts)
-        dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 
     // MARK: - UICollectionViewDelegate
