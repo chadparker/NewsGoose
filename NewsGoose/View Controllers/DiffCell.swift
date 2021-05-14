@@ -7,6 +7,7 @@
 
 import UIKit
 import NGCore
+import SnapKit
 
 class DiffCell: UICollectionViewCell {
 
@@ -26,18 +27,13 @@ class DiffCell: UICollectionViewCell {
     required init?(coder: NSCoder) { fatalError() }
 
     private func setUpViews() {
-        addSubview(postLabel)
-        postLabel.translatesAutoresizingMaskIntoConstraints = false
-        let inset: CGFloat = 10
-        NSLayoutConstraint.activate([
-            postLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
-            postLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
-            postLabel.topAnchor.constraint(equalTo: topAnchor, constant: inset),
-            postLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset),
-        ])
         postLabel.font = .preferredFont(forTextStyle: .body)
         postLabel.adjustsFontForContentSizeCategory = true
         postLabel.numberOfLines = 0
+        addSubview(postLabel)
+        postLabel.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(10)
+        }
     }
 
     private func updateViews() {
