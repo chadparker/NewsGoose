@@ -13,7 +13,7 @@ public final class Database {
 
     // MARK: - Static
 
-    static let shared = makeShared()
+    public static let shared = makeShared()
 
     public static var directory: URL! {
         didSet {
@@ -147,5 +147,17 @@ extension Database {
                 .limit(3000)
                 .fetchAll(db)
         }
+    }
+}
+
+// MARK: - Database: Observations
+
+extension Database {
+
+    /// Tracks changes in players ordered by name
+    public func observePostsOrderedByDate(limit: Int, onError: @escaping (Error) -> Void, onChange: @escaping ([Post]) -> Void) -> DatabaseCancellable {
+        return ValueObservation
+            .tracking(Post.all().orderedByDate().limit(limit).fetchAll)
+            .start(in: dbWriter, onError: onError, onChange: onChange)
     }
 }

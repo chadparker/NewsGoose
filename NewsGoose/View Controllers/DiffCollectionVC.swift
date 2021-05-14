@@ -14,6 +14,7 @@ class DiffCollectionVC: UICollectionViewController {
     private static let sectionHeaderElementKind = "section-header-element-kind"
 
     private var dataSource: UICollectionViewDiffableDataSource<Date, Post>!
+    private var postsCancellable: DatabaseCancellable?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class DiffCollectionVC: UICollectionViewController {
         self.clearsSelectionOnViewWillAppear = false
         collectionView.collectionViewLayout = createLayout()
         configureDataSource()
+        observePosts()
     }
 
     private func createLayout() -> UICollectionViewLayout {
@@ -69,23 +71,34 @@ class DiffCollectionVC: UICollectionViewController {
         }
 
         // initial data
-        dataSource.apply(dataSnapshot(), animatingDifferences: false)
+        let posts = try! Database.shared.recentPosts(pointsThreshold: 500, limit: 300)
+        let snapshot = dataSnapshot(for: posts)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 
-    private func dataSnapshot() -> NSDiffableDataSourceSnapshot<Date, Post> {
-        let posts = try! Database.shared.recentPosts(pointsThreshold: 500, limit: 300)
-        let postsByDay = groupPostsByDay(posts)
+    private func dataSnapshot(for posts: [Post]) -> NSDiffableDataSourceSnapshot<Date, Post> {
+        let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
+            .map { (date: $0.key, posts: $0.value) }
+            .sorted { $0.date > $1.date }
         var snapshot = NSDiffableDataSourceSnapshot<Date, Post>()
-        for day in postsByDay {
+        for day in postsGroupedByDay {
             snapshot.appendSections([day.date])
             snapshot.appendItems(day.posts)
         }
         return snapshot
     }
 
-    private func groupPostsByDay(_ posts: [Post]) -> [(date: Date, posts: [Post])] {
-        return Dictionary(grouping: posts) { $0.day! }
-            .map { (date: $0.key, posts: $0.value) }
-            .sorted { $0.date > $1.date }
+    private func observePosts() {
+        postsCancellable = Database.shared.observePostsOrderedByDate(limit: 300,
+            onError: { error in fatalError("Unexpected error: \(error)") },
+            onChange: { [weak self] posts in
+                self?.updateDataSource(with: posts)
+            }
+        )
+    }
+
+    private func updateDataSource(with posts: [Post]) {
+        let snapshot = dataSnapshot(for: posts)
+        dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
 }

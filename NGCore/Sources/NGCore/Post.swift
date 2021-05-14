@@ -8,7 +8,7 @@
 import Foundation
 import GRDB
 
-public struct Post: Identifiable, Hashable {
+public struct Post: Identifiable {
 
     public let id: String
 
@@ -29,9 +29,32 @@ public struct Post: Identifiable, Hashable {
     public var js_id: Int?
 }
 
+extension Post: Equatable {
+
+    public static func == (lhs: Post, rhs: Post) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
+extension Post: Hashable {
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
+extension Post: Codable {
+
+    static var decoder: JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .secondsSince1970
+        return decoder
+    }
+}
+
 // MARK: - Persistence
 
-extension Post: Codable, FetchableRecord, MutablePersistableRecord {
+extension Post: FetchableRecord, MutablePersistableRecord {
 
     enum Columns {
         static let link_text = Column(CodingKeys.link_text)
@@ -50,11 +73,14 @@ extension Post: Codable, FetchableRecord, MutablePersistableRecord {
 
         static let js_id = Column(CodingKeys.js_id)
     }
+}
 
-    static var decoder: JSONDecoder {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .secondsSince1970
-        return decoder
+// MARK: - Database Requests
+
+extension DerivableRequest where RowDecoder == Post {
+
+    func orderedByDate() -> Self {
+        order(Post.Columns.date.desc)
     }
 }
 
