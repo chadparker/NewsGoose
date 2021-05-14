@@ -102,6 +102,16 @@ class PostCollectionVC: UICollectionViewController {
         let snapshot = dataSnapshot(for: posts)
         dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
     }
+
+    // MARK: - UICollectionViewDelegate
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let post = dataSource.itemIdentifier(for: indexPath) else {
+            collectionView.deselectItem(at: indexPath, animated: false)
+            return
+        }
+        presentSafariVC(for: post, showing: .post)
+    }
 }
 
 extension PostCollectionVC: PostCellDelegate {
