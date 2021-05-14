@@ -129,17 +129,17 @@ extension Database {
         }
     }
 
-    func recentPosts(pointsThreshold: Int) throws -> [Post] {
+    public func recentPosts(pointsThreshold: Int, limit: Int) throws -> [Post] {
         try dbWriter.read { db in
             return try Post
                 .order(Post.Columns.date.desc)
                 .filter(Post.Columns.points >= pointsThreshold)
-                .limit(3000)
+                .limit(limit)
                 .fetchAll(db)
         }
     }
 
-    func postsMatching(query: String) throws -> [Post] {
+    public func postsMatching(query: String) throws -> [Post] {
         try dbWriter.read { db in
             return try Post
                 .filter(Post.Columns.link_text.like("%\(query)%"))

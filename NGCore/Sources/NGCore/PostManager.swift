@@ -55,14 +55,14 @@ public final class PostManager {
         }
     }
 
-    public func recentPostsGroupedByDay(pointsThreshold: Int, limit: Int) -> [(date: Date, posts: [Post])] {
-        let posts = try! Database.shared.recentPosts(pointsThreshold: pointsThreshold, limit: limit)
-        let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
-            .map { (date: $0.key, posts: $0.value) }
-            .sorted { $0.date > $1.date }
-        return postsGroupedByDay
-
-    }
+//    public func recentPostsGroupedByDay(pointsThreshold: Int, limit: Int) -> [(date: Date, posts: [Post])] {
+//        let posts = try! Database.shared.recentPosts(pointsThreshold: pointsThreshold, limit: limit)
+//        let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
+//            .map { (date: $0.key, posts: $0.value) }
+//            .sorted { $0.date > $1.date }
+//        return postsGroupedByDay
+//
+//    }
 
     public func postsGroupedByDayMatching(query: String) -> [(day: Date, posts: [Post])] {
         let posts = try! Database.shared.postsMatching(query: query)

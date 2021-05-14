@@ -13,8 +13,6 @@ class DiffCollectionVC: UICollectionViewController {
 
     private static let sectionHeaderElementKind = "section-header-element-kind"
 
-    private var postManager = PostManager()
-
     private var dataSource: UICollectionViewDiffableDataSource<Date, Post>!
 
     override func viewDidLoad() {
@@ -75,14 +73,19 @@ class DiffCollectionVC: UICollectionViewController {
     }
 
     private func dataSnapshot() -> NSDiffableDataSourceSnapshot<Date, Post> {
-
-        let postsByDay: [(date: Date, posts: [Post])]
-        postsByDay = postManager.recentPostsGroupedByDay(pointsThreshold: 500, limit: 300)
+        let posts = try! Database.shared.recentPosts(pointsThreshold: 500, limit: 300)
+        let postsByDay = groupPostsByDay(posts)
         var snapshot = NSDiffableDataSourceSnapshot<Date, Post>()
         for day in postsByDay {
             snapshot.appendSections([day.date])
             snapshot.appendItems(day.posts)
         }
         return snapshot
+    }
+
+    private func groupPostsByDay(_ posts: [Post]) -> [(date: Date, posts: [Post])] {
+        return Dictionary(grouping: posts) { $0.day! }
+            .map { (date: $0.key, posts: $0.value) }
+            .sorted { $0.date > $1.date }
     }
 }
