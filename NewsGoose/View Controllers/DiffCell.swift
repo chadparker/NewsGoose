@@ -26,7 +26,6 @@ class DiffCell: UICollectionViewCell {
     required init?(coder: NSCoder) { fatalError() }
 
     private func setUpViews() {
-        backgroundColor = .systemGray6
         addSubview(postLabel)
         postLabel.translatesAutoresizingMaskIntoConstraints = false
         let inset: CGFloat = 10

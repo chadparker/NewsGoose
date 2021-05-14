@@ -15,10 +15,11 @@ class DiffCollectionVC: UICollectionViewController {
 
     private var postManager = PostManager()
 
-    private var dataSource: UICollectionViewDiffableDataSource<Int, Post>! = nil
+    private var dataSource: UICollectionViewDiffableDataSource<Date, Post>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.showsVerticalScrollIndicator = false
         self.clearsSelectionOnViewWillAppear = false
         collectionView.collectionViewLayout = createLayout()
         configureDataSource()
@@ -40,13 +41,11 @@ class DiffCollectionVC: UICollectionViewController {
             elementKind: DiffCollectionVC.sectionHeaderElementKind,
             alignment: .top
         )
-        sectionHeader.pinToVisibleBounds = true
+        sectionHeader.pinToVisibleBounds = true // this is slow with a long list,
+                                                // and my design has visual flaws when scrolling quickly. rework later.
         section.boundarySupplementaryItems = [sectionHeader]
 
-        let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 30
-
-        let layout = UICollectionViewCompositionalLayout(section: section, configuration: config)
+        let layout = UICollectionViewCompositionalLayout(section: section)
 
         return layout
     }
@@ -57,34 +56,33 @@ class DiffCollectionVC: UICollectionViewController {
             cell.post = post
         }
 
-        dataSource = UICollectionViewDiffableDataSource<Int, Post>(collectionView: collectionView) {
+        dataSource = UICollectionViewDiffableDataSource<Date, Post>(collectionView: collectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, post: Post) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: post)
         }
 
         let headerRegistration = UICollectionView.SupplementaryRegistration<DateHeaderReusableView>(elementKind: DiffCollectionVC.sectionHeaderElementKind) { headerView, string, indexPath in
-            headerView.date = Date()
+            guard let post = self.dataSource.itemIdentifier(for: indexPath) else { return }
+            headerView.date = post.date
         }
 
         dataSource.supplementaryViewProvider = { view, kind, indexPath in
-            return self.collectionView.dequeueConfiguredReusableSupplementary(
-                using: headerRegistration, for: indexPath)
+            return self.collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
         }
 
         // initial data
         dataSource.apply(dataSnapshot(), animatingDifferences: false)
     }
 
-    private func dataSnapshot() -> NSDiffableDataSourceSnapshot<Int, Post> {
+    private func dataSnapshot() -> NSDiffableDataSourceSnapshot<Date, Post> {
 
-        let postsByDay = postManager.recentPostsGroupedByDay(pointsThreshold: 50)
-        let posts = postsByDay[2].posts
-
-        var snapshot = NSDiffableDataSourceSnapshot<Int, Post>()
-        snapshot.appendSections([0])
-        snapshot.appendItems([posts[0], posts[1], posts[2], posts[3]], toSection: 0)
-        snapshot.appendSections([1])
-        snapshot.appendItems([posts[4], posts[5]], toSection: 1)
+        let postsByDay: [(date: Date, posts: [Post])]
+        postsByDay = postManager.recentPostsGroupedByDay(pointsThreshold: 500, limit: 300)
+        var snapshot = NSDiffableDataSourceSnapshot<Date, Post>()
+        for day in postsByDay {
+            snapshot.appendSections([day.date])
+            snapshot.appendItems(day.posts)
+        }
         return snapshot
     }
 }
