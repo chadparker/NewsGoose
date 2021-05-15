@@ -157,6 +157,7 @@
 				6352D65C26323A8B00D8789F /* db.sqlite */,
 				63A30DA6261BD77300E24CBE /* Extensions.swift */,
 				63B93576261244A90097FD2C /* View Controllers */,
+				63E15B3226508026006CA12C /* Views */,
 				63B9354C26123F0C0097FD2C /* Main.storyboard */,
 				63B9354F26123F0C0097FD2C /* Assets.xcassets */,
 				63B9355126123F0C0097FD2C /* LaunchScreen.storyboard */,
@@ -190,8 +191,6 @@
 				63BD622E2649C2BE009A2514 /* PostCollectionVC.swift */,
 				637DCF522613D0CC00420C6B /* SearchVC.swift */,
 				63EA872B26152F4A005C643F /* SearchTableVC.swift */,
-				63A3D058264A2CDB00C44A63 /* DiffCell.swift */,
-				63951B9E264DCAA6008C961B /* DayHeaderReusableView.swift */,
 				63E15B3126507E52006CA12C /* Phasing out */,
 			);
 			path = "View Controllers";
@@ -205,6 +204,15 @@
 				63E15B2D26507D8F006CA12C /* PostCell.xib */,
 			);
 			path = "Phasing out";
+			sourceTree = "<group>";
+		};
+		63E15B3226508026006CA12C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				63A3D058264A2CDB00C44A63 /* DiffCell.swift */,
+				63951B9E264DCAA6008C961B /* DayHeaderReusableView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
