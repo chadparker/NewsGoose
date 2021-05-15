@@ -9,7 +9,14 @@ import UIKit
 import NGCore
 import GRDB
 
-class PostCollectionVC: UICollectionViewController {
+class PostCollectionVC: UICollectionViewController, PointsFilterable {
+
+    var pointsThreshold: Int = 0 {
+        didSet {
+            #warning("update queries")
+            print("points threshold: \(pointsThreshold)")
+        }
+    }
 
     private static let sectionHeaderElementKind = "section-header-element-kind"
 
