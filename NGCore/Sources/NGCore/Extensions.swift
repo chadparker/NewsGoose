@@ -9,7 +9,7 @@ import Foundation
 
 public extension String {
 
-    var digitsOnlyIntValue: Int {
+    var intValueFromDigits: Int {
         let digitsString = self.replacingOccurrences(
             of: "\\D",
             with: "",

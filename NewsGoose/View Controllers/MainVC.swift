@@ -20,7 +20,7 @@ class MainVC: UIViewController {
     
     var pointsSegmentValue: Int {
         let pointsText = pointsSegControl.titleForSegment(at: pointsSegControl.selectedSegmentIndex)!
-        return pointsText.digitsOnlyIntValue
+        return pointsText.intValueFromDigits
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
