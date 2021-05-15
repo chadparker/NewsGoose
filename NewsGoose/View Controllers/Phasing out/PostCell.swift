@@ -8,9 +8,9 @@
 import UIKit
 import NGCore
 
-protocol PostCellDelegate {
-    func showComments(for post: Post)
-}
+//protocol PostCellDelegate {
+//    func showComments(for post: Post)
+//}
 
 class PostCell: UITableViewCell {
     
