@@ -1,5 +1,5 @@
 //
-//  DateHeaderReusableView.swift
+//  DayHeaderReusableView.swift
 //  NewsGoose
 //
 //  Created by Chad Parker on 5/13/21.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class DateHeaderReusableView: UICollectionReusableView {
+class DayHeaderReusableView: UICollectionReusableView {
 
     var date: Date! {
         didSet {

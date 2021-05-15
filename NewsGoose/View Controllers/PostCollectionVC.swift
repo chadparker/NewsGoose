@@ -67,7 +67,7 @@ class PostCollectionVC: UICollectionViewController, PointsFilterable {
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: post)
         }
 
-        let headerRegistration = UICollectionView.SupplementaryRegistration<DateHeaderReusableView>(elementKind: PostCollectionVC.sectionHeaderElementKind) { headerView, string, indexPath in
+        let headerRegistration = UICollectionView.SupplementaryRegistration<DayHeaderReusableView>(elementKind: PostCollectionVC.sectionHeaderElementKind) { headerView, string, indexPath in
             guard let post = self.dataSource.itemIdentifier(for: indexPath) else { return }
             headerView.date = post.date
         }
