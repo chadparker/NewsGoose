@@ -22,6 +22,11 @@ class MainVC: UIViewController {
         let pointsText = pointsSegControl.titleForSegment(at: pointsSegControl.selectedSegmentIndex)!
         return pointsText.intValueFromDigits
     }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        postManager.loadLatestPosts()
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let searchVC = segue.destination as? SearchVC {
