@@ -18,8 +18,6 @@ class PostCollectionVC: UICollectionViewController {
         }
     }
 
-    private static let sectionHeaderElementKind = "section-header-element-kind"
-
     private var dataSource: UICollectionViewDiffableDataSource<Date, Post>!
     private var postsCancellable: DatabaseCancellable?
 
@@ -45,7 +43,7 @@ class PostCollectionVC: UICollectionViewController {
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                heightDimension: .estimated(44)),
-            elementKind: PostCollectionVC.sectionHeaderElementKind,
+            elementKind: .postCollectionHeader,
             alignment: .top
         )
         sectionHeader.pinToVisibleBounds = true // this is slow with a long list,
@@ -67,7 +65,7 @@ class PostCollectionVC: UICollectionViewController {
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: post)
         }
 
-        let headerRegistration = UICollectionView.SupplementaryRegistration<DayHeaderReusableView>(elementKind: PostCollectionVC.sectionHeaderElementKind) { headerView, string, indexPath in
+        let headerRegistration = UICollectionView.SupplementaryRegistration<DayHeaderReusableView>(elementKind: .postCollectionHeader) { headerView, string, indexPath in
             guard let post = self.dataSource.itemIdentifier(for: indexPath) else { return }
             headerView.date = post.date
         }

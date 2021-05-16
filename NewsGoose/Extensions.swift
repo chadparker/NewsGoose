@@ -9,6 +9,12 @@ import UIKit
 import SafariServices
 import NGCore
 
+extension String {
+    static var postCollectionHeader: String {
+        "post-collection-header"
+    }
+}
+
 enum LaunchPostLinkType {
     case post
     case comments
