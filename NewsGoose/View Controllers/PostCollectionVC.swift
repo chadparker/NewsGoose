@@ -17,7 +17,7 @@ class PostCollectionVC: UICollectionViewController {
         }
     }
 
-    private var dataSource: UICollectionViewDiffableDataSource<Date, Post>!
+    private var dataSource: UICollectionViewDiffableDataSource<Day, Post>!
     private var postsCancellable: DatabaseCancellable?
 
     override func viewDidLoad() {
@@ -59,7 +59,7 @@ class PostCollectionVC: UICollectionViewController {
             cell.delegate = self
         }
 
-        dataSource = UICollectionViewDiffableDataSource<Date, Post>(collectionView: collectionView) {
+        dataSource = UICollectionViewDiffableDataSource<Day, Post>(collectionView: collectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, post: Post) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: post)
         }
@@ -74,13 +74,13 @@ class PostCollectionVC: UICollectionViewController {
         }
     }
 
-    private func dataSnapshot(for posts: [Post]) -> NSDiffableDataSourceSnapshot<Date, Post> {
+    private func dataSnapshot(for posts: [Post]) -> NSDiffableDataSourceSnapshot<Day, Post> {
         let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
-            .map { (date: $0.key, posts: $0.value) }
+            .map(Day.init)
             .sorted { $0.date > $1.date }
-        var snapshot = NSDiffableDataSourceSnapshot<Date, Post>()
+        var snapshot = NSDiffableDataSourceSnapshot<Day, Post>()
         for day in postsGroupedByDay {
-            snapshot.appendSections([day.date])
+            snapshot.appendSections([day])
             snapshot.appendItems(day.posts)
         }
         return snapshot
