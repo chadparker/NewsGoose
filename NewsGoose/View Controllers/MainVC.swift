@@ -8,10 +8,6 @@
 import UIKit
 import NGCore
 
-protocol PointsFilterable {
-    var pointsThreshold: Int { get set }
-}
-
 class MainVC: UIViewController {
 
     @IBOutlet weak var pointsSegControl: UISegmentedControl!
@@ -20,7 +16,7 @@ class MainVC: UIViewController {
     let postManager = PostManager()
     
     var searchVC: SearchVC!
-    var pointsFilterable: PointsFilterable!
+    var postCollectionVC: PostCollectionVC!
     
     var pointsSegmentValue: Int {
         let pointsText = pointsSegControl.titleForSegment(at: pointsSegControl.selectedSegmentIndex)!
@@ -32,14 +28,14 @@ class MainVC: UIViewController {
             searchVC.delegate = self
             searchVC.postManager = postManager
             self.searchVC = searchVC
-        } else if let pointsFilterable = segue.destination as? PointsFilterable {
-            self.pointsFilterable = pointsFilterable
-            self.pointsFilterable.pointsThreshold = pointsSegmentValue
+        } else if let postTableVC = segue.destination as? PostCollectionVC {
+            postTableVC.pointsThreshold = pointsSegmentValue
+            self.postCollectionVC = postTableVC
         }
     }
     
     @IBAction func pointsSelectionChanged(_ sender: UISegmentedControl) {
-        pointsFilterable.pointsThreshold = pointsSegmentValue
+        postCollectionVC.pointsThreshold = pointsSegmentValue
     }
     
     @IBAction func showSearch(_ sender: UIButton) {

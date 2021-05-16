@@ -66,6 +66,7 @@ class PostTableVC: UITableViewController {
 
     private func observePosts() {
         postsCancellable = Database.shared.observePostsOrderedByDate(
+            pointsThreshold: pointThreshold,
             limit: 3000,
             onError: { error in fatalError("Unexpected error: \(error)") },
             onChange: { [weak self] posts in

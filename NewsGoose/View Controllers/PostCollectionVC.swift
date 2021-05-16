@@ -9,7 +9,7 @@ import UIKit
 import NGCore
 import GRDB
 
-class PostCollectionVC: UICollectionViewController, PointsFilterable {
+class PostCollectionVC: UICollectionViewController {
 
     var pointsThreshold: Int = 0 {
         didSet {
@@ -95,7 +95,9 @@ class PostCollectionVC: UICollectionViewController, PointsFilterable {
     }
 
     private func observePosts() {
-        postsCancellable = Database.shared.observePostsOrderedByDate(limit: 300,
+        postsCancellable = Database.shared.observePostsOrderedByDate(
+            pointsThreshold: pointsThreshold,
+            limit: 300,
             onError: { error in fatalError("Unexpected error: \(error)") },
             onChange: { [weak self] posts in
                 guard let self = self else { return }
