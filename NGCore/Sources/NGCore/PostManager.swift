@@ -13,14 +13,14 @@ public final class PostManager {
 
     public init() {}
 
-    public func loadLatestPosts(completion: @escaping (Result<Int, PostNetworkError>) -> Void) {
+    public func loadLatestPosts(completion: ((Result<Int, PostNetworkError>) -> Void)? = nil) {
         postNetworkFetcher.fetchLatest { result in
             switch result {
             case .success(let posts):
                 try! Database.shared.savePosts(posts)
-                completion(.success(posts.count))
+                completion?(.success(posts.count))
             case .failure(let error):
-                completion(.failure(error))
+                completion?(.failure(error))
             }
         }
 
