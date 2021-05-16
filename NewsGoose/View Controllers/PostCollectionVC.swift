@@ -13,8 +13,7 @@ class PostCollectionVC: UICollectionViewController {
 
     var pointsThreshold: Int = 0 {
         didSet {
-            #warning("update queries")
-            print("points threshold: \(pointsThreshold)")
+            observePosts()
         }
     }
 
@@ -73,11 +72,6 @@ class PostCollectionVC: UICollectionViewController {
         dataSource.supplementaryViewProvider = { view, kind, indexPath in
             return self.collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
         }
-
-        // initial data
-        let posts = try! Database.shared.recentPosts(pointsThreshold: 500, limit: 300)
-        let snapshot = dataSnapshot(for: posts)
-        dataSource.apply(snapshot, animatingDifferences: false)
     }
 
     private func dataSnapshot(for posts: [Post]) -> NSDiffableDataSourceSnapshot<Date, Post> {

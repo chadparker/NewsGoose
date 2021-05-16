@@ -75,15 +75,6 @@ extension Post: FetchableRecord, MutablePersistableRecord {
     }
 }
 
-// MARK: - Database Requests
-
-extension DerivableRequest where RowDecoder == Post {
-
-    func orderedByDate() -> Self {
-        order(Post.Columns.date.desc)
-    }
-}
-
 // MARK: - Date Helpers
 
 extension Post {

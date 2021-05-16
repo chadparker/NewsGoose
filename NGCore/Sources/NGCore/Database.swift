@@ -155,9 +155,17 @@ extension Database {
 extension Database {
 
     /// Tracks changes in players ordered by name
-    public func observePostsOrderedByDate(limit: Int, onError: @escaping (Error) -> Void, onChange: @escaping ([Post]) -> Void) -> DatabaseCancellable {
+    public func observePostsOrderedByDate(pointsThreshold: Int, limit: Int,
+                                          onError: @escaping (Error) -> Void,
+                                          onChange: @escaping ([Post]) -> Void) -> DatabaseCancellable {
         return ValueObservation
-            .tracking(Post.all().orderedByDate().limit(limit).fetchAll)
+            .tracking(
+                Post
+                    .order(Post.Columns.date.desc)
+                    .filter(Post.Columns.points >= pointsThreshold)
+                    .limit(limit)
+                    .fetchAll
+            )
             .start(in: dbWriter, onError: onError, onChange: onChange)
     }
 }
