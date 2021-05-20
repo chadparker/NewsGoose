@@ -11,25 +11,26 @@ import GRDB
 
 class SearchCollectionVC: UICollectionViewController {
 
-    private var dataSource: UICollectionViewDiffableDataSource<Day, Post>!
-    private var postsCancellable: DatabaseCancellable?
+    private var days: [Day] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.clearsSelectionOnViewWillAppear = false
         collectionView.collectionViewLayout = createLayout()
-        configureDataSource()
-        observePosts()
+        collectionView.register(DiffCell.self, forCellWithReuseIdentifier: "SearchDiffCell")
+        collectionView.register(DayHeaderReusableView.self, forSupplementaryViewOfKind: .postCollectionHeader, withReuseIdentifier: "SearchDiffHeader")
     }
 
     func search(query: String?) {
         if let query = query {
-            configureDataSource()
-            observePosts(matching: query)
+            let posts = try! Database.shared.postsMatching(query: query, limit: 300)
+            let days = Dictionary(grouping: posts) { $0.day! }
+                .map(Day.init)
+                .sorted { $0.date > $1.date }
+            self.days = days
+            collectionView.reloadData()
         }
     }
 
-    // DRY between CollectionVCs?
     private func createLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: .estimated(70))
@@ -53,61 +54,39 @@ class SearchCollectionVC: UICollectionViewController {
         return UICollectionViewCompositionalLayout(section: section)
     }
 
-    private func configureDataSource() {
+    // MARK: - UICollectionViewDataSource
 
-        let cellRegistration = UICollectionView.CellRegistration<DiffCell, Post> { cell, indexPath, post in
-            cell.post = post
-            cell.delegate = self
-        }
-
-        dataSource = UICollectionViewDiffableDataSource<Day, Post>(collectionView: collectionView) {
-            (collectionView: UICollectionView, indexPath: IndexPath, post: Post) -> UICollectionViewCell? in
-            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: post)
-        }
-
-        let headerRegistration = UICollectionView.SupplementaryRegistration<DayHeaderReusableView>(elementKind: .postCollectionHeader) { headerView, string, indexPath in
-            guard let post = self.dataSource.itemIdentifier(for: indexPath) else { return }
-            headerView.date = post.date
-        }
-
-        dataSource.supplementaryViewProvider = { view, kind, indexPath in
-            return self.collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
-        }
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return days.count
     }
 
-    private func dataSnapshot(for posts: [Post]) -> NSDiffableDataSourceSnapshot<Day, Post> {
-        let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
-            .map(Day.init)
-            .sorted { $0.date > $1.date }
-        var snapshot = NSDiffableDataSourceSnapshot<Day, Post>()
-        for day in postsGroupedByDay {
-            snapshot.appendSections([day])
-            snapshot.appendItems(day.posts)
-        }
-        return snapshot
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let day = days[section]
+        return day.posts.count
     }
 
-    private func observePosts(matching query: String? = nil) {
-        guard let query = query else { return }
-        postsCancellable = Database.shared.observePostsMatching(
-            query: query,
-            limit: 300,
-            onError: { error in fatalError("Unexpected error: \(error)") },
-            onChange: { [weak self] posts in
-                guard let self = self else { return }
-                let snapshot = self.dataSnapshot(for: posts)
-                self.dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
-            }
-        )
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchDiffCell", for: indexPath) as! DiffCell
+        let day = days[indexPath.section]
+        let post = day.posts[indexPath.item]
+        cell.post = post
+        cell.delegate = self
+        return cell
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchDiffHeader", for: indexPath) as! DayHeaderReusableView
+        let day = days[indexPath.section]
+        header.date = day.date
+        return header
     }
 
     // MARK: - UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let post = dataSource.itemIdentifier(for: indexPath) else {
-            collectionView.deselectItem(at: indexPath, animated: false)
-            return
-        }
+        collectionView.deselectItem(at: indexPath, animated: false)
+        let day = days[indexPath.section]
+        let post = day.posts[indexPath.item]
         presentSafariVC(for: post, showing: .post)
     }
 }

@@ -139,12 +139,12 @@ extension Database {
         }
     }
 
-    public func postsMatching(query: String) throws -> [Post] {
+    public func postsMatching(query: String, limit: Int) throws -> [Post] {
         try dbWriter.read { db in
             return try Post
                 .filter(Post.Columns.link_text.like("%\(query)%"))
                 .order(Post.Columns.date.desc)
-                .limit(3000)
+                .limit(limit)
                 .fetchAll(db)
         }
     }

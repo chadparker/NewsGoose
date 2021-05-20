@@ -64,11 +64,11 @@ public final class PostManager {
 //
 //    }
 
-    public func postsGroupedByDayMatching(query: String) -> [(day: Date, posts: [Post])] {
-        let posts = try! Database.shared.postsMatching(query: query)
-        let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
-            .map { (day: $0.key, posts: $0.value) }
-            .sorted { $0.day > $1.day }
-        return postsGroupedByDay
-    }
+//    public func postsGroupedByDayMatching(query: String) -> [(day: Date, posts: [Post])] {
+//        let posts = try! Database.shared.postsMatching(query: query)
+//        let postsGroupedByDay = Dictionary(grouping: posts) { $0.day! }
+//            .map { (day: $0.key, posts: $0.value) }
+//            .sorted { $0.day > $1.day }
+//        return postsGroupedByDay
+//    }
 }

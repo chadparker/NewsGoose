@@ -28,11 +28,11 @@ class SearchTableVC: UITableViewController {
         tableView.estimatedRowHeight = 50
     }
     
-    func search(query: String?) {
-        if let query = query {
-            postsGroupedByDay = postManager.postsGroupedByDayMatching(query: query)
-        }
-    }
+//    func search(query: String?) {
+//        if let query = query {
+//            postsGroupedByDay = postManager.postsGroupedByDayMatching(query: query)
+//        }
+//    }
     
     // MARK: - Table view delegate
     
