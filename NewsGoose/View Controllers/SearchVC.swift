@@ -22,7 +22,7 @@ class SearchVC: UIViewController {
     }
     
     var delegate: SearchVCDelegate!
-    var searchTableVC: SearchTableVC!
+    var searchCollectionVC: SearchCollectionVC!
     var postManager: PostManager!
 
     @IBOutlet weak var searchBar: UISearchBar!
@@ -48,7 +48,7 @@ class SearchVC: UIViewController {
                                 
                 searchBar.text = nil
                 searchBar.resignFirstResponder()
-                searchTableVC.search(query: nil)
+                searchCollectionVC.search(query: nil)
 
                 delegate.hideSearch()
                 
@@ -58,13 +58,13 @@ class SearchVC: UIViewController {
                 
                 searchBar.text = nil
                 searchBar.becomeFirstResponder()
-                searchTableVC.search(query: nil)
+                searchCollectionVC.search(query: nil)
                 
             case .startSearch(let query):
                 //activitySpinner.startAnimating()
                 searchTableContainer.isHidden = false
                 
-                searchTableVC.search(query: query)
+                searchCollectionVC.search(query: query)
                 
             case .showingResults:
                 activitySpinner.stopAnimating()
@@ -74,9 +74,8 @@ class SearchVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let searchTableVC = segue.destination as? SearchTableVC {
-            searchTableVC.postManager = postManager
-            self.searchTableVC = searchTableVC
+        if let searchCollectionVC = segue.destination as? SearchCollectionVC {
+            self.searchCollectionVC = searchCollectionVC
         }
     }
 }

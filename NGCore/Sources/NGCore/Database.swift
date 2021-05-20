@@ -168,4 +168,20 @@ extension Database {
             )
             .start(in: dbWriter, onError: onError, onChange: onChange)
     }
+
+    public func observePostsMatching(
+        query: String,
+        limit: Int,
+        onError: @escaping (Error) -> Void,
+        onChange: @escaping ([Post]) -> Void) -> DatabaseCancellable {
+        return ValueObservation
+            .tracking(
+                Post
+                    .filter(Post.Columns.link_text.like("%\(query)%"))
+                    .order(Post.Columns.date.desc)
+                    .limit(3000)
+                    .fetchAll
+            )
+            .start(in: dbWriter, onError: onError, onChange: onChange)
+    }
 }

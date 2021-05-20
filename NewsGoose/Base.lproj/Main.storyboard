@@ -159,7 +159,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZbL-gH-Qe0">
                                 <rect key="frame" x="0.0" y="124" width="414" height="694"/>
                                 <connections>
-                                    <segue destination="yoT-v4-iQQ" kind="embed" id="Ovl-rT-3A6"/>
+                                    <segue destination="ea6-KL-E88" kind="embed" id="Pje-Ek-ont"/>
                                 </connections>
                             </containerView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="bwf-50-x1y">
@@ -190,33 +190,30 @@
             </objects>
             <point key="canvasLocation" x="1034.7826086956522" y="-291.29464285714283"/>
         </scene>
-        <!--Search TableVC-->
-        <scene sceneID="Rtg-xM-FK7">
+        <!--Search CollectionVC-->
+        <scene sceneID="Zu2-Xa-S1c">
             <objects>
-                <tableViewController id="yoT-v4-iQQ" customClass="SearchTableVC" customModule="NewsGoose" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7Uu-3r-kbL">
+                <collectionViewController id="ea6-KL-E88" customClass="SearchCollectionVC" customModule="NewsGoose" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Rdh-Ji-dbZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="694"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="See PostCell.xib" id="6Ig-JB-KY1">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Ig-JB-KY1" id="GTY-AW-vKO">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MHG-hr-aq0">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
                         <connections>
-                            <outlet property="dataSource" destination="yoT-v4-iQQ" id="w7x-fd-UvI"/>
-                            <outlet property="delegate" destination="yoT-v4-iQQ" id="Tmp-xo-ilb"/>
+                            <outlet property="dataSource" destination="ea6-KL-E88" id="DOj-Yy-AB0"/>
+                            <outlet property="delegate" destination="ea6-KL-E88" id="zrm-zc-vhS"/>
                         </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OCV-13-fmM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ccv-tI-pme" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1838" y="-250"/>
+            <point key="canvasLocation" x="1946" y="-291"/>
         </scene>
     </scenes>
     <resources>

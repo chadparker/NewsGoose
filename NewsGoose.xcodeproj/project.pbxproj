@@ -27,6 +27,7 @@
 		63BD622F2649C2BE009A2514 /* PostCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BD622E2649C2BE009A2514 /* PostCollectionVC.swift */; };
 		63E15B2F26507D8F006CA12C /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E15B2D26507D8F006CA12C /* PostCell.xib */; };
 		63E15B3026507D8F006CA12C /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E15B2E26507D8F006CA12C /* PostCell.swift */; };
+		63E15B352652F93E006CA12C /* SearchCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E15B342652F93E006CA12C /* SearchCollectionVC.swift */; };
 		63EA872C26152F4A005C643F /* SearchTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA872B26152F4A005C643F /* SearchTableVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		63BD622E2649C2BE009A2514 /* PostCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionVC.swift; sourceTree = "<group>"; };
 		63E15B2D26507D8F006CA12C /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
 		63E15B2E26507D8F006CA12C /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		63E15B342652F93E006CA12C /* SearchCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionVC.swift; sourceTree = "<group>"; };
 		63EA872B26152F4A005C643F /* SearchTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,6 +193,7 @@
 				63BD622E2649C2BE009A2514 /* PostCollectionVC.swift */,
 				637DCF522613D0CC00420C6B /* SearchVC.swift */,
 				63EA872B26152F4A005C643F /* SearchTableVC.swift */,
+				63E15B342652F93E006CA12C /* SearchCollectionVC.swift */,
 				63E15B3126507E52006CA12C /* Phasing out */,
 			);
 			path = "View Controllers";
@@ -374,6 +377,7 @@
 			files = (
 				637DCF532613D0CC00420C6B /* SearchVC.swift in Sources */,
 				63EA872C26152F4A005C643F /* SearchTableVC.swift in Sources */,
+				63E15B352652F93E006CA12C /* SearchCollectionVC.swift in Sources */,
 				63BD622F2649C2BE009A2514 /* PostCollectionVC.swift in Sources */,
 				63B9354B26123F0C0097FD2C /* MainVC.swift in Sources */,
 				63B9354726123F0C0097FD2C /* AppDelegate.swift in Sources */,
