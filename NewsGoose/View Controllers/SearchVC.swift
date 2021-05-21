@@ -49,7 +49,7 @@ class SearchVC: UIViewController {
         view.addSubview(searchCollectionVC.view)
         searchCollectionVC.didMove(toParent: self)
         searchCollectionVC.view.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom)
+            make.top.equalTo(searchBar.snp.bottom).offset(-10)
             make.leading.trailing.bottom.equalTo(view.safeAreaInsets)
         }
     }

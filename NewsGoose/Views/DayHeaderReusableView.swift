@@ -69,6 +69,12 @@ class DayHeaderReusableView: UICollectionReusableView {
     }
 
     private func updateViews() {
-        dateLabel.text = DateFormatter.fullDate.string(from: date)
+        let postYear = Calendar.current.component(.year, from: date)
+        let currentYear = Calendar.current.component(.year, from: Date())
+        if postYear == currentYear {
+            dateLabel.text = DateFormatter.dateWithoutYear.string(from: date)
+        } else {
+            dateLabel.text = DateFormatter.dateWithYear.string(from: date)
+        }
     }
 }

@@ -49,10 +49,16 @@ extension UIViewController {
 
 extension DateFormatter {
 
-    static let fullDate: DateFormatter = {
+    static let dateWithoutYear: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)!
-        formatter.dateStyle = .full
+        //formatter.timeZone = TimeZone(secondsFromGMT: 0)!
+        formatter.dateFormat = "EE, MMM d"
+        return formatter
+    }()
+
+    static let dateWithYear: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EE, MMM d, yyyy"
         return formatter
     }()
 }
