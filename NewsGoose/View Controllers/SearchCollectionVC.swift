@@ -15,9 +15,9 @@ class SearchCollectionVC: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.collectionViewLayout = createLayout()
         collectionView.register(DiffCell.self, forCellWithReuseIdentifier: "SearchDiffCell")
         collectionView.register(DayHeaderReusableView.self, forSupplementaryViewOfKind: .postCollectionHeader, withReuseIdentifier: "SearchDiffHeader")
+        collectionView.backgroundColor = .systemBackground
     }
 
     func search(query: String?) {
@@ -31,7 +31,7 @@ class SearchCollectionVC: UICollectionViewController {
         }
     }
 
-    private func createLayout() -> UICollectionViewLayout {
+    static func createLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: .estimated(70))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)

@@ -7,6 +7,7 @@
 
 import UIKit
 import NGCore
+import SnapKit
 
 protocol SearchVCDelegate {
     func hideSearch()
@@ -22,17 +23,34 @@ class SearchVC: UIViewController {
     }
     
     var delegate: SearchVCDelegate!
-    var searchCollectionVC: SearchCollectionVC!
-    var postManager: PostManager!
 
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
-    @IBOutlet weak var searchTableContainer: UIView!
+    private var searchBar = UISearchBar()
+    private var searchCollectionVC = SearchCollectionVC(collectionViewLayout: SearchCollectionVC.createLayout())
+    //private var activitySpinner = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUpViews()
+    }
+
+    private func setUpViews() {
+        searchBar.delegate = self
         searchBar.autocapitalizationType = .none
+        searchBar.showsCancelButton = true
+        searchBar.backgroundColor = .systemBackground
+        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .defaultPrompt)
+        view.addSubview(searchBar)
+        searchBar.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(view.safeAreaInsets)
+        }
+
+        addChild(searchCollectionVC)
+        view.addSubview(searchCollectionVC.view)
+        searchCollectionVC.didMove(toParent: self)
+        searchCollectionVC.view.snp.makeConstraints { make in
+            make.top.equalTo(searchBar.snp.bottom)
+            make.leading.trailing.bottom.equalTo(view.safeAreaInsets)
+        }
     }
     
     func activate() {
@@ -43,8 +61,8 @@ class SearchVC: UIViewController {
         didSet {
             switch state {
             case .hidden:
-                activitySpinner.stopAnimating()
-                searchTableContainer.isHidden = true
+                //activitySpinner.stopAnimating()
+                searchCollectionVC.view.isHidden = true
                                 
                 searchBar.text = nil
                 searchBar.resignFirstResponder()
@@ -53,8 +71,8 @@ class SearchVC: UIViewController {
                 delegate.hideSearch()
                 
             case .emptyView:
-                activitySpinner.stopAnimating()
-                searchTableContainer.isHidden = true
+                //activitySpinner.stopAnimating()
+                searchCollectionVC.view.isHidden = true
                 
                 searchBar.text = nil
                 searchBar.becomeFirstResponder()
@@ -62,13 +80,13 @@ class SearchVC: UIViewController {
                 
             case .startSearch(let query):
                 //activitySpinner.startAnimating()
-                searchTableContainer.isHidden = false
+                searchCollectionVC.view.isHidden = false
                 
                 searchCollectionVC.search(query: query)
                 
             case .showingResults:
-                activitySpinner.stopAnimating()
-                searchTableContainer.isHidden = false
+                //activitySpinner.stopAnimating()
+                searchCollectionVC.view.isHidden = false
             }
         }
     }
@@ -92,11 +110,6 @@ extension SearchVC: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         state = .startSearch(searchBar.searchTextField.text)
-//        if searchBar.searchTextField.text! == "" {
-//            state = .startSearch(nil)
-//        } else {
-//            state = .startSearch(searchBar.searchTextField.text!)
-//        }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

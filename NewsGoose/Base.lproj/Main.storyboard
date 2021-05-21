@@ -131,89 +131,13 @@
                     <view key="view" contentMode="scaleToFill" id="fAa-S8-6nw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQJ-Yc-FxM" userLabel="Header">
-                                <rect key="frame" x="0.0" y="44" width="414" height="80"/>
-                                <subviews>
-                                    <searchBar contentMode="redraw" placeholder="Search" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HiY-fg-PC6">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <scopeButtonTitles>
-                                            <string>Title</string>
-                                            <string>Title</string>
-                                        </scopeButtonTitles>
-                                        <connections>
-                                            <outlet property="delegate" destination="aUf-XF-ff6" id="oTh-kq-VHg"/>
-                                        </connections>
-                                    </searchBar>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="HiY-fg-PC6" secondAttribute="trailing" id="Bgh-WE-7Ke"/>
-                                    <constraint firstAttribute="height" constant="80" id="JfE-dU-l6Z"/>
-                                    <constraint firstItem="HiY-fg-PC6" firstAttribute="top" secondItem="mQJ-Yc-FxM" secondAttribute="top" id="YXN-TL-gdg"/>
-                                    <constraint firstAttribute="bottom" secondItem="HiY-fg-PC6" secondAttribute="bottom" id="auB-eC-8u1"/>
-                                    <constraint firstItem="HiY-fg-PC6" firstAttribute="leading" secondItem="mQJ-Yc-FxM" secondAttribute="leading" id="qp0-oB-9Rb"/>
-                                </constraints>
-                            </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZbL-gH-Qe0">
-                                <rect key="frame" x="0.0" y="124" width="414" height="694"/>
-                                <connections>
-                                    <segue destination="ea6-KL-E88" kind="embed" id="Pje-Ek-ont"/>
-                                </connections>
-                            </containerView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="bwf-50-x1y">
-                                <rect key="frame" x="197" y="154" width="20" height="20"/>
-                            </activityIndicatorView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="jNF-se-aTt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="mQJ-Yc-FxM" firstAttribute="leading" secondItem="jNF-se-aTt" secondAttribute="leading" id="Bfa-UZ-VFp"/>
-                            <constraint firstItem="ZbL-gH-Qe0" firstAttribute="trailing" secondItem="jNF-se-aTt" secondAttribute="trailing" id="DSy-Yb-pO1"/>
-                            <constraint firstItem="bwf-50-x1y" firstAttribute="centerX" secondItem="fAa-S8-6nw" secondAttribute="centerX" id="Ebx-UA-XUr"/>
-                            <constraint firstItem="ZbL-gH-Qe0" firstAttribute="top" secondItem="mQJ-Yc-FxM" secondAttribute="bottom" id="Xeg-pG-e5l"/>
-                            <constraint firstItem="jNF-se-aTt" firstAttribute="trailing" secondItem="mQJ-Yc-FxM" secondAttribute="trailing" id="azb-zP-fYs"/>
-                            <constraint firstItem="bwf-50-x1y" firstAttribute="top" secondItem="mQJ-Yc-FxM" secondAttribute="bottom" constant="30" id="dwq-Ws-9re"/>
-                            <constraint firstItem="ZbL-gH-Qe0" firstAttribute="bottom" secondItem="jNF-se-aTt" secondAttribute="bottom" id="f8L-0t-PEe"/>
-                            <constraint firstItem="ZbL-gH-Qe0" firstAttribute="leading" secondItem="jNF-se-aTt" secondAttribute="leading" id="gRk-HG-JJY"/>
-                            <constraint firstItem="mQJ-Yc-FxM" firstAttribute="top" secondItem="jNF-se-aTt" secondAttribute="top" id="sLh-0W-Zkm"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="activitySpinner" destination="bwf-50-x1y" id="sYZ-SR-lOg"/>
-                        <outlet property="searchBar" destination="HiY-fg-PC6" id="blV-DV-DHu"/>
-                        <outlet property="searchTableContainer" destination="ZbL-gH-Qe0" id="Dhd-fN-dsH"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wiA-Bb-hie" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1034.7826086956522" y="-291.29464285714283"/>
-        </scene>
-        <!--Search CollectionVC-->
-        <scene sceneID="Zu2-Xa-S1c">
-            <objects>
-                <collectionViewController id="ea6-KL-E88" customClass="SearchCollectionVC" customModule="NewsGoose" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Rdh-Ji-dbZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="694"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MHG-hr-aq0">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells/>
-                        <connections>
-                            <outlet property="dataSource" destination="ea6-KL-E88" id="DOj-Yy-AB0"/>
-                            <outlet property="delegate" destination="ea6-KL-E88" id="zrm-zc-vhS"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ccv-tI-pme" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1946" y="-291"/>
         </scene>
     </scenes>
     <resources>

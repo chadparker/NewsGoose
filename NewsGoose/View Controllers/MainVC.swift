@@ -34,7 +34,6 @@ class MainVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let searchVC = segue.destination as? SearchVC {
             searchVC.delegate = self
-            searchVC.postManager = postManager
             self.searchVC = searchVC
         } else if let postTableVC = segue.destination as? PostCollectionVC {
             postTableVC.pointsThreshold = pointsSegmentValue
