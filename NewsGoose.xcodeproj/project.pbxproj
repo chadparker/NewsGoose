@@ -23,12 +23,8 @@
 		63B9355326123F0C0097FD2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B9355126123F0C0097FD2C /* LaunchScreen.storyboard */; };
 		63B9355E26123F0D0097FD2C /* NewsGooseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9355D26123F0D0097FD2C /* NewsGooseTests.swift */; };
 		63B9356926123F0D0097FD2C /* NewsGooseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9356826123F0D0097FD2C /* NewsGooseUITests.swift */; };
-		63B9358B261282330097FD2C /* PostTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9358A261282330097FD2C /* PostTableVC.swift */; };
 		63BD622F2649C2BE009A2514 /* PostCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BD622E2649C2BE009A2514 /* PostCollectionVC.swift */; };
-		63E15B2F26507D8F006CA12C /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E15B2D26507D8F006CA12C /* PostCell.xib */; };
-		63E15B3026507D8F006CA12C /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E15B2E26507D8F006CA12C /* PostCell.swift */; };
 		63E15B352652F93E006CA12C /* SearchCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E15B342652F93E006CA12C /* SearchCollectionVC.swift */; };
-		63EA872C26152F4A005C643F /* SearchTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA872B26152F4A005C643F /* SearchTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,12 +73,8 @@
 		63B9356426123F0D0097FD2C /* NewsGooseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsGooseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B9356826123F0D0097FD2C /* NewsGooseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsGooseUITests.swift; sourceTree = "<group>"; };
 		63B9356A26123F0D0097FD2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63B9358A261282330097FD2C /* PostTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableVC.swift; sourceTree = "<group>"; };
 		63BD622E2649C2BE009A2514 /* PostCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionVC.swift; sourceTree = "<group>"; };
-		63E15B2D26507D8F006CA12C /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
-		63E15B2E26507D8F006CA12C /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		63E15B342652F93E006CA12C /* SearchCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionVC.swift; sourceTree = "<group>"; };
-		63EA872B26152F4A005C643F /* SearchTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,21 +184,9 @@
 				63B9354A26123F0C0097FD2C /* MainVC.swift */,
 				63BD622E2649C2BE009A2514 /* PostCollectionVC.swift */,
 				637DCF522613D0CC00420C6B /* SearchVC.swift */,
-				63EA872B26152F4A005C643F /* SearchTableVC.swift */,
 				63E15B342652F93E006CA12C /* SearchCollectionVC.swift */,
-				63E15B3126507E52006CA12C /* Phasing out */,
 			);
 			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		63E15B3126507E52006CA12C /* Phasing out */ = {
-			isa = PBXGroup;
-			children = (
-				63B9358A261282330097FD2C /* PostTableVC.swift */,
-				63E15B2E26507D8F006CA12C /* PostCell.swift */,
-				63E15B2D26507D8F006CA12C /* PostCell.xib */,
-			);
-			path = "Phasing out";
 			sourceTree = "<group>";
 		};
 		63E15B3226508026006CA12C /* Views */ = {
@@ -348,7 +328,6 @@
 			files = (
 				6352D65D26323A9A00D8789F /* db.sqlite in Resources */,
 				63B9355326123F0C0097FD2C /* LaunchScreen.storyboard in Resources */,
-				63E15B2F26507D8F006CA12C /* PostCell.xib in Resources */,
 				63B9355026123F0C0097FD2C /* Assets.xcassets in Resources */,
 				63B9354E26123F0C0097FD2C /* Main.storyboard in Resources */,
 			);
@@ -376,15 +355,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				637DCF532613D0CC00420C6B /* SearchVC.swift in Sources */,
-				63EA872C26152F4A005C643F /* SearchTableVC.swift in Sources */,
 				63E15B352652F93E006CA12C /* SearchCollectionVC.swift in Sources */,
 				63BD622F2649C2BE009A2514 /* PostCollectionVC.swift in Sources */,
 				63B9354B26123F0C0097FD2C /* MainVC.swift in Sources */,
 				63B9354726123F0C0097FD2C /* AppDelegate.swift in Sources */,
 				63B9354926123F0C0097FD2C /* SceneDelegate.swift in Sources */,
 				63951B9F264DCAA6008C961B /* DayHeaderReusableView.swift in Sources */,
-				63B9358B261282330097FD2C /* PostTableVC.swift in Sources */,
-				63E15B3026507D8F006CA12C /* PostCell.swift in Sources */,
 				63A3D05A264A2CDB00C44A63 /* DiffCell.swift in Sources */,
 				63A30DA7261BD77300E24CBE /* Extensions.swift in Sources */,
 			);
