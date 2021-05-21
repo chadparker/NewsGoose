@@ -22,8 +22,8 @@ enum LaunchPostLinkType {
 
 extension UIViewController {
     
-    func presentSafariVC(for post: Post, showing: LaunchPostLinkType) {
-        switch showing {
+    func presentSafariVC(for post: Post, showing linkType: LaunchPostLinkType) {
+        switch linkType {
         case .post:
             if let linkURL = URL(string: post.link) {
                 presentURL(linkURL)

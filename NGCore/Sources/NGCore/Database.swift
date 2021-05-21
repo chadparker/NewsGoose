@@ -24,7 +24,7 @@ public final class Database {
     public static func copyDBFromBundle() {
         let bundledDB = Bundle.main.resourceURL!.appendingPathComponent("db.sqlite")
         let workingDB = directory.appendingPathComponent("db.sqlite")
-        #warning("need to hash the DB files to compare if app update has a new version?")
+        // TODO: hash the DB files to compare if bundled DB is newer than existing?
         if !FileManager.default.fileExists(atPath: workingDB.path) {
             try! FileManager.default.copyItem(at: bundledDB, to: workingDB)
         }
@@ -155,9 +155,11 @@ extension Database {
 extension Database {
 
     /// Tracks changes in players ordered by name
-    public func observePostsOrderedByDate(pointsThreshold: Int, limit: Int,
-                                          onError: @escaping (Error) -> Void,
-                                          onChange: @escaping ([Post]) -> Void) -> DatabaseCancellable {
+    public func observePostsOrderedByDate(
+        pointsThreshold: Int,
+        limit: Int,
+        onError: @escaping (Error) -> Void,
+        onChange: @escaping ([Post]) -> Void) -> DatabaseCancellable {
         return ValueObservation
             .tracking(
                 Post
