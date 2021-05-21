@@ -37,11 +37,12 @@ class SearchVC: UIViewController {
         searchBar.delegate = self
         searchBar.autocapitalizationType = .none
         searchBar.showsCancelButton = true
-        searchBar.backgroundColor = .systemBackground
+        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .defaultPrompt)
         view.addSubview(searchBar)
         searchBar.snp.makeConstraints { make in
             make.top.leading.trailing.equalTo(view.safeAreaInsets)
+            make.height.equalTo(Constants.headerHeight)
         }
 
         addChild(searchCollectionVC)

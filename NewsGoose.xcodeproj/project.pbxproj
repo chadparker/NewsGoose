@@ -25,6 +25,7 @@
 		63B9356926123F0D0097FD2C /* NewsGooseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9356826123F0D0097FD2C /* NewsGooseUITests.swift */; };
 		63BD622F2649C2BE009A2514 /* PostCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BD622E2649C2BE009A2514 /* PostCollectionVC.swift */; };
 		63E15B352652F93E006CA12C /* SearchCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E15B342652F93E006CA12C /* SearchCollectionVC.swift */; };
+		63E15B3926586153006CA12C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E15B3826586153006CA12C /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		63B9356A26123F0D0097FD2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63BD622E2649C2BE009A2514 /* PostCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionVC.swift; sourceTree = "<group>"; };
 		63E15B342652F93E006CA12C /* SearchCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionVC.swift; sourceTree = "<group>"; };
+		63E15B3826586153006CA12C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				63B9354626123F0C0097FD2C /* AppDelegate.swift */,
 				63B9354826123F0C0097FD2C /* SceneDelegate.swift */,
 				6352D65C26323A8B00D8789F /* db.sqlite */,
+				63E15B3826586153006CA12C /* Constants.swift */,
 				63A30DA6261BD77300E24CBE /* Extensions.swift */,
 				63B93576261244A90097FD2C /* View Controllers */,
 				63E15B3226508026006CA12C /* Views */,
@@ -359,6 +362,7 @@
 				63BD622F2649C2BE009A2514 /* PostCollectionVC.swift in Sources */,
 				63B9354B26123F0C0097FD2C /* MainVC.swift in Sources */,
 				63B9354726123F0C0097FD2C /* AppDelegate.swift in Sources */,
+				63E15B3926586153006CA12C /* Constants.swift in Sources */,
 				63B9354926123F0C0097FD2C /* SceneDelegate.swift in Sources */,
 				63951B9F264DCAA6008C961B /* DayHeaderReusableView.swift in Sources */,
 				63A3D05A264A2CDB00C44A63 /* PostCell.swift in Sources */,
