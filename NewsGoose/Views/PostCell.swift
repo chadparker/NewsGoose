@@ -1,5 +1,5 @@
 //
-//  DiffCell.swift
+//  PostCell.swift
 //  NewsGoose
 //
 //  Created by Chad Parker on 5/10/21.
@@ -13,7 +13,7 @@ protocol PostCellDelegate {
     func showComments(for post: Post)
 }
 
-class DiffCell: UICollectionViewCell {
+class PostCell: UICollectionViewCell {
 
     var post: Post! {
         didSet {
@@ -64,7 +64,7 @@ class DiffCell: UICollectionViewCell {
         addSubview(linkTextLabel)
         linkTextLabel.snp.makeConstraints { make in
             make.leading.equalTo(pointsLabel.snp.trailing).offset(10)
-            make.height.greaterThanOrEqualTo(44)
+            make.height.greaterThanOrEqualTo(36)
             make.top.bottom.equalToSuperview().inset(10)
         }
 

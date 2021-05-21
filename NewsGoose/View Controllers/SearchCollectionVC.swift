@@ -15,8 +15,8 @@ class SearchCollectionVC: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.register(DiffCell.self, forCellWithReuseIdentifier: "SearchDiffCell")
-        collectionView.register(DayHeaderReusableView.self, forSupplementaryViewOfKind: .postCollectionHeader, withReuseIdentifier: "SearchDiffHeader")
+        collectionView.register(PostCell.self, forCellWithReuseIdentifier: "SearchPostCell")
+        collectionView.register(DayHeaderReusableView.self, forSupplementaryViewOfKind: .postCollectionHeader, withReuseIdentifier: "SearchDayHeader")
         collectionView.backgroundColor = .systemBackground
     }
 
@@ -67,7 +67,7 @@ class SearchCollectionVC: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchDiffCell", for: indexPath) as! DiffCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchPostCell", for: indexPath) as! PostCell
         let day = days[indexPath.section]
         let post = day.posts[indexPath.item]
         cell.post = post
@@ -76,7 +76,7 @@ class SearchCollectionVC: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchDiffHeader", for: indexPath) as! DayHeaderReusableView
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchDayHeader", for: indexPath) as! DayHeaderReusableView
         let day = days[indexPath.section]
         header.date = day.date
         return header

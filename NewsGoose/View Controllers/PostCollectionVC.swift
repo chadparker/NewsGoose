@@ -54,7 +54,7 @@ class PostCollectionVC: UICollectionViewController {
 
     private func configureDataSource() {
 
-        let cellRegistration = UICollectionView.CellRegistration<DiffCell, Post> { cell, indexPath, post in
+        let cellRegistration = UICollectionView.CellRegistration<PostCell, Post> { cell, indexPath, post in
             cell.post = post
             cell.delegate = self
         }
