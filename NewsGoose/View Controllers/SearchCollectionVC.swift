@@ -12,6 +12,7 @@ import GRDB
 class SearchCollectionVC: UICollectionViewController {
 
     private var days: [Day] = []
+    private let searchQueue = DispatchQueue(label: "PostSearchQueue", qos: .userInitiated)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +23,17 @@ class SearchCollectionVC: UICollectionViewController {
 
     func search(query: String?) {
         if let query = query {
-            let posts = try! Database.shared.postsMatching(query: query, limit: 300)
-            let days = Dictionary(grouping: posts) { $0.day! }
-                .map(Day.init)
-                .sorted { $0.date > $1.date }
-            self.days = days
-            collectionView.reloadData()
-            collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .bottom, animated: false)
+            searchQueue.async {
+                let posts = try! Database.shared.postsMatching(query: query, limit: 300)
+                let days = Dictionary(grouping: posts) { $0.day! }
+                    .map(Day.init)
+                    .sorted { $0.date > $1.date }
+                self.days = days
+                DispatchQueue.main.async { [weak self] in
+                    self?.collectionView.reloadData()
+                    self?.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .bottom, animated: false)
+                }
+            }
         }
     }
 
