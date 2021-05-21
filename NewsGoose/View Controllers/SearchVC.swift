@@ -111,6 +111,7 @@ extension SearchVC: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         state = .startSearch(searchBar.searchTextField.text)
+        searchBar.resignFirstResponder()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
