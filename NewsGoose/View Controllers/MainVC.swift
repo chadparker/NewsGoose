@@ -25,11 +25,10 @@ class MainVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        postManager.loadLatestPosts()
-        NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: nil) { notification in
+        NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: nil) { _ in
             self.postManager.loadLatestPosts()
         }
-}
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let searchVC = segue.destination as? SearchVC {
