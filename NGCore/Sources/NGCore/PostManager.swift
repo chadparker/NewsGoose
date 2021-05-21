@@ -9,7 +9,8 @@ import Foundation
 
 public final class PostManager {
 
-    let postNetworkFetcher = PostNetworkFetcher()
+    private let postNetworkFetcher = PostNetworkFetcher()
+    private let downloadQueue = DispatchQueue(label: "PostDownloadQueue", qos: .default)
 
     public init() {}
 
@@ -29,7 +30,7 @@ public final class PostManager {
         let jsIDsToFetch = ((newestJSID - 3)...todayJSID).reversed()
 
 
-        DispatchQueue.global().async {
+        downloadQueue.async {
 
             let dispatchGroup = DispatchGroup()
 
