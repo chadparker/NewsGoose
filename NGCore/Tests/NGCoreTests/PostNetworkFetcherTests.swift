@@ -38,7 +38,7 @@ final class PostNetworkFetcherTests: XCTestCase {
 
     func testFetchDay() {
         let expectation = self.expectation(description: "Waiting for PostFetcher")
-        sut.fetchDay("20200425") { result in
+        sut.fetchDay(20200425) { result in
             switch result {
             case .success(let posts):
                 print("✅\(posts.count) posts fetched")
