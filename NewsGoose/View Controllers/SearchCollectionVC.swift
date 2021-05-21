@@ -28,6 +28,7 @@ class SearchCollectionVC: UICollectionViewController {
                 .sorted { $0.date > $1.date }
             self.days = days
             collectionView.reloadData()
+            collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .bottom, animated: false)
         }
     }
 
