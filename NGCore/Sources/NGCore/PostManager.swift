@@ -29,6 +29,7 @@ public final class PostManager {
         let todayJSID = Date().jsInt
         let jsIDsToFetch = ((newestJSID - 3)...todayJSID).reversed()
 
+        print("FETCHING UPDATES")
 
         downloadQueue.async {
 
@@ -36,7 +37,6 @@ public final class PostManager {
 
             for jsID in jsIDsToFetch {
                 dispatchGroup.enter()
-                print("fetching \(jsID)")
                 self.postNetworkFetcher.fetchDay(jsID) { result in
                     switch result {
                     case .success(let posts):
