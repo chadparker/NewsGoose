@@ -15,6 +15,10 @@ extension String {
     }
 }
 
+extension Notification.Name {
+    static let backToAppFromSafariVC = Notification.Name(rawValue: "backToAppFromSafariVC")
+}
+
 enum LaunchPostLinkType {
     case post
     case comments

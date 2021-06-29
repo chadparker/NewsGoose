@@ -17,6 +17,7 @@ class PostCollectionVC: UICollectionViewController {
         }
     }
 
+    private var selectedPost: Post?
     private var dataSource: UICollectionViewDiffableDataSource<Day, Post>!
     private var postsCancellable: DatabaseCancellable?
 
@@ -27,6 +28,14 @@ class PostCollectionVC: UICollectionViewController {
         collectionView.collectionViewLayout = createLayout()
         configureDataSource()
         observePosts()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        guard let selectedPost = selectedPost else { return }
+        NotificationCenter.default.post(name: .backToAppFromSafariVC, object: nil, userInfo: ["selectedPost": selectedPost])
+        self.selectedPost = nil
     }
 
     private func createLayout() -> UICollectionViewLayout {
@@ -100,10 +109,8 @@ class PostCollectionVC: UICollectionViewController {
     // MARK: - UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let post = dataSource.itemIdentifier(for: indexPath) else {
-            collectionView.deselectItem(at: indexPath, animated: false)
-            return
-        }
+        guard let post = dataSource.itemIdentifier(for: indexPath) else { preconditionFailure("no post") }
+        selectedPost = post
         presentSafariVC(for: post, showing: .post)
     }
 }

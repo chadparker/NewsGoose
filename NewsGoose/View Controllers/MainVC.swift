@@ -30,6 +30,11 @@ class MainVC: UIViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //self.postManager.loadLatestPosts()  // duplicates loading if from background (check when last loaded?)
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let searchVC = segue.destination as? SearchVC {
             searchVC.delegate = self

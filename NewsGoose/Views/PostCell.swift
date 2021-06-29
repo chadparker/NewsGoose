@@ -28,9 +28,46 @@ class PostCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpViews()
+        NotificationCenter.default.addObserver(self, selector: #selector(clearHighlight(_:)), name: .backToAppFromSafariVC, object: nil)
     }
 
     required init?(coder: NSCoder) { fatalError() }
+
+    // MARK: - Highlight
+
+    override var isHighlighted: Bool {
+        didSet {
+            if isHighlighted {
+                backgroundColor = .cellHighlight
+            } else {
+                backgroundColor = .cellBackground
+            }
+        }
+    }
+
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                backgroundColor = .cellHighlight
+            }
+            // `isSelected == false` is delayed on a CollectionView, so using NotificationCenter instead.
+        }
+    }
+
+    @objc private func clearHighlight(_ notification: Notification) {
+        guard let selectedPost = notification.userInfo?["selectedPost"] as? Post else { preconditionFailure("no post") }
+
+        if self.post == selectedPost {
+            backgroundColor = .cellHighlight
+            UIView.animate(withDuration: 5, delay: 0, options: [.allowUserInteraction]) {
+                self.backgroundColor = .cellBackground
+            }
+        } else {
+            backgroundColor = .cellBackground
+        }
+    }
+
+    // MARK: - View Setup
 
     private func setUpViews() {
 
@@ -80,10 +117,19 @@ class PostCell: UICollectionViewCell {
         }
     }
 
+    // MARK: - View Udates
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        backgroundColor = .cellBackground
+    }
+
     private func updateViews() {
         pointsLabel.text = "\(post.points ?? 0)"
         linkTextLabel.text = post.link_text
     }
+
+    // MARK: - Actions
 
     @objc func showComments(_ sender: UIButton) {
         delegate.showComments(for: post)
