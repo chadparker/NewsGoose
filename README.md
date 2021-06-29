@@ -5,8 +5,8 @@
 * Quickly search previous posts
 
 <p align="center">
-    <img width="300" alt="Browse screenshot" src="https://user-images.githubusercontent.com/438307/113368558-f04a6080-9313-11eb-8d95-856b0099e71e.png">
-    <img width="300" alt="Search screenshot" src="https://user-images.githubusercontent.com/438307/113368686-4e774380-9314-11eb-9daa-68185ccc4957.png">
+    <img width="300" alt="Browse screenshot" src="https://user-images.githubusercontent.com/438307/120360033-2c228780-c2bd-11eb-9baa-d8dbb12befa7.png">
+    <img width="300" alt="Search screenshot" src="https://user-images.githubusercontent.com/438307/120359998-2462e300-c2bd-11eb-9dea-51af52a546e7.png">
 </p>
 
 ## Purpose
