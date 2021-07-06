@@ -112,7 +112,12 @@ class PostCollectionVC: UICollectionViewController {
         guard let post = dataSource.itemIdentifier(for: indexPath) else { preconditionFailure("no post") }
         selectedPost = post
         UserDefaults.markPostAsRead(post.id)
-        presentSafariVC(for: post, showing: .post)
+        presentSafariVC(for: post, showing: .post) {
+            collectionView.deselectItem(at: indexPath, animated: false)
+            for case let cell as PostCell in collectionView.visibleCells {
+                cell.updateViews()
+            }
+        }
     }
 }
 

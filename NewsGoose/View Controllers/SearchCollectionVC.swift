@@ -90,10 +90,14 @@ class SearchCollectionVC: UICollectionViewController {
     // MARK: - UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: false)
         let day = days[indexPath.section]
         let post = day.posts[indexPath.item]
-        presentSafariVC(for: post, showing: .post)
+        presentSafariVC(for: post, showing: .post) {
+            collectionView.deselectItem(at: indexPath, animated: false)
+            for case let cell as PostCell in collectionView.visibleCells {
+                cell.updateViews()
+            }
+        }
     }
 }
 
