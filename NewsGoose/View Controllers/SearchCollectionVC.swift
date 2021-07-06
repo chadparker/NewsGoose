@@ -100,6 +100,6 @@ class SearchCollectionVC: UICollectionViewController {
 extension SearchCollectionVC: PostCellDelegate {
 
     func showComments(for post: Post) {
-        presentSafariVC(for: post, showing: .comments)
+        presentSafariVC(for: post, showing: .comments) {}
     }
 }

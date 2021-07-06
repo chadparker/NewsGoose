@@ -53,8 +53,11 @@ enum LaunchPostLinkType {
 }
 
 extension UIViewController {
+
+    static var presentSafariCompletionHandler: () -> Void = {}
     
-    func presentSafariVC(for post: Post, showing linkType: LaunchPostLinkType) {
+    func presentSafariVC(for post: Post, showing linkType: LaunchPostLinkType, completion: @escaping () -> Void) {
+        Self.presentSafariCompletionHandler = completion
         switch linkType {
         case .post:
             if let linkURL = URL(string: post.link) {
@@ -70,7 +73,9 @@ extension UIViewController {
     
     private func presentURL(_ url: URL) {
         let vc = SFSafariViewController(url: url)
-        present(vc, animated: true)
+        present(vc, animated: true) {
+            Self.presentSafariCompletionHandler()
+        }
     }
     
     private func presentHNPost(id: String) {

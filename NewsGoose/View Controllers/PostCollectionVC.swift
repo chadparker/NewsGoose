@@ -119,6 +119,6 @@ class PostCollectionVC: UICollectionViewController {
 extension PostCollectionVC: PostCellDelegate {
 
     func showComments(for post: Post) {
-        presentSafariVC(for: post, showing: .comments)
+        presentSafariVC(for: post, showing: .comments) {}
     }
 }
