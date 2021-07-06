@@ -50,7 +50,7 @@ class PostCell: UICollectionViewCell {
             if isSelected {
                 backgroundColor = .cellHighlight
             }
-            // `isSelected == false` is delayed on a CollectionView, so using NotificationCenter instead.
+            // `backgroundColor` resets in function below
         }
     }
 
@@ -59,8 +59,8 @@ class PostCell: UICollectionViewCell {
 
         if self.post == selectedPost {
             backgroundColor = .cellHighlight
-            UIView.animate(withDuration: 5, delay: 0, options: [.allowUserInteraction]) {
-                self.backgroundColor = .cellBackground
+            UIView.animate(withDuration: 2, delay: 0, options: [.allowUserInteraction]) {
+                self.backgroundColor = .cellRecentHighlight
             }
         } else {
             backgroundColor = .cellBackground
@@ -121,12 +121,15 @@ class PostCell: UICollectionViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        linkTextLabel.textColor = .linkTextUnread
         backgroundColor = .cellBackground
     }
 
-    private func updateViews() {
+    func updateViews() {
         pointsLabel.text = "\(post.points ?? 0)"
         linkTextLabel.text = post.link_text
+
+        linkTextLabel.textColor = UserDefaults.postBeenRead(post.id) ? .linkTextRead : .linkTextUnread
     }
 
     // MARK: - Actions
