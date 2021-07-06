@@ -30,8 +30,8 @@ class PostCollectionVC: UICollectionViewController {
         observePosts()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         guard let selectedPost = selectedPost else { return }
         NotificationCenter.default.post(name: .backToAppFromSafariVC, object: nil, userInfo: ["selectedPost": selectedPost])
