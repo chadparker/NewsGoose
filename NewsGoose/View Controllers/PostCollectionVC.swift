@@ -111,6 +111,7 @@ class PostCollectionVC: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let post = dataSource.itemIdentifier(for: indexPath) else { preconditionFailure("no post") }
         selectedPost = post
+        UserDefaults.markPostAsRead(post.id)
         presentSafariVC(for: post, showing: .post)
     }
 }
