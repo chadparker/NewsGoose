@@ -16,24 +16,24 @@ extension UserDefaults {
     }
 
     static func markPostAsRead(_ postId: String) {
-        if UserDefaults.standard.object(forKey: Keys.postsBeenRead) == nil {
+        if standard.object(forKey: Keys.postsBeenRead) == nil {
             initializePostsBeenRead()
         }
-        guard var dict = UserDefaults.standard.object(forKey: Keys.postsBeenRead) as? [String: Bool] else { preconditionFailure("no dict") }
+        guard var dict = standard.object(forKey: Keys.postsBeenRead) as? [String: Bool] else { preconditionFailure("no dict") }
         dict[postId] = true
-        UserDefaults.standard.set(dict, forKey: Keys.postsBeenRead)
+        standard.set(dict, forKey: Keys.postsBeenRead)
     }
 
     static func postBeenRead(_ postId: String) -> Bool {
-        if UserDefaults.standard.object(forKey: Keys.postsBeenRead) == nil {
+        if standard.object(forKey: Keys.postsBeenRead) == nil {
             initializePostsBeenRead()
         }
-        guard let dict = UserDefaults.standard.object(forKey: Keys.postsBeenRead) as? [String: Bool] else { preconditionFailure("no dict")}
+        guard let dict = standard.object(forKey: Keys.postsBeenRead) as? [String: Bool] else { preconditionFailure("no dict")}
         return dict[postId] != nil
     }
 
     static private func initializePostsBeenRead() {
-        UserDefaults.standard.set([String:Bool](), forKey: Keys.postsBeenRead)
+        standard.set([String:Bool](), forKey: Keys.postsBeenRead)
     }
 }
 
