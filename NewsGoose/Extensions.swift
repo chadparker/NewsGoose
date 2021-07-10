@@ -12,7 +12,20 @@ import NGCore
 extension UserDefaults {
 
     private enum Keys {
+        static let pointsThreshold = "pointsThreshold"
         static let postsBeenRead = "postsBeenRead"
+    }
+
+    static var pointsThreshold: Int {
+        get {
+            if standard.value(forKey: Keys.pointsThreshold) == nil {
+                return pointsThresholdDefault
+            }
+            return standard.integer(forKey: Keys.pointsThreshold)
+        }
+        set {
+            standard.set(newValue, forKey: Keys.pointsThreshold)
+        }
     }
 
     static func markPostAsRead(_ postId: String) {
@@ -38,9 +51,7 @@ extension UserDefaults {
 }
 
 extension String {
-    static var postCollectionHeader: String {
-        "post-collection-header"
-    }
+    static var postCollectionHeader = "post-collection-header"
 }
 
 extension Notification.Name {

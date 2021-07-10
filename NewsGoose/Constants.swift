@@ -12,6 +12,11 @@ enum Constants {
     static let headerHeight = 80
 }
 
+extension UserDefaults {
+    
+    static let pointsThresholdDefault = 300
+}
+
 extension UIColor {
 
     static let linkTextUnread = UIColor.label

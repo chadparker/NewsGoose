@@ -28,11 +28,18 @@ class MainVC: UIViewController {
         NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: nil) { _ in
             self.postManager.loadLatestPosts()
         }
+        updateSegmentControlFromUserDefaults()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        //self.postManager.loadLatestPosts()  // duplicates loading if from background (check when last loaded?)
+    func updateSegmentControlFromUserDefaults() {
+        for i in 0 ..< pointsSegControl.numberOfSegments {
+            let segmentPoints = pointsSegControl.titleForSegment(at: i)!.intValueFromDigits
+            if segmentPoints == UserDefaults.pointsThreshold {
+                pointsSegControl.selectedSegmentIndex = i
+                pointsSegControl.sendActions(for: .valueChanged)
+                break
+            }
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -46,6 +53,7 @@ class MainVC: UIViewController {
     }
     
     @IBAction func pointsSelectionChanged(_ sender: UISegmentedControl) {
+        UserDefaults.pointsThreshold = pointsSegmentValue
         postCollectionVC.pointsThreshold = pointsSegmentValue
     }
     

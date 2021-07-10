@@ -47,7 +47,7 @@ public final class PostManager {
                         case .notFound:
                             dispatchGroup.leave()
                         default:
-                            fatalError()
+                            print("ERROR: \(error)")
                         }
                     }
                 }
