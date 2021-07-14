@@ -11,7 +11,7 @@ import GRDB
 
 class PostCollectionVC: UICollectionViewController {
 
-    var pointsThreshold: Int = 0 {
+    var pointsThreshold: Int {
         didSet {
             observePosts()
         }
@@ -21,11 +21,17 @@ class PostCollectionVC: UICollectionViewController {
     private var dataSource: UICollectionViewDiffableDataSource<Day, Post>!
     private var postsCancellable: DatabaseCancellable?
 
+    init(pointsThreshold: Int, layout: UICollectionViewLayout) {
+        self.pointsThreshold = pointsThreshold
+        super.init(collectionViewLayout: layout)
+    }
+    
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.showsVerticalScrollIndicator = false
         self.clearsSelectionOnViewWillAppear = false
-        collectionView.collectionViewLayout = createLayout()
         configureDataSource()
         observePosts()
     }
@@ -38,7 +44,7 @@ class PostCollectionVC: UICollectionViewController {
         self.selectedPost = nil
     }
 
-    private func createLayout() -> UICollectionViewLayout {
+    static func createLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(70))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 

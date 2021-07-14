@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19115.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19107.5"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -61,12 +62,6 @@
                                     <constraint firstAttribute="bottom" secondItem="UZ6-sp-MBa" secondAttribute="bottom" constant="10" id="uYB-MU-GFz"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnW-8c-rNS">
-                                <rect key="frame" x="0.0" y="124" width="414" height="738"/>
-                                <connections>
-                                    <segue destination="5O0-WK-4U5" kind="embed" id="drK-3V-UdD"/>
-                                </connections>
-                            </containerView>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="376-Xw-ryg">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <connections>
@@ -82,12 +77,8 @@
                             <constraint firstItem="chv-ck-ebZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PHE-xF-ofl"/>
                             <constraint firstItem="376-Xw-ryg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gdh-J3-xbU"/>
                             <constraint firstItem="376-Xw-ryg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jfY-mW-l0x"/>
-                            <constraint firstItem="hnW-8c-rNS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nHj-LG-OsF"/>
-                            <constraint firstItem="hnW-8c-rNS" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="odk-Vt-MJp"/>
-                            <constraint firstItem="hnW-8c-rNS" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rRr-ts-sdQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="376-Xw-ryg" secondAttribute="bottom" id="tRD-rQ-ub1"/>
                             <constraint firstItem="chv-ck-ebZ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tao-oz-hOz"/>
-                            <constraint firstItem="hnW-8c-rNS" firstAttribute="top" secondItem="chv-ck-ebZ" secondAttribute="bottom" id="xij-9f-Mcl"/>
                         </constraints>
                     </view>
                     <connections>
@@ -98,31 +89,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
-        </scene>
-        <!--Post CollectionVC-->
-        <scene sceneID="zxa-WO-GIy">
-            <objects>
-                <collectionViewController id="5O0-WK-4U5" customClass="PostCollectionVC" customModule="NewsGoose" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Lij-W6-LOh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="738"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GKZ-wZ-PZ3">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells/>
-                        <connections>
-                            <outlet property="dataSource" destination="5O0-WK-4U5" id="fye-SB-YnP"/>
-                            <outlet property="delegate" destination="5O0-WK-4U5" id="Zn7-n6-2cv"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="akK-yv-2jb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1019" y="382"/>
         </scene>
         <!--SearchVC-->
         <scene sceneID="xaQ-sA-Quk">

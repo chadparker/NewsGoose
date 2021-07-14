@@ -7,6 +7,7 @@
 
 import UIKit
 import NGCore
+import SnapKit
 
 class MainVC: UIViewController {
 
@@ -28,7 +29,19 @@ class MainVC: UIViewController {
         NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: nil) { _ in
             self.postManager.loadLatestPosts()
         }
+        setUpViews()
         updateSegmentControlFromUserDefaults()
+    }
+
+    func setUpViews() {
+        postCollectionVC = PostCollectionVC(pointsThreshold: pointsSegmentValue, layout: PostCollectionVC.createLayout())
+        addChild(postCollectionVC)
+        view.addSubview(postCollectionVC.view)
+        postCollectionVC.didMove(toParent: self)
+        postCollectionVC.view.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaInsets.top).offset(80)
+            make.leading.trailing.bottom.equalTo(view.safeAreaInsets)
+        }
     }
 
     func updateSegmentControlFromUserDefaults() {
@@ -46,9 +59,6 @@ class MainVC: UIViewController {
         if let searchVC = segue.destination as? SearchVC {
             searchVC.delegate = self
             self.searchVC = searchVC
-        } else if let postTableVC = segue.destination as? PostCollectionVC {
-            postTableVC.pointsThreshold = pointsSegmentValue
-            self.postCollectionVC = postTableVC
         }
     }
     
