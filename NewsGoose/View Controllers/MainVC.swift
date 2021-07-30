@@ -12,7 +12,6 @@ import SnapKit
 class MainVC: UIViewController {
 
     @IBOutlet weak var pointsSegControl: UISegmentedControl!
-    @IBOutlet weak var searchContainer: UIView!
 
     let postManager = PostManager()
     
@@ -39,8 +38,18 @@ class MainVC: UIViewController {
         view.addSubview(postCollectionVC.view)
         postCollectionVC.didMove(toParent: self)
         postCollectionVC.view.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaInsets.top).offset(80)
-            make.leading.trailing.bottom.equalTo(view.safeAreaInsets)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(80)
+            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+
+        searchVC = SearchVC()
+        searchVC.delegate = self
+        addChild(searchVC)
+        view.addSubview(searchVC.view)
+        searchVC.didMove(toParent: self)
+        searchVC.view.isHidden = true
+        searchVC.view.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
 
@@ -54,13 +63,6 @@ class MainVC: UIViewController {
             }
         }
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let searchVC = segue.destination as? SearchVC {
-            searchVC.delegate = self
-            self.searchVC = searchVC
-        }
-    }
     
     @IBAction func pointsSelectionChanged(_ sender: UISegmentedControl) {
         UserDefaults.pointsThreshold = pointsSegmentValue
@@ -68,7 +70,7 @@ class MainVC: UIViewController {
     }
     
     @IBAction func showSearch(_ sender: UIButton) {
-        searchContainer.isHidden = false
+        searchVC.view.isHidden = false
         searchVC.activate()
     }
 }
@@ -76,6 +78,6 @@ class MainVC: UIViewController {
 extension MainVC: SearchVCDelegate {
 
     func hideSearch() {
-        searchContainer.isHidden = true
+        searchVC.view.isHidden = true
     }
 }

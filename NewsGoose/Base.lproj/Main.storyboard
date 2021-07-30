@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19115.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19142.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19107.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19129"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -62,48 +62,22 @@
                                     <constraint firstAttribute="bottom" secondItem="UZ6-sp-MBa" secondAttribute="bottom" constant="10" id="uYB-MU-GFz"/>
                                 </constraints>
                             </view>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="376-Xw-ryg">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <connections>
-                                    <segue destination="aUf-XF-ff6" kind="embed" id="oCb-Ps-v7t"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="chv-ck-ebZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="B2S-99-6WJ"/>
-                            <constraint firstItem="376-Xw-ryg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="CqF-30-OTG"/>
                             <constraint firstItem="chv-ck-ebZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PHE-xF-ofl"/>
-                            <constraint firstItem="376-Xw-ryg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gdh-J3-xbU"/>
-                            <constraint firstItem="376-Xw-ryg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jfY-mW-l0x"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="376-Xw-ryg" secondAttribute="bottom" id="tRD-rQ-ub1"/>
                             <constraint firstItem="chv-ck-ebZ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tao-oz-hOz"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="pointsSegControl" destination="xPT-vk-Lz6" id="rE0-TG-BrG"/>
-                        <outlet property="searchContainer" destination="376-Xw-ryg" id="XpU-rE-9a9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
-        </scene>
-        <!--SearchVC-->
-        <scene sceneID="xaQ-sA-Quk">
-            <objects>
-                <viewController id="aUf-XF-ff6" customClass="SearchVC" customModule="NewsGoose" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fAa-S8-6nw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="jNF-se-aTt"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wiA-Bb-hie" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1034.7826086956522" y="-291.29464285714283"/>
         </scene>
     </scenes>
     <resources>

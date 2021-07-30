@@ -34,6 +34,8 @@ class SearchVC: UIViewController {
     }
 
     private func setUpViews() {
+        view.backgroundColor = .systemBackground
+
         searchBar.delegate = self
         searchBar.autocapitalizationType = .none
         searchBar.showsCancelButton = true
