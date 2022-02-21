@@ -159,8 +159,9 @@ extension Database {
         pointsThreshold: Int,
         limit: Int,
         onError: @escaping (Error) -> Void,
-        onChange: @escaping ([Post]) -> Void) -> DatabaseCancellable {
-        return ValueObservation
+        onChange: @escaping ([Post]) -> Void
+    ) -> DatabaseCancellable {
+        ValueObservation
             .tracking(
                 Post
                     .order(Post.Columns.date.desc)
@@ -175,8 +176,9 @@ extension Database {
         query: String,
         limit: Int,
         onError: @escaping (Error) -> Void,
-        onChange: @escaping ([Post]) -> Void) -> DatabaseCancellable {
-        return ValueObservation
+        onChange: @escaping ([Post]) -> Void
+    ) -> DatabaseCancellable {
+        ValueObservation
             .tracking(
                 Post
                     .filter(Post.Columns.link_text.like("%\(query)%"))
